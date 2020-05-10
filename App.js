@@ -22,6 +22,8 @@ import PaymentScreen from "./src/components/Payment";
 import PreRegAppointment from "./src/components/PreRegAppointment";
 import Notification from "./src/components/Notification";
 import BillingScreen from "./src/components/Billing";
+import OnlinePayment from "./src/components/OnlinePayment";
+
 const App = StackNavigator({
   Login: { screen: LoginScreen },
   Procedure: { screen: ProcedureScreen },
@@ -44,7 +46,8 @@ const App = StackNavigator({
   VideoAppointment: { screen: VideoAppointmentScreen },
   PreRegAppointment: { screen: PreRegAppointment },
   Notification: { screen: Notification },
-  Billing: { screen: BillingScreen }
+  Billing: { screen: BillingScreen },
+  Online : { screen : OnlinePayment }
 });
 
 export default App;

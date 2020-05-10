@@ -157,7 +157,7 @@ export default class VisitNote extends Component {
     marginTop: 20,
     borderRadius: 30,
     marginLeft: 75,
-    backgroundColor: "#0066ff"}} onPress={this.uploadDocument}>
+    backgroundColor: "#0066ff"}} onPress={() => navigate('Online')}>
             <Text style={{
               fontSize: 20,
               color: "#FFF",
