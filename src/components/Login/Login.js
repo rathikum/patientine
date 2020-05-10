@@ -86,7 +86,7 @@ export default class Login extends Component {
   render () {
     const { navigate } = this.props.navigation
     return (
-      <View style={styles.overLay}>
+      <View>
         <KeyboardAwareScrollView>
           <View style={styles.logoContainer}>
             <DropdownAlert
@@ -105,7 +105,7 @@ export default class Login extends Component {
               height: 250,
               width: 300,
               borderRadius: 10,
-              marginLeft: 30,
+              marginLeft: 40,
               marginTop: -60,
               elevation: 10
             }}
@@ -151,8 +151,8 @@ export default class Login extends Component {
                 />
               </View>
             </View>
-            <View>
-              <View>
+            <TouchableOpacity>
+              <TouchableOpacity>
                 <TouchableOpacity
                   style={styles.submitButtonContainer}
                   onPress={this.onLoginPress.bind(this)}
@@ -160,8 +160,8 @@ export default class Login extends Component {
                 >
                   <Text style={styles.submitTextStyle}>Login</Text>
                 </TouchableOpacity>
-              </View>
-            </View>
+              </TouchableOpacity>
+            </TouchableOpacity>
           </Card>
           <View style={styles.buttonContainer}>
             <View style={styles.row}>

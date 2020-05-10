@@ -19,7 +19,7 @@ export default class VisitNote extends Component {
     const params = navigation.state.params || {};
     return {
       headerTintColor: "#fff",
-      title: "Visit Note",
+      title: "Visits",
       headerStyle: {
         height: 50,
         backgroundColor: "#1E90FF"

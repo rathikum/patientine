@@ -1,33 +1,25 @@
 import React, { Component } from "react";
 import {
-  StyleSheet,
-  View,
   Text,
-  ScrollView,
-  CheckBox,
   Image,
+  ScrollView,
   TouchableOpacity,
-  KeyboardAvoidingView
+  View,
+  Dimensions,
+  StyleSheet
 } from "react-native";
-import {
-  Collapse,
-  CollapseHeader,
-  CollapseBody
-} from "accordion-collapse-react-native";
-import { Divider } from "react-native-elements";
+import FontAwesome, { Icons } from "react-native-fontawesome";
+import { Card } from "react-native-elements";
 import moment from "moment";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Card, CardContent } from "react-native-card-view";
-import PatientId from "./PatientId";
 import { baseURL } from "../Utils/properties";
-import FontAwesome, { Icons, signOutAlt } from "react-native-fontawesome";
+import PatientId from "./PatientId";
 var patId = new PatientId();
-export default class Medications extends Component {
+export default class VisitNote extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
     return {
       headerTintColor: "#fff",
-      title: "Medications",
+      title: "Payment",
       headerStyle: {
         height: 50,
         backgroundColor: "#1E90FF"
@@ -38,7 +30,7 @@ export default class Medications extends Component {
         alignSelf: "center"
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("VisitNote")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Appointment")}>
           <FontAwesome
             style={{
               fontSize: 20,
@@ -56,312 +48,215 @@ export default class Medications extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mor: false,
-      noon: false,
-      eve: false,
-      night: false,
-      patientId: "",
-      prescriptionsArray: [],
       doctorName: "",
-      activeSections: false
+      date: "",
+      purpose: "",
+      visitDetailValues: []
     };
   }
-  componentWillMount() {
+  componentWillMount = () => {
     this.patientId = patId.putPatientId();
-    this.fetchPreviousPrescription();
-  }
-
-  renderHeader = () => {
-    var headerPrescriptionArray = [];
-    let startDate = [];
-    let endDate = [];
-    let flag = 1;
-    if (this.state.prescriptionsArray.length > 0) {
-      this.state.prescriptionsArray.forEach(function(prescriptionIns, i) {
-        flag = flag > 3 ? 1 : flag;
-        if (flag > 3) {
-        }
-        let mealKey = "";
-        if (prescriptionIns.withMeal == 1) {
-          mealKey = "Before Meal";
-        } else if (prescriptionIns.withMeal == 0) {
-          mealKey = "After Meal";
-        }
-
-        startDate =
-          prescriptionIns.effectiveStartDate != null
-            ? prescriptionIns.effectiveStartDate.split("T")
-            : "";
-        endDate =
-          prescriptionIns.expiryDate != null
-            ? prescriptionIns.expiryDate.split("T")
-            : "";
-        headerPrescriptionArray.push(
-          <View style={{ paddingTop: 7 }} key={{ i }}>
-            <Collapse
-              style={{
-                marginBottom: 10,
-                marginLeft: 15,
-                marginRight: 15,
-                width: "92%",
-                paddingBottom: 10,
-                paddingLeft: 10,
-                borderColor: "#DCDCDC",
-                borderRadius: 6,
-                borderWidth: 1
-              }}
-            >
-              <CollapseHeader
-                style={{
-                  paddingTop: 8
-                }}
-              >
-                <View style={styles.medicamentDose}>
-                  <Image
-                    style={{
-                      width: 20,
-                      height: 20,
-                      borderRadius: 5,
-                      marginLeft: 5,
-                      marginRight: 5,
-                      display: "flex"
-                    }}
-                    source={
-                      flag == 1
-                        ? require("../images/pill2.png")
-                        : flag == 2
-                        ? require("../images/pill.png")
-                        : require("../images/pill3.png")
-                    }
-                  />
-                  <View style={styles.leftaligneditems}>
-                    <Text
-                      style={{
-                        color: "#0066ff",
-                        fontSize: 18
-                      }}
-                    >
-                      {prescriptionIns.medicament != null &&
-                        (prescriptionIns.medicament.length > 20
-                          ? prescriptionIns.medicament.substring(0, 20) +
-                            "\n" +
-                            prescriptionIns.medicament.substring(21, 30)
-                          : prescriptionIns.medicament)}
-                    </Text>
-                  </View>
-                </View>
-                <View style={styles.medicationdate}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      style={{
-                        color: "#efa41b"
-                      }}
-                    >
-                      Start Date:
-                    </Text>
-                    <Text
-                      style={{
-                        color: "#0066ff",
-                        marginLeft: 5
-                      }}
-                    >
-                      {moment(startDate[0]).format("MMM DD")}
-                    </Text>
-                  </View>
-                  <View style={styles.rightaligneditems}>
-                    <View style={{ flexDirection: "row" }}>
-                      <Text
-                        style={{
-                          color: "#efa41b"
-                        }}
-                      >
-                        End Date:
-                      </Text>
-                      <Text
-                        style={{
-                          color: "#0066ff",
-                          marginLeft: 5
-                        }}
-                      >
-                        {moment(endDate[0]).format("MMM DD")}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </CollapseHeader>
-              <CollapseBody>
-                <View style={styles.medicationdate}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      style={{
-                        color: "#efa41b"
-                      }}
-                    >
-                      Qty:
-                    </Text>
-                    <Text style={{ color: "#0066ff", marginLeft: 5 }}>
-                      {prescriptionIns.quantityPerSession}
-                    </Text>
-                  </View>
-                  <View style={styles.rightaligneditems}>
-                    <Text
-                      style={{
-                        color: "#0066ff"
-                      }}
-                    >
-                      {prescriptionIns.frequency}
-                    </Text>
-                  </View>
-                </View>
-                <View style={{ flexDirection: "row" }}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      style={{
-                        color: "#efa41b"
-                      }}
-                    >
-                      Session:
-                    </Text>
-                    <Text
-                      style={{
-                        color: "#0066ff",
-                        marginLeft: 5
-                      }}
-                    >
-                      {prescriptionIns.morningSession}-
-                      {prescriptionIns.noonSession}-
-                      {prescriptionIns.nightSession}
-                    </Text>
-                  </View>
-                  <View style={styles.rightaligneditems}>
-                    <Text
-                      style={{
-                        backgroundColor: "#FFF",
-                        color: "#0066ff"
-                      }}
-                    >
-                      {mealKey}
-                    </Text>
-                  </View>
-                </View>
-              </CollapseBody>
-            </Collapse>
-          </View>
-        );
-        flag++;
-      });
-
-      return headerPrescriptionArray;
-    }
-  };
-  // renderContent = () => {
-  //   var contentPrescriptionArray = [];
-  //
-  //   if (this.state.prescriptionsArray.length > 0) {
-  //     this.state.prescriptionsArray.forEach(function(prescriptionIns) {
-  //       contentPrescriptionArray.push(<View />);
-  //     });
-  //     return contentPrescriptionArray;
-  //   }
-  //   this.setState({ contentPrescriptionArray: contentPrescriptionArray });
-  // };
-
-  // BodyFunc = () => {
-  //   var headerPrescriptionObj = {};
-  //   var contentPrescriptionObj = {};
-  //   headerPrescriptionObj.push(this.state.headerPrescriptionArray);
-  //   contentPrescriptionObj.push(this.state.contentPrescriptionArray);
-  //   if (
-  //     contentPrescriptionObj.prescriptionLineId ==
-  //     headerPrescriptionObj.prescriptionLineId
-  //   ) {
-  //     this.renderContent();
-  //   }
-  // };
-  fetchPreviousPrescription = () => {
-    const self = this;
-    let array = [];
-    //TODO visitId make it dynamic
-    const visitId = 1;
-    var url =
+    let getMonths = [];
+    let listOfMonthInfo = [];
+    let listOfVisitDetails = [];
+    const url =
       baseURL +
-      "/api/prescriptions/getPreviousPrescription/" +
-      this.patientId +
-      "/" +
-      visitId;
+      "/api/PatientSummary/getPatientSummary?patientId=" +
+      this.patientId;
     fetch(url)
       .then(response => response.json())
-      .then(response => {
-        let prescriptionsArray = [];
-        if (
-          response.previousPrescription &&
-          response.previousPrescription.length > 0
-        ) {
-          // response.previousPrescription.forEach(function(data) {
-          const prescriptionHeader = response.previousPrescription;
-          // const doctorName = data.staffName;
-          // const prescriptionSubData = data.prescriptionSubData;
-          prescriptionHeader.forEach(function(header) {
-            if (header.hasOwnProperty("prescriptionLine")) {
-              header.prescriptionLine.forEach(function(prescLine) {
-                let prescriptionsObj = {
-                  prescriptionLineId: prescLine.prescriptionLineId,
-                  medicament: prescLine.medicament,
-                  //medicineFormKey: prescLine.medicineFormKey,
-                  // dose: prescLine.dose,
-                  // doseUnit: prescLine.doseUnit,
-                  // doseUnitKey: prescLine.doseUnitKey,
-                  effectiveStartDate: prescLine.effectiveStartDate,
-                  expiryDate: prescLine.expiryDate,
-                  // morningSessionKey: prescLine.morningSessionKey,
-                  morningSession: prescLine.morningSession,
-                  // noonSessionKey: prescLine.noonSessionKey,
-                  noonSession: prescLine.noonSession,
-                  // nightSessionKey: prescLine.nightSessionKey,
-                  nightSession: prescLine.nightSession,
-                  // withMealKey: prescLine.withMealKey,
-                  withMeal: prescLine.withMeal,
-                  // withoutMealKey: prescLine.withoutMealKey,
-                  withoutMeal: prescLine.withoutMeal,
-                  quantityPerSession: prescLine.quantityPerSession
-                  // frequency: prescLine.frequency
-                };
-                prescriptionsArray.push(prescriptionsObj);
-              });
+      .then(resultData => {
+        if (resultData.patientSummary != null) {
+          let monthVitalInfo = [];
+          let visitInfo = resultData.patientSummary.visitInfo;
+          for (let c = 0; c < visitInfo.length; c++) {
+            let monthIdx = moment(visitInfo[c].checkIn)
+              .format("MMMMYYYY")
+              .toString();
+            if (monthVitalInfo[monthIdx] == null) {
+              monthVitalInfo[monthIdx] = [];
             }
-
-            //self.setState({ doctorName: doctorName });
-            // });
-          });
-          this.setState({ prescriptionsArray: prescriptionsArray });
+            monthVitalInfo[monthIdx].push(visitInfo[c]);
+          }
+          //   if (
+          //     c != visitInfo.length - 1 &&
+          //     moment(visitInfo[c].checkIn)
+          //       .format("MMMMYYYY")
+          //       .toString() ===
+          //       moment(visitInfo[c + 1].checkIn)
+          //         .format("MMMMYYYY")
+          //         .toString()
+          //   ) {
+          //     getMonths.push(visitInfo[c]);
+          //   } else {
+          //     let list = {};
+          //     getMonths.push(visitInfo[c]);
+          //     list[
+          //       moment(getMonths[0].checkIn)
+          //         .format("MMMM YYYY")
+          //         .toString()
+          //     ] = getMonths;
+          //     listOfMonthInfo.push(list);
+          //     getMonths = [];
+          //   }
+          // }
+          // for (let i = 0; i < listOfMonthInfo.length; i++) {
+          //   listOfVisitDetails.push(listOfMonthInfo[i]);
+          // }
+          this.setState({ visitDetailValues: monthVitalInfo });
         }
       });
+  };
+  visitSummary = () => {
+    const listOfLabel = [];
+    const { visitDetailValues } = this.state;
+    Object.keys(visitDetailValues).forEach(visitMonth => {
+      listOfLabel.push(
+        <View key={visitDetailValues[visitMonth]}>
+          <View>
+            <Text style={styles.visitDate}>{visitMonth}</Text>
+          </View>
+          <View>{this.visitSummaryDetails(visitDetailValues[visitMonth])}</View>
+        </View>
+      );
+    });
+
+    return listOfLabel;
+  };
+  visitSummaryDetails = values => {
+    const { navigate } = this.props.navigation;
+    if (values.length > 0) {
+      let listOfDetails = [];
+      values.forEach(function(data) {
+        listOfDetails.push(
+          <View key={data}>
+            <Card
+              containerStyle={{ marginTop: 6, padding: 6, borderRadius: 6 }}
+            >
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.doctorName}>
+                    {" "}
+                    Dr.{data.staff.firstName || data.staff.lastName}
+                  </Text>
+                </View>
+                <View style={{ flexDirection: "row", paddingLeft: 130 }}>
+                  <Text style={styles.visitInfoStyle}>
+                    {moment(data.checkIn).format("MMM DD")}
+                  </Text>
+                </View>
+              </View>
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Type : </Text>
+                  <Text style={styles.value}>{"General Check Up"}</Text>
+                </View>
+              </View>
+              <TouchableOpacity style={{flexDirection: "row",height: 40,
+    width: "50%",
+    marginTop: 20,
+    borderRadius: 30,
+    marginLeft: 75,
+    backgroundColor: "#0066ff"}} onPress={this.uploadDocument}>
+            <Text style={{
+              fontSize: 20,
+              color: "#FFF",
+              paddingTop: 5,
+              width: "100%",
+              // fontFamily: "raleway",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>Pay</Text>
+          </TouchableOpacity>
+
+          
+            </Card>
+          </View>
+        );
+      });
+      return listOfDetails;
+    } else {
+      <View>
+        <Text>No Data to Display</Text>
+      </View>;
+    }
   };
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <KeyboardAwareScrollView style={{ backgroundColor: "#FFF" }}>
-        <View>{this.renderHeader()}</View>
-      </KeyboardAwareScrollView>
+      <ScrollView style={styles.scrollViewStyle}>
+        <View style={{ backgroundColor: "#FFF" }}>{this.visitSummary()}</View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-    position: "absolute"
+  scrollViewStyle: { backgroundColor: "#FFF" },
+  visitDate: {
+    alignSelf: "flex-start",
+    fontSize: 18,
+    color: "#0066ff",
+    fontWeight: "400",
+    marginLeft: 15,
+    marginTop: 7.5
   },
-  medicamentDose: { paddingTop: 10, flexDirection: "row" },
-  rightaligneditems: {
-    paddingBottom: 4,
+  cardContentMainView: {
+    flexDirection: "row",
+    alignItems: "flex-start"
+  },
+  visitNoteLink: {
+    justifyContent: "flex-end",
     alignSelf: "flex-end",
     marginLeft: "auto",
-    marginRight: 20
+    marginRight: 4
   },
-  medicationdate: {
-    flexDirection: "row",
-    paddingTop: 10
+  contentMain: {
+    marginTop: 5
+  },
+  doctorName: {
+    color: "#0066ff",
+    fontSize: 17,
+    marginTop: 5,
+    marginLeft: 3
+  },
+  checkInDate: {
+    fontSize: 18,
+    fontWeight: "400",
+    color: "#efa41b",
+    textAlign: "left",
+    paddingTop: 5
+  },
+  label: {
+    color: "#0066ff",
+    fontSize: 18,
+    fontWeight: "400",
+    textAlign: "left",
+    paddingTop: 5,
+    marginLeft: 4
+  },
+  value: {
+    fontSize: 18,
+    fontWeight: "400",
+    color: "#0066ff",
+    textAlign: "left",
+    paddingTop: 5,
+    marginLeft: 3
+  },
+  siderIconMain: {
+    marginTop: 25,
+    paddingLeft: 20,
+    paddingRight: 5
+  },
+  visitInfoStyle: {
+    fontSize: 14,
+    marginTop: 5,
+    marginLeft: 3,
+    color: "#0066ff"
+  },
+  siderIcon: {
+    fontSize: 30,
+    color: "#86939e",
+    alignItems: "flex-end"
   }
 });

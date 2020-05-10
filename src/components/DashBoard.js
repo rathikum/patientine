@@ -46,7 +46,7 @@ export const Tabs = TabNavigator(
     Medications: {
       screen: Medications,
       navigationOptions: {
-        tabBarLabel: " Medications",
+        tabBarLabel: " Payment",
         tabBarIcon: () => (
           <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
             {Icons.medkit}
@@ -57,7 +57,7 @@ export const Tabs = TabNavigator(
     Billing: {
       screen: BillingScreen,
       navigationOptions: {
-        tabBarLabel: "Billing",
+        tabBarLabel: "Documents",
         tabBarIcon: () => (
           <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
             {Icons.dollar}

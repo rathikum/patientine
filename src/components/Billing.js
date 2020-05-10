@@ -38,7 +38,7 @@ export default class Billing extends Component {
     const params = navigation.state.params || {};
     return {
       headerTintColor: "#fff",
-      title: "Billing",
+      title: "Documents",
       headerStyle: {
         height: 50,
         backgroundColor: "#1E90FF"
@@ -336,8 +336,7 @@ export default class Billing extends Component {
       <View style={{ backgroundColor: "#FFF", height: "100%" }}>
         <ScrollView>
           <View>
-            {this.state.billInfo.length > 0 && this.billingDetailsInfo()}
-            {this.state.billInfo.length == 0 && (
+            
               <Card
                 containerStyle={{
                   marginLeft: 5,
@@ -349,13 +348,29 @@ export default class Billing extends Component {
                   borderRadius: 5
                 }}
               >
-                <View>
-                  <Text style={{ fontSize: 18, textAlign: "center" }}>
-                    No billing data
-                  </Text>
+                <View style={{height:200,width:"100%", flexDirection:'row'}}>
+                 <Image source={require('../images/sample.png')} style={{width:"20%",height:"40%"}}/>
+                 <Text style={{marginTop:'10%',marginLeft:'2%'}}>{"Document Uploaded on 02/04/2020"}</Text>
                 </View>
               </Card>
-            )}
+              
+              <Card
+                containerStyle={{
+                  marginLeft: 5,
+                  marginTop: 10,
+                  marginBottom: 10,
+                  marginRight: 5,
+                  height: 100,
+                  margin: 0,
+                  borderRadius: 5
+                }}
+              >
+                <View style={{height:200,width:"100%", flexDirection:'row'}}>
+                 <Image source={require('../images/test.png')} style={{width:"20%",height:"40%"}}/>
+                 <Text style={{marginTop:'10%',marginLeft:'2%'}}>{"Document Uploaded on 27/02/2020"}</Text>
+                </View>
+              </Card>
+            
 
 <TouchableOpacity style={{height: 40,
     width: "50%",

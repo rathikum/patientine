@@ -4,7 +4,25 @@ module.exports = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF"
   },
-  imageBackground: { width: "40%", height: "40%", paddingBottom: 30 },
+  overLay: {
+    height: "100%",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    backgroundColor: "white"
+  },
+  imageBackground: { 
+    margin: '8%',
+    marginTop: '30%',
+    width: "85%",
+    height: "35%" ,
+    resizeMode: 'stretch'
+  },
+  logoContainer: {
+    backgroundColor: "#0066ff",
+    height: 300
+  },
   textin: { flexDirection: "row" },
   textIcon: {
     marginTop: 20
@@ -25,14 +43,6 @@ module.exports = StyleSheet.create({
     alignItems: "center",
     borderRadius: 4,
     borderColor: "rgba(0, 0, 0, 0.1)"
-  },
-  overLay: {
-    height: "100%",
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    backgroundColor: "white"
   },
   newUser: {
     fontSize: 14,
@@ -62,12 +72,6 @@ module.exports = StyleSheet.create({
     marginTop: 40,
     justifyContent: "space-around",
     flexDirection: "row"
-  },
-  logoContainer: {
-    backgroundColor: "#0066ff",
-    alignItems: "center",
-    height: 300,
-    justifyContent: "center"
   },
   title: {
     fontSize: 40,
