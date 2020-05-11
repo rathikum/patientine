@@ -132,7 +132,7 @@ module.exports = StyleSheet.create({
     width: scaledWidth(250),
     marginTop: scaledHeight(30),
     borderRadius: 8,
-    backgroundColor: "#004A98",
+    backgroundColor: "#486D90",
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center'
@@ -140,7 +140,7 @@ module.exports = StyleSheet.create({
   submitTextStyle: {
     fontSize: 20,
     color: "#FFF",
-    paddingTop: 5,
+    // paddingTop: 5,
     width: "100%",
     // fontFamily: "raleway",
     fontWeight: "500",
