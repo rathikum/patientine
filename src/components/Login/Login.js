@@ -4,20 +4,21 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  ScrollView, KeyboardAvoidingView,
+  Platform,
   View
 } from 'react-native'
 import styles from './Style'
 import { baseURL } from '../../Utils/properties'
-import { Card } from 'react-native-elements'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { Card } from 'react-native-elements'
+// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import PatientId from '../PatientId'
 import DropdownAlert from 'react-native-dropdownalert'
 
 var patId = new PatientId()
 export default class Login extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       email: 'kailasam@yaalsys.com',
@@ -30,10 +31,10 @@ export default class Login extends Component {
   static navigationOptions = {
     header: null
   }
-  showAlert (type, title, message) {
+  showAlert(type, title, message) {
     this.dropdown.alertWithType(type, title, message)
   }
-  onLoginPress () {
+  onLoginPress() {
     const { navigate } = this.props.navigation
     const { email, password } = this.state
     var url = baseURL + '/api/PatientLogins/login'
@@ -83,24 +84,107 @@ export default class Login extends Component {
       })
       .catch(err => console.log(err))
   }
-  render () {
+
+  render() {
     const { navigate } = this.props.navigation
     return (
-      <View>
-        <KeyboardAwareScrollView>
-          <View style={styles.logoContainer}>
-            <DropdownAlert
-              ref={ref => (this.dropdown = ref)}
-              containerStyle={{
-                backgroundColor: 'red'
-              }}
-            />
-            <Image
-              source={require('../../images/mylabconnect-logo.png')}
-              style={styles.imageBackground}
-            />
-          </View>
-          <Card
+      <View style={styles.container}>
+        <View style={styles.containerimage}>
+          {<DropdownAlert
+            ref={ref => (this.dropdown = ref)}
+            containerStyle={{
+              backgroundColor: 'red'
+            }}
+          />}
+          <Image
+            source={require('../../images/mylabconnect-logo.png')}
+            style={styles.imageBackground}
+          />
+        </View>
+
+        <KeyboardAvoidingView style={styles.containerSignIn} behavior="padding" enabled={Platform.OS === 'ios'}>
+          <ScrollView style={styles.signInContainer} bounces={false} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always">
+
+            <View style={styles.signInContent}>
+
+              <Text style={styles.loginText}>Login</Text>
+
+              <View style={styles.headingLiner} />
+
+              <View style={styles.loginContainer}>
+                <View style={styles.textin}>
+                  <MaterialIcon
+                    style={styles.textIcon}
+                    size={22}
+                    name='email'
+                    color='#194C7D'
+                  />
+                  <TextInput
+                    style={styles.inputTextStyle}
+                    onChangeText={email => this.setState({ email })}
+                    placeholder='Email'
+                    placeholderTextColor='#858f90'
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    // underlineColorAndroid='#0066ff'
+                    keyboardType='email-address'
+                  />
+                </View>
+                <View style={styles.textin}>
+                  <MaterialIcon
+                    style={styles.textIcon}
+                    size={22}
+                    name='lock'
+                    color='#194C7D'
+                  />
+                  <TextInput
+                    style={styles.inputTextStyle}
+                    onChangeText={password => this.setState({ password })}
+                    placeholder='Password'
+                    placeholderTextColor='#858f90'
+                    autoCapitalize='none'
+                    autoCorrect={false}
+                    // underlineColorAndroid='#0066ff'
+                    secureTextEntry={true}
+                  />
+                </View>
+              </View>
+
+              <TouchableOpacity
+                style={styles.submitButtonContainer}
+                onPress={this.onLoginPress.bind(this)}
+                underlayColor='#fff'
+              >
+                <Text style={styles.submitTextStyle}>Login</Text>
+              </TouchableOpacity>
+
+              <Text
+                style={styles.forgetPassword}
+                onPress={() => navigate('ForgetPassword')}
+              >
+                Forgot password?
+                </Text>
+
+              <View style={styles.headingLinerBottom} />
+
+              <Text style={styles.newUser}>
+                New Patient Register
+                </Text>
+
+              <Text
+                style={styles.signUpText}
+                onPress={() => navigate('Registration')}
+              >
+                Sign Up
+              </Text>
+
+              <View style={styles.buttonContainer}>
+              </View>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+
+        {/* <Card
             containerStyle={{
               height: 250,
               width: 300,
@@ -110,80 +194,7 @@ export default class Login extends Component {
               elevation: 10
             }}
           >
-            <View style={{ color: '0066ff', alignSelf: 'center' }}>
-              <Text style={{ fontSize: 23, color: '#0066ff' }}>Login</Text>
-            </View>
-            <View style={styles.loginContainer}>
-              <View style={styles.textin}>
-                <MaterialIcon
-                  style={styles.textIcon}
-                  size={22}
-                  name='email'
-                  color='#0066ff'
-                />
-                <TextInput
-                  style={styles.inputTextStyle}
-                  onChangeText={email => this.setState({ email })}
-                  placeholder='Email'
-                  placeholderTextColor='#858f90'
-                  autoCapitalize='none'
-                  autoCorrect={false}
-                  underlineColorAndroid='#0066ff'
-                  keyboardType='email-address'
-                />
-              </View>
-              <View style={styles.textin}>
-                <MaterialIcon
-                  style={styles.textIcon}
-                  size={22}
-                  name='lock'
-                  color='#0066ff'
-                />
-                <TextInput
-                  style={styles.inputTextStyle}
-                  onChangeText={password => this.setState({ password })}
-                  placeholder='Password'
-                  placeholderTextColor='#858f90'
-                  autoCapitalize='none'
-                  autoCorrect={false}
-                  underlineColorAndroid='#0066ff'
-                  secureTextEntry={true}
-                />
-              </View>
-            </View>
-            <TouchableOpacity>
-              <TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.submitButtonContainer}
-                  onPress={this.onLoginPress.bind(this)}
-                  underlayColor='#fff'
-                >
-                  <Text style={styles.submitTextStyle}>Login</Text>
-                </TouchableOpacity>
-              </TouchableOpacity>
-            </TouchableOpacity>
-          </Card>
-          <View style={styles.buttonContainer}>
-            <View style={styles.row}>
-              <View style={styles.col}>
-                <Text
-                  style={styles.newUser}
-                  onPress={() => navigate('Registration')}
-                >
-                  New Patient Register
-                </Text>
-              </View>
-              <View style={styles.col}>
-                <Text
-                  style={styles.forgetPassword}
-                  onPress={() => navigate('ForgetPassword')}
-                >
-                  Forgot password?
-                </Text>
-              </View>
-            </View>
-          </View>
-        </KeyboardAwareScrollView>
+          </Card> */}
       </View>
     )
   }

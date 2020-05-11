@@ -1,5 +1,18 @@
 import { StyleSheet } from "react-native";
+import { scaledHeight, scaledWidth } from '../../Utils/Resolution';
+
 module.exports = StyleSheet.create({
+  container: {
+    alignSelf: 'stretch',
+    flex: 1,
+  },
+  containerimage: {
+    backgroundColor: "#FFFFFF",
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    flex: 0.35,
+    justifyContent: 'flex-end'
+  },
   imageContainer: {
     flex: 1,
     backgroundColor: "#FFF"
@@ -12,20 +25,27 @@ module.exports = StyleSheet.create({
     left: 0,
     backgroundColor: "white"
   },
-  imageBackground: { 
-    margin: '8%',
-    marginTop: '30%',
-    width: "85%",
-    height: "35%" ,
-    resizeMode: 'stretch'
+  imageBackground: {
+    alignSelf: 'center',
+    marginBottom: scaledHeight(20)
   },
   logoContainer: {
-    backgroundColor: "#0066ff",
-    height: 300
+    alignSelf: 'center',
+    marginBottom: scaledHeight(20)
+    // height: scaledHeight(300)
   },
-  textin: { flexDirection: "row" },
+  textin: {
+    flexDirection: "row",
+    marginTop: scaledHeight(10)
+  },
   textIcon: {
-    marginTop: 20
+    marginTop: scaledHeight(20)
+  },
+  containerSignIn: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    flex: 0.65,
+    backgroundColor: '#486D90'
   },
   modalContent: {
     backgroundColor: "white",
@@ -44,37 +64,58 @@ module.exports = StyleSheet.create({
     borderRadius: 4,
     borderColor: "rgba(0, 0, 0, 0.1)"
   },
+  signInContainer: {
+    alignSelf: 'stretch',
+    flex: 1
+  },
   newUser: {
-    fontSize: 14,
-    color: "#efa41b"
+    fontSize: scaledHeight(14),
+    color: "#efa41b",
+    marginTop: scaledHeight(10),
+    textAlign: 'center'
   },
   forgetPassword: {
-    fontSize: 14,
-    color: "#efa41b"
+    fontSize: scaledHeight(14),
+    color: "#004A98",
+    marginTop: scaledHeight(30),
+    textAlign: 'center'
+  },
+  signUpText: {
+    fontSize: scaledHeight(20),
+    color: "#004A98",
+    marginTop: scaledHeight(20),
+    marginBottom: scaledHeight(30),
+    textAlign: 'center'
   },
   col: {
     flexDirection: "column",
     alignSelf: "center"
   },
   loginContainer: {
-    marginTop: 20,
-    marginRight: 10,
-    paddingHorizontal: 40
+    marginTop: scaledHeight(10),
+    marginRight: "4%",
+    marginBottom: scaledHeight(20),
+    marginLeft: "4%",
+    alignSelf: 'stretch',
+    flex: 1,
+
   },
   inputTextStyle: {
-    height: 60,
-    fontSize: 18,
+    height: scaledHeight(52),
+    fontSize: scaledHeight(18),
     color: "#0066ff",
-    borderRadius: 20,
-    width: "100%"
+    width: "90%",
+    borderBottomWidth: 1,
+    borderBottomColor: '#49494A',
+    marginLeft: "4%",
   },
   row: {
-    marginTop: 40,
+    marginTop: scaledHeight(40),
     justifyContent: "space-around",
     flexDirection: "row"
   },
   title: {
-    fontSize: 40,
+    fontSize: scaledHeight(40),
     fontFamily: "blackadder itc",
     color: "#5e91f8",
     opacity: 1
@@ -87,12 +128,14 @@ module.exports = StyleSheet.create({
   },
   buttonContainer: { marginLeft: 55, marginRight: 34, marginTop: -5 },
   submitButtonContainer: {
-    height: 40,
-    width: "50%",
-    marginTop: 45,
-    borderRadius: 30,
-    marginLeft: 75,
-    backgroundColor: "#0066ff"
+    height: scaledHeight(50),
+    width: scaledWidth(250),
+    marginTop: scaledHeight(30),
+    borderRadius: 8,
+    backgroundColor: "#004A98",
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   submitTextStyle: {
     fontSize: 20,
@@ -102,5 +145,34 @@ module.exports = StyleSheet.create({
     // fontFamily: "raleway",
     fontWeight: "500",
     textAlign: "center"
-  }
+  },
+  signInContent: {
+    marginTop: scaledHeight(50),
+    marginBottom: scaledHeight(50),
+    marginLeft: '6%',
+    marginRight: '6%',
+    "borderRadius": 15,
+    backgroundColor: '#F7F7F7',
+  },
+  loginText: {
+    color: '#486D90',
+    alignSelf: 'center',
+    fontSize: scaledHeight(20),
+    marginTop: scaledHeight(30)
+
+  },
+  headingLiner: {
+    backgroundColor: "#8BC105",
+    height: scaledHeight(1.5),
+    marginTop: scaledHeight(20),
+    marginLeft: '6%',
+    marginRight: '6%'
+  },
+  headingLinerBottom: {
+    backgroundColor: "grey",
+    height: scaledHeight(1),
+    marginTop: scaledHeight(20),
+    marginLeft: '6%',
+    marginRight: '6%'
+  },
 });
