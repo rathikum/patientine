@@ -4,7 +4,7 @@ import { TabNavigator } from "react-navigation";
 import ProfileScreen from "./Profile";
 import VisittNoteScreen from "./VisitNote";
 import BillingScreen from "./Billing";
-import Medications from "./Medications";
+import Medications from "./Pay";
 import { Dimensions } from "react-native";
 import AppointmentScreen from "./Appointment";
 import { scaledHeight, scaledWidth } from '../Utils/Resolution';

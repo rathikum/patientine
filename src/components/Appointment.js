@@ -686,15 +686,27 @@ export default class Appointment extends Component {
                   value={this.state.purpose}
                 />
               </KeyboardAvoidingView>
-              <View style={styles.button}>
-                <TouchableOpacity
-                  style={styles.submit}
-                  onPress={this.bookAppointment.bind(this)}
-                  underlayColor="#fff"
-                >
-                  <Text style={styles.submitText}> Book </Text>
-                </TouchableOpacity>
-              </View>
+
+              <TouchableOpacity style={{flexDirection: "row",height: 40,
+    width: "50%",
+    marginTop: 20,
+    borderRadius: 30,
+    alignItems : 'center',
+    alignSelf : 'center',
+    justifyContent : 'center',
+    backgroundColor: "#486D90"}} onPress={() => navigate('Online')}
+    onPress={this.bookAppointment.bind(this)}
+    >
+            <Text style={{
+              fontSize: 20,
+              color: "#FFF",
+             // paddingTop: 5,
+              width: "100%",
+              // fontFamily: "raleway",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>Book</Text>
+          </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -738,7 +750,7 @@ const styles = StyleSheet.create({
     color: "#486D90",
     fontWeight: "400",
     marginLeft: 15,
-    marginTop: 6.5,
+    marginTop: 20,
     marginBottom: 6.5
   },
   wrap: {
@@ -843,6 +855,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 0,
     marginRight: 10,
-    padding: 0
+    padding: 0,
+    marginBottom : 20
   }
 });

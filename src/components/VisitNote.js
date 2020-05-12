@@ -200,9 +200,10 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontSize: 18,
     color: "#486D90",
-    fontWeight: "400",
+    fontWeight: "900",
     marginLeft: 15,
-    marginTop: 7.5
+    marginTop: 7.5,
+    marginBottom : 10
   },
   cardContentMainView: {
     flexDirection: "row",
