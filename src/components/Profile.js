@@ -22,6 +22,7 @@ import Modal from "react-native-modal";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import moment from "moment";
 import PatientId from "./PatientId";
+import StyledConstants from "../constants/styleConstants";
 var patId = new PatientId(),
   color = "#90CAF9";
 let noOfDoc = 0;
@@ -29,6 +30,7 @@ var count = 0;
 var notificationsDetailsList = [];
 import { Dropdown } from "react-native-material-dropdown";
 import FontAwesome, { Icons, signOutAlt } from "react-native-fontawesome";
+import { scaledHeight } from "../Utils/Resolution";
 export default class Profile extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
@@ -36,8 +38,8 @@ export default class Profile extends Component {
       headerTintColor: "#fff",
       title: "Dashboard",
       headerStyle: {
-        height: 50,
-        backgroundColor: "#1E90FF"
+        height: scaledHeight(50),
+        backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
         fontWeight: "500",
@@ -402,8 +404,8 @@ export default class Profile extends Component {
                 >
                   <FontAwesome
                     style={{
-                      fontSize: 40,
-                      color: "#71b2f4"
+                      fontSize: scaledHeight(40),
+                      color: StyledConstants.colors.primaryColor
                     }}
                   >
                     {Icons.angleLeft}
@@ -411,8 +413,8 @@ export default class Profile extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{ alignItems: "center" }}>
-              <View style={{ flexDirection: "row" }}>
+            <View style={{ alignItems: "center",flex:1,alignSelf:'stretch' }}>
+              <View style={{ flexDirection: "row"}}>
                 {this.avatarRendering()}
                 <View style={{ flexDirection: "column" }}>
                   <Text style={styles.doctorStyle}>
@@ -420,8 +422,9 @@ export default class Profile extends Component {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 14,
-                      alignSelf: "center"
+                      fontSize: scaledHeight(14),
+                      alignSelf: "center",
+                      color:StyledConstants.colors.FONT_COLOR
                     }}
                   >
                     {moment(
@@ -436,7 +439,8 @@ export default class Profile extends Component {
                   </Text>
                 </View>
               </View>
-              <View style={{ flexDirection: "row", paddingTop: 10 }}>
+
+              <View style={{ flexDirection: "row", marginTop:scaledHeight(20)}}>
                 <View style={{ flexDirection: "row" }}>
                   <Text style={styles.availabilityContentStyle}>
                     Waiting Time :{" "}
@@ -476,8 +480,8 @@ export default class Profile extends Component {
                 >
                   <FontAwesome
                     style={{
-                      fontSize: 40,
-                      color: "#71b2f4"
+                      fontSize: scaledHeight(40),
+                      color: StyledConstants.colors.primaryColor
                     }}
                   >
                     {Icons.angleRight}
@@ -501,10 +505,13 @@ export default class Profile extends Component {
         return (
           <Image
             style={{
-              width: 45,
-              height: 45,
+              width: scaledHeight(45),
+              height: scaledHeight(45),
               borderRadius: 100,
-              marginRight: 20
+              marginHorizontal:'4%',
+              alignItems:'center',
+              alignSelf:'center',
+              justifyContent:'center'
             }}
             source={{
               uri: this.state.docAvailData[0].profilePicture
@@ -515,14 +522,17 @@ export default class Profile extends Component {
         return (
           <View
             style={{
-              width: 45,
-              height: 45,
+              width: scaledHeight(45),
+              height: scaledHeight(45),
               borderRadius: 100,
-              backgroundColor: "#71b2f4",
-              marginRight: 20
+              backgroundColor: StyledConstants.colors.primaryColor,
+              marginHorizontal:'4%',
+              alignItems:'center',
+              alignSelf:'center',
+              justifyContent:'center'
             }}
           >
-            <Text style={{ color: "white", fontSize: 24, textAlign: "center" }}>
+            <Text style={{ color:StyledConstants.colors.WHITE_COLOR, fontSize: scaledHeight(24), textAlign: "center" }}>
               {this.state.docAvailData[0].doctorName.charAt(0)}
             </Text>
           </View>
@@ -556,76 +566,46 @@ export default class Profile extends Component {
         : "";
     return (
       <KeyboardAwareScrollView style={styles.container}>
-        <View>
-          <View>
-            <Text
-              style={{
-                alignSelf: "flex-start",
-                fontSize: 16,
-                color: "#0066ff",
-                fontWeight: "400",
-                marginLeft: 15,
-                marginTop: 7.5,
-                marginBottom: 7.5
-              }}
-            >
+        <View style={styles.contentContainer}>
+
+          <View style={styles.availabilityContainer}>
+            <Text style={styles.availabilityText}>
               Doctor Availability
             </Text>
           </View>
+          <View style={styles.headingLiner} />
 
           <Card
-            titleStyle={{
-              fontSize: 14,
-              color: "#9E9E9E",
-              margin: 0,
-              padding: 0
-            }}
-            containerStyle={{
-              marginLeft: 15,
-              marginRight: 15,
-              height: 120,
-              margin: 0,
-              borderRadius: 5
-            }}
+            containerStyle={styles.cardContainerStyle}
           >
             {this.renderDocAvailability()}
           </Card>
 
-          <View>
-            <Text
-              style={{
-                alignSelf: "flex-start",
-                fontSize: 16,
-                color: "#0066ff",
-                fontWeight: "400",
-                marginLeft: 15,
-                marginTop: 7.5,
-                marginBottom: 7.5
-              }}
-            >
+          <View style={styles.availabilityContainer}>
+            <Text style={styles.availabilityText}>
               UpComing Appointment
             </Text>
           </View>
+          <View style={styles.headingLiner} />
           {this.state.basicAppointmentDetails != null &&
             Object.keys(this.state.basicAppointmentDetails).length == 0 && (
               <Card
                 containerStyle={{
-                  marginTop: 0,
+                  marginTop: scaledHeight(15),
                   borderRadius: 5,
-                  borderLeftWidth: 11,
+                  borderLeftWidth: scaledHeight(10),
                   borderRightWidth: 1,
                   borderTopWidth: 1,
                   borderBottomWidth: 1,
-                  borderColor: "#efa41b",
-                  marginLeft: 15,
-                  marginBottom: 15,
+                  borderColor: StyledConstants.colors.ORANGE,
+                  marginHorizontal:'4%',
                   padding: 5,
                   justifyContent: "center",
-                  height: 70
+                  height: scaledHeight(70)
                 }}
               >
-                <View style={{ flexDirection: "row", marginLeft: 3 }}>
-                  <Text style={{ color: "#0066ff", fontSize: 18 }}>
+                <View style={{ flexDirection: "row", marginLeft:'3%' }}>
+                  <Text style={{ color:StyledConstants.colors.primaryColor, fontSize: scaledHeight(18) }}>
                     No Appointment Scheduled
                   </Text>
                 </View>
@@ -636,22 +616,21 @@ export default class Profile extends Component {
             Object.keys(this.state.basicAppointmentDetails).length > 0 && (
               <Card
                 containerStyle={{
-                  marginTop: 0,
+                  marginTop: scaledHeight(15),
                   borderRadius: 5,
-                  borderLeftWidth: 11,
+                  borderLeftWidth: scaledHeight(10),
                   borderRightWidth: 1,
                   borderTopWidth: 1,
                   borderBottomWidth: 1,
-                  borderColor: "#efa41b",
-                  marginLeft: 15,
-                  marginBottom: 15,
+                  borderColor: StyledConstants.colors.ORANGE,
+                  marginHorizontal:'4%',
                   padding: 5,
                   justifyContent: "center",
-                  height: 70
+                  height: scaledHeight(70)
                 }}
               >
-                <View style={{ flexDirection: "row", marginLeft: 3 }}>
-                  <Text style={{ color: "#0066ff", fontSize: 18 }}>
+                <View style={{ flexDirection: "row", marginLeft:'3%'}}>
+                  <Text style={{ color:StyledConstants.colors.primaryColor, fontSize:scaledHeight(18)}}>
                     Dr.
                     {this.state.basicAppointmentDetails.doctor.firstName ||
                       " " ||
@@ -659,10 +638,10 @@ export default class Profile extends Component {
                   </Text>
                   <Text
                     style={{
-                      fontSize: 16,
-                      paddingTop: 3,
+                      fontSize: scaledHeight(16),
+                      paddingTop: scaledHeight(3),
                       marginLeft: "auto",
-                      marginRight: 1
+                      marginRight: '2%'
                     }}
                   >
                     {this.state.basicAppointmentDetails !== null
@@ -674,7 +653,7 @@ export default class Profile extends Component {
                 </View>
                 <View style={{ flexDirection: "row" }}>
                   <View>
-                    <Text style={{ fontSize: 14, marginLeft: 3 }}>
+                    <Text style={{ fontSize: scaledHeight(14), marginLeft: '3%' }}>
                       {docDepartmentName}
                     </Text>
                   </View>
@@ -683,7 +662,7 @@ export default class Profile extends Component {
                       justifyContent: "flex-end",
                       alignSelf: "flex-end",
                       marginLeft: "auto",
-                      marginTop: 5
+                      marginTop: scaledHeight(5)
                     }}
                   >
                     <Badge
@@ -691,7 +670,7 @@ export default class Profile extends Component {
                         backgroundColor: appointmentStatusColor
                       }}
                     >
-                      <Text style={{ fontSize: 14, color: "#FFFFFF" }}>
+                      <Text style={{ fontSize: scaledHeight(14), color: StyledConstants.colors.WHITE_COLOR }}>
                         {appointmentStatus}
                       </Text>
                     </Badge>
@@ -726,19 +705,18 @@ export default class Profile extends Component {
           {this.state.sampleData != null && this.state.sampleData.length > 0 && (
             <View
               style={{
-                padding: 10
+                padding: scaledHeight(10)
               }}
             >
               <View
                 style={{
                   borderWidth: 0.5,
-                  marginLeft: 8,
-                  marginRight: 8
+                  marginHorizontal:'8%'
                 }}
               >
                 <PureChart
                   showEvenNumberXaxisLabel={true}
-                  height={140}
+                  height={scaledHeight(140)}
                   data={this.state.sampleData}
                   type="line"
                 />
@@ -784,19 +762,51 @@ export default class Profile extends Component {
     );
   }
 }
+
+
 const styles = StyleSheet.create({
   slot: {
     backgroundColor: "#fff",
-    marginLeft: 15,
-    height: 40,
+    // marginLeft: 15,
+    height: scaledHeight(40),
     borderRadius: 4,
-    marginRight: 15,
+    // marginRight: 15,
     borderWidth: 0.5,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop:scaledHeight(30),
+    marginBottom:scaledHeight(30),
+    marginHorizontal:'4%'
   },
   container: {
     flex: 1,
     backgroundColor: "#fbfbfb"
+  },
+  headingLiner: {
+    backgroundColor:  StyledConstants.colors.GREEN,
+    height: scaledHeight(1.5),
+    marginTop: scaledHeight(10),
+    marginBottom: scaledHeight(20),
+    marginHorizontal:'4%'
+  },
+  cardContainerStyle:{
+      marginHorizontal:'4%',
+      height: scaledHeight(120),
+      borderRadius: 5,
+      borderWidth:1,
+      borderColor:StyledConstants.colors.primaryColor
+  },
+  contentContainer:{
+    backgroundColor:StyledConstants.colors.BACKGROUND_GRAY,
+    paddingHorizontal:"2%",
+
+  },
+  availabilityContainer:{
+    marginTop:scaledHeight(30)
+  },
+  availabilityText:{
+      fontSize: scaledHeight(18),
+      color: StyledConstants.colors.primaryColor,
+      marginHorizontal:'4%'
   },
   lineStyle: {
     borderBottomWidth: 1,
@@ -818,8 +828,9 @@ const styles = StyleSheet.create({
     marginBottom: 13
   },
   doctorStyle: {
-    color: "#0066ff",
-    fontSize: 18,
+    color: StyledConstants.colors.primaryColor,
+    fontSize: scaledHeight(18),
+    paddingHorizontal:'2%',
     textAlign: "left"
   },
   appointmentDateStyle: {
@@ -834,9 +845,10 @@ const styles = StyleSheet.create({
     marginBottom: 3
   },
   availabilityContentStyle: {
-    fontSize: 14,
-    marginTop: 5,
-    marginLeft: 3
+    fontSize: scaledHeight(14),
+    color:StyledConstants.colors.ORANGE
+    // marginTop: 5,
+    // marginLeft: 3
   },
   pendingAmountValue: {
     fontSize: 16,

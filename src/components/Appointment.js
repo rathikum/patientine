@@ -23,6 +23,8 @@ import FontAwesome, { Icons, signOutAlt } from "react-native-fontawesome";
 import DropdownAlert from "react-native-dropdownalert";
 import DropdownMenu from "react-native-dropdown-menu";
 import { Card, SearchBar } from "react-native-elements";
+import { scaledHeight } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
 
 var slotLength = {},
   timeSlot = {},
@@ -51,8 +53,8 @@ export default class Appointment extends Component {
       headerTintColor: "#fff",
       title: "Appointment",
       headerStyle: {
-        height: 50,
-        backgroundColor: "#1E90FF"
+        height: scaledHeight(50),
+        backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
         fontSize: 20,

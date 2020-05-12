@@ -24,6 +24,8 @@ import moment from "moment";
 import PatientId from "./PatientId";
 import { baseURL } from "../Utils/properties";
 import DocumentPicker from 'react-native-document-picker';
+import { scaledHeight } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
 
 var DetailsOfBilling = [];
 var patId = new PatientId();
@@ -40,8 +42,8 @@ export default class Billing extends Component {
       headerTintColor: "#fff",
       title: "Documents",
       headerStyle: {
-        height: 50,
-        backgroundColor: "#1E90FF"
+        height: scaledHeight(50),
+        backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
         fontSize: 20,

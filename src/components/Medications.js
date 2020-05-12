@@ -13,6 +13,9 @@ import { Card } from "react-native-elements";
 import moment from "moment";
 import { baseURL } from "../Utils/properties";
 import PatientId from "./PatientId";
+import { scaledHeight } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
+
 var patId = new PatientId();
 export default class VisitNote extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -21,8 +24,8 @@ export default class VisitNote extends Component {
       headerTintColor: "#fff",
       title: "Payment",
       headerStyle: {
-        height: 50,
-        backgroundColor: "#1E90FF"
+        height: scaledHeight(50),
+        backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
         fontSize: 20,

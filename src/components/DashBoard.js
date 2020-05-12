@@ -7,6 +7,8 @@ import BillingScreen from "./Billing";
 import Medications from "./Medications";
 import { Dimensions } from "react-native";
 import AppointmentScreen from "./Appointment";
+import { scaledHeight, scaledWidth } from '../Utils/Resolution';
+import StyledConstants from "../constants/styleConstants";
 
 export const Tabs = TabNavigator(
   {
@@ -15,7 +17,7 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Dashboard",
         tabBarIcon: () => (
-          <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
+          <FontAwesome style={{ fontSize:scaledHeight(16), color: StyledConstants.colors.WHITE_COLOR }}>
             {Icons.user}
           </FontAwesome>
         )
@@ -26,7 +28,7 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBartabBarLabel: "Appointment",
         tabBarIcon: () => (
-          <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
+          <FontAwesome style={{ fontSize:scaledHeight(16), color: StyledConstants.colors.WHITE_COLOR }}>
             {Icons.calendar}
           </FontAwesome>
         )
@@ -37,7 +39,7 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: "VisitNote",
         tabBarIcon: () => (
-          <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
+          <FontAwesome style={{ fontSize:scaledHeight(16), color: StyledConstants.colors.WHITE_COLOR }}>
             {Icons.clipboard}
           </FontAwesome>
         )
@@ -48,8 +50,8 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: " Payment",
         tabBarIcon: () => (
-          <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
-            {Icons.medkit}
+          <FontAwesome style={{ fontSize:scaledHeight(16), color: StyledConstants.colors.WHITE_COLOR }}>
+            {Icons.dollar}
           </FontAwesome>
         )
       }
@@ -59,8 +61,8 @@ export const Tabs = TabNavigator(
       navigationOptions: {
         tabBarLabel: "Documents",
         tabBarIcon: () => (
-          <FontAwesome style={{ fontSize: 14, color: "#fff" }}>
-            {Icons.dollar}
+          <FontAwesome style={{ fontSize:scaledHeight(16), color: StyledConstants.colors.WHITE_COLOR }}>
+            {Icons.fileText}
           </FontAwesome>
         )
       }
@@ -71,18 +73,18 @@ export const Tabs = TabNavigator(
     animationEnabled: true,
     tabBarOptions: {
       labelStyle: {
-        fontSize: 8,
+        fontSize: scaledHeight(12),
         margin: 0
       },
       allowFontScaling: true,
       activeTintColor: "white",
       tabStyle: {
         width: Dimensions.get("window").width / 5,
-        height: 50
+        height: scaledHeight(50)
       },
       showIcon: true,
       style: {
-        backgroundColor: "#1B81E5"
+        backgroundColor: StyledConstants.colors.primaryColor
       }
     }
   }

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { scaledHeight, scaledWidth } from '../../Utils/Resolution';
+import StyledConstants from "../../constants/styleConstants";
 
 module.exports = StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ module.exports = StyleSheet.create({
     flex: 1,
   },
   containerimage: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: StyledConstants.colors.WHITE_COLOR,
     alignItems: 'center',
     alignSelf: 'stretch',
     flex: 0.35,
@@ -45,7 +46,7 @@ module.exports = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'stretch',
     flex: 0.65,
-    backgroundColor: '#486D90'
+    backgroundColor: StyledConstants.colors.primaryColor,
   },
   modalContent: {
     backgroundColor: "white",
@@ -70,19 +71,19 @@ module.exports = StyleSheet.create({
   },
   newUser: {
     fontSize: scaledHeight(14),
-    color: "#efa41b",
+    color: StyledConstants.colors.ORANGE,
     marginTop: scaledHeight(10),
     textAlign: 'center'
   },
   forgetPassword: {
     fontSize: scaledHeight(14),
-    color: "#004A98",
+    color:  StyledConstants.colors.primaryColor,
     marginTop: scaledHeight(30),
     textAlign: 'center'
   },
   signUpText: {
     fontSize: scaledHeight(20),
-    color: "#004A98",
+    color:  StyledConstants.colors.primaryColor,
     marginTop: scaledHeight(20),
     marginBottom: scaledHeight(30),
     textAlign: 'center'
@@ -103,10 +104,10 @@ module.exports = StyleSheet.create({
   inputTextStyle: {
     height: scaledHeight(52),
     fontSize: scaledHeight(18),
-    color: "#0066ff",
-    width: "90%",
+    color:  StyledConstants.colors.LBL_FIELD_COLOR,
+    width: "85%",
     borderBottomWidth: 1,
-    borderBottomColor: '#49494A',
+    borderBottomColor:  StyledConstants.colors.FONT_COLOR,
     marginLeft: "4%",
   },
   row: {
@@ -152,24 +153,24 @@ module.exports = StyleSheet.create({
     marginLeft: '6%',
     marginRight: '6%',
     "borderRadius": 15,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: StyledConstants.colors.BACKGROUND_GRAY
   },
   loginText: {
-    color: '#486D90',
+    color:  StyledConstants.colors.primaryColor,
     alignSelf: 'center',
     fontSize: scaledHeight(20),
     marginTop: scaledHeight(30)
 
   },
   headingLiner: {
-    backgroundColor: "#8BC105",
+    backgroundColor:  StyledConstants.colors.GREEN,
     height: scaledHeight(1.5),
     marginTop: scaledHeight(20),
     marginLeft: '6%',
     marginRight: '6%'
   },
   headingLinerBottom: {
-    backgroundColor: "grey",
+    backgroundColor: StyledConstants.colors.FONT_COLOR,
     height: scaledHeight(1),
     marginTop: scaledHeight(20),
     marginLeft: '6%',
