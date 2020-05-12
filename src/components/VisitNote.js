@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   visitDate: {
     alignSelf: "flex-start",
     fontSize: 18,
-    color: "#0066ff",
+    color: "#486D90",
     fontWeight: "400",
     marginLeft: 15,
     marginTop: 7.5
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   doctorName: {
-    color: "#0066ff",
+    color: "#486D90",
     fontSize: 17,
     marginTop: 5,
     marginLeft: 3
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     paddingTop: 5
   },
   label: {
-    color: "#efa41b",
+    color: "#486D90",
     fontSize: 18,
     fontWeight: "400",
     textAlign: "left",
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   value: {
     fontSize: 18,
     fontWeight: "400",
-    color: "#0066ff",
+    color: "#486D90",
     textAlign: "left",
     paddingTop: 5,
     marginLeft: 3
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
     marginLeft: 3,
-    color: "#0066ff"
+    color: "#486D90"
   },
   siderIcon: {
     fontSize: 30,

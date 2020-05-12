@@ -721,7 +721,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: "300",
-    color: "#0066ff",
+    color: "#486D90",
     marginRight: 30,
     fontWeight: "400",
     marginLeft: 15
@@ -735,7 +735,7 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: "flex-start",
     fontSize: 16,
-    color: "#0066ff",
+    color: "#486D90",
     fontWeight: "400",
     marginLeft: 15,
     marginTop: 6.5,
@@ -762,12 +762,12 @@ const styles = StyleSheet.create({
   submitText: { marginLeft: 12, fontSize: 18, color: "#fff" },
   submit: {
     marginTop: 7.5,
-    marginLeft: 30,
+    // marginLeft: 30,
     marginRight: 30,
-    paddingTop: 5,
+    // paddingTop: 5,
     paddingLeft: 40,
     height: 40,
-    backgroundColor: "#1B81E5",
+    backgroundColor: "#486D90",
     borderRadius: 5
   },
   purpose: {

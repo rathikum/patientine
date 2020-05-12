@@ -379,7 +379,7 @@ export default class Billing extends Component {
     marginTop: 45,
     borderRadius: 30,
     marginLeft: 75,
-    backgroundColor: "#0066ff"}} onPress={this.uploadDocument}>
+    backgroundColor: "#486D90"}} onPress={this.uploadDocument}>
             <Text style={{
               fontSize: 20,
               color: "#FFF",
