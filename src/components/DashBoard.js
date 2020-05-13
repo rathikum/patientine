@@ -4,6 +4,7 @@ import { TabNavigator } from "react-navigation";
 import ProfileScreen from "./Profile";
 import VisittNoteScreen from "./VisitNote";
 import BillingScreen from "./Billing";
+import onlinePay from "./OnlinePayment";
 import Medications from "./Pay";
 import { Dimensions } from "react-native";
 import AppointmentScreen from "./Appointment";
@@ -46,7 +47,7 @@ export const Tabs = TabNavigator(
       }
     },
     Medications: {
-      screen: Medications,
+      screen: onlinePay,
       navigationOptions: {
         tabBarLabel: " Payment",
         tabBarIcon: () => (

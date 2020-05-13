@@ -189,44 +189,164 @@ export default class VisitNote extends Component {
 
         <View>
           <View style={{height:50,width:"100%"}}>
-            <Text style={{marginTop:'5%',marginLeft:'2%'}}>{"Last 5 Payments"}</Text>
+           {/*} <Text style={{marginTop:'5%',marginLeft:'2%'}}>{"Last 5 Payments"}</Text> */}
           </View>
             <Card
               containerStyle={{
-                marginLeft: 5,
+                marginLeft: "4%",
                 marginTop: 10,
                 marginBottom: 10,
-                marginRight: 5,
-                height: 100,
+                marginRight: "4%",
+                height: 120,
                 margin: 0,
                 borderRadius: 5,
                 borderWidth:2,
                 borderColor : "#8BC105"
               }}
             >
-              <View style={{height:100,width:"100%", flexDirection:'row'}}>
+             {/*} <View style={{height:100,width:"100%", flexDirection:'row'}}>
                <Text style={{marginTop:'5%',marginLeft:'2%',fontWeight:'900'}}>{"$108.00"}</Text>
                <Text style={{marginTop:'5%',marginLeft:'2%'}}>{"Paid on 04/02/2020 for General Health Care"}</Text>
+            </View> */}
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Date : </Text>
+                  <Text style={styles.value}>{"14/03/2020"}</Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Type : </Text>
+                  <Text style={styles.value}>{"General Check Up"}</Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Payment Status : </Text>
+                  <Text style={styles.value}>{"Paid"}</Text>
+                </View>
               </View>
             </Card>
             
             <Card
               containerStyle={{
-                marginLeft: 5,
+                marginLeft: "4%",
                 marginTop: 10,
                 marginBottom: 10,
-                marginRight: 5,
-                height: 100,
+                marginRight: "4%",
+                height: 160,
                 margin: 0,
                 borderRadius: 5,
                 borderWidth:2,
                 borderColor : "#8BC105"
               }}
             >
-              <View style={{height:100,width:"100%", flexDirection:'row'}}>
-               <Text style={{marginTop:'5%',marginLeft:'2%',fontWeight:'900'}}>{"$78.00"}</Text>
+             {/*} <View style={{height:100,width:"100%", flexDirection:'row'}}>
+               <Text style={{marginTop:'5%',marginLeft:'2%',fontWeight:'900'}}>{"$108.00"}</Text>
                <Text style={{marginTop:'5%',marginLeft:'2%'}}>{"Paid on 04/02/2020 for General Health Care"}</Text>
+            </View> */}
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Date : </Text>
+                  <Text style={styles.value}>{"04/02/2020"}</Text>
+                </View>
               </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Type : </Text>
+                  <Text style={styles.value}>{"General Check Up"}</Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Payment Status : </Text>
+                  <Text style={styles.value}>{"Not Paid"}</Text>
+                </View>
+              </View>
+
+              <TouchableOpacity style={{flexDirection: "row",height: 40,
+    width: "25%",
+    marginTop: 10,
+    borderRadius: 30,
+    marginLeft: 110,
+    backgroundColor: "#486D90"}} 
+    onPress={() => this.setState({ showModal: true })}
+    >
+            <Text style={{
+              fontSize: 16,
+              color: "#FFF",
+              paddingTop: 10,
+              width: "100%",
+              // fontFamily: "raleway",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>Pay</Text>
+          </TouchableOpacity>
+            </Card>
+
+            <Card
+              containerStyle={{
+                marginLeft: "4%",
+                marginTop: 10,
+                marginBottom: 10,
+                marginRight: "4%",
+                height: 160,
+                margin: 0,
+                borderRadius: 5,
+                borderWidth:2,
+                borderColor : "#8BC105"
+              }}
+            >
+             {/*} <View style={{height:100,width:"100%", flexDirection:'row'}}>
+               <Text style={{marginTop:'5%',marginLeft:'2%',fontWeight:'900'}}>{"$108.00"}</Text>
+               <Text style={{marginTop:'5%',marginLeft:'2%'}}>{"Paid on 04/02/2020 for General Health Care"}</Text>
+            </View> */}
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Date : </Text>
+                  <Text style={styles.value}>{"24/02/2020"}</Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Visit Type : </Text>
+                  <Text style={styles.value}>{"General Check Up"}</Text>
+                </View>
+              </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Payment Status : </Text>
+                  <Text style={styles.value}>{"Not Paid"}</Text>
+                </View>
+              </View>
+
+              <TouchableOpacity style={{flexDirection: "row",height: 40,
+    width: "25%",
+    marginTop: 10,
+    borderRadius: 30,
+    marginLeft: 110,
+    backgroundColor: "#486D90"}} 
+    onPress={() => this.setState({ showModal: true })}
+    >
+            <Text style={{
+              fontSize: 16,
+              color: "#FFF",
+              paddingTop: 10,
+              width: "100%",
+              // fontFamily: "raleway",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>Pay</Text>
+          </TouchableOpacity>
             </Card>
         </View>
 
@@ -243,25 +363,6 @@ export default class VisitNote extends Component {
                     injectedJavaScript={`document.f1.submit()`}
                 />
             </Modal>
-
-            <TouchableOpacity style={{flexDirection: "row",height: 40,
-    width: "50%",
-    marginTop: 20,
-    borderRadius: 30,
-    marginLeft: 75,
-    backgroundColor: "#486D90"}} 
-    onPress={() => this.setState({ showModal: true })}
-    >
-            <Text style={{
-              fontSize: 20,
-              color: "#FFF",
-              paddingTop: 5,
-              width: "100%",
-              // fontFamily: "raleway",
-              fontWeight: "500",
-              textAlign: "center"
-            }}>Pay Now</Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -308,7 +409,7 @@ const styles = StyleSheet.create({
   label: {
     color: "#486D90",
     fontSize: 18,
-    fontWeight: "400",
+    fontWeight: "800",
     textAlign: "left",
     paddingTop: 5,
     marginLeft: 4

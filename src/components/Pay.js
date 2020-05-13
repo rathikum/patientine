@@ -155,6 +155,14 @@ export default class VisitNote extends Component {
                   <Text style={styles.value}>{"General Check Up"}</Text>
                 </View>
               </View>
+
+              <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Text style={styles.label}>Payment Status : </Text>
+                  <Text style={styles.value}>{"Paid"}</Text>
+                </View>
+              </View>
+
               <TouchableOpacity style={{flexDirection: "row",height: 40,
     width: "50%",
     marginTop: 20,
