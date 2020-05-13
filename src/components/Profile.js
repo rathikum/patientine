@@ -28,9 +28,10 @@ var patId = new PatientId(),
 let noOfDoc = 0;
 var count = 0;
 var notificationsDetailsList = [];
-import { Dropdown } from "react-native-material-dropdown";
+import { GDropDownComponent} from '../CommonComponents';
 import FontAwesome, { Icons, signOutAlt } from "react-native-fontawesome";
 import { scaledHeight } from "../Utils/Resolution";
+
 export default class Profile extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
@@ -131,7 +132,9 @@ export default class Profile extends Component {
       filterVisibility: false,
       docData: [],
       flag: 0,
-      offSet: 0
+      offSet: 0,
+      dropDownErrorFlag: false,
+      dropDownErrorMsg: '',
     };
     this.units = [];
     this.appointmentStatus = "";
@@ -180,6 +183,7 @@ export default class Profile extends Component {
     fetch(url)
       .then(response => response.json())
       .then(response => {
+        console.log("Data--->",JSON.stringify(response.vitalList));
         this.units = response.vitalList;
       })
       .catch(err => console.log(err));
@@ -543,6 +547,13 @@ export default class Profile extends Component {
   onPresslogout = () => {
     this.setState({ visibleModal: 1 });
   };
+
+  onDropDownSelected = () => (item) => {
+    // console.log("onSelected ", JSON.stringify(item));
+    this.setState({ vitalName:item.vitalName}, () => {
+      this.charts(this.state.vitalDefinitionId);
+    })
+}
   render() {
     const appointmentStatus =
       Object.keys(this.state.basicAppointmentDetails).length === 0
@@ -574,6 +585,8 @@ export default class Profile extends Component {
             </Text>
           </View>
           <View style={styles.headingLiner} />
+
+          
 
           <Card
             containerStyle={styles.cardContainerStyle}
@@ -679,7 +692,22 @@ export default class Profile extends Component {
               </Card>
             )}
           <View>
-            <View style={styles.slot}>
+
+          {this.units != null && (
+            <View style={{ marginHorizontal:'4%'}}>
+            <GDropDownComponent
+              title="Vital"
+              titleStyle={styles.dropDownTextName}
+              prompt='Select'
+              data={this.units}
+              onSelectedItem={this.onDropDownSelected()}
+              itemToDisplay="vitalName"
+              itemToIterate="vitalDefinitionId"
+            />
+            </View>
+          )}
+
+            {/* <View style={styles.slot}>
               <TouchableOpacity>
                 <Picker
                   selectedValue={this.state.vitalName}
@@ -700,7 +728,7 @@ export default class Profile extends Component {
                     ))}
                 </Picker>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
           {this.state.sampleData != null && this.state.sampleData.length > 0 && (
             <View
@@ -903,7 +931,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B81E5",
     borderRadius: 5
   },
-
+  dropDownTextName: {
+    color: StyledConstants.colors.FONT_COLOR,
+    fontSize: scaledHeight(14),
+    fontWeight: 'normal',
+    marginLeft: '0%',
+    marginRight: '0%',
+    marginTop: scaledHeight(30),
+    paddingLeft: '0%',
+    paddingRight: '0%',
+  },
   contentImage: {
     marginTop: 10,
     width: 100,

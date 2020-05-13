@@ -25,6 +25,7 @@ import DropdownMenu from "react-native-dropdown-menu";
 import { Card, SearchBar } from "react-native-elements";
 import { scaledHeight } from "../Utils/Resolution";
 import StyledConstants from "../constants/styleConstants";
+import { GDropDownComponent} from '../CommonComponents';
 
 var slotLength = {},
   timeSlot = {},
@@ -154,6 +155,8 @@ export default class Appointment extends Component {
       .then(response => {
         if (response.appointmentSubTypeResponse.responseData) {
           let responseList = response.appointmentSubTypeResponse.responseData;
+
+          console.log('Data-->',JSON.stringify(responseList));
           if (responseList.length > 0) {
             this.setState({ appTypeList: responseList });
           }
@@ -548,6 +551,14 @@ export default class Appointment extends Component {
       );
     }
   };
+
+  onDropDownSelected = () => (item) => {
+    console.log("Data-->1 ", JSON.stringify(item));
+    this.setState({
+      appType:item.appointmentSubTypeId
+    })
+}
+
   render() {
     const { doctorSearchValue } = this.state;
     const listofDoctor = this.finddoctor(doctorSearchValue);
@@ -555,7 +566,7 @@ export default class Appointment extends Component {
       fetchDoctorName.toLowerCase().trim() ===
       onchangeDoctorName.toLowerCase().trim();
     return (
-      <KeyboardAwareScrollView style={{ backgroundColor: "#FFFF" }}>
+      <KeyboardAwareScrollView style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY }}>
         <View style={styles.container}>
           <View style={{ display: this.state.dropFlag ? "flex" : "none" }}>
             <DropdownAlert
@@ -629,7 +640,7 @@ export default class Appointment extends Component {
                   containerStyle={{
                     height: 40,
                     paddingLeft: 10,
-                    marginTop: 10,
+                    // marginTop: 10,
                     paddingBottom: 20,
                     justifyContent: "center",
                     borderWidth: 1,
@@ -645,7 +656,20 @@ export default class Appointment extends Component {
                   onChangeText={text => this.setState({ min: text })}
                 />
               </View>
-              <Text style={styles.label}>Appointment Type </Text>
+
+              <View style={{ marginHorizontal:'4%'}}>
+                <GDropDownComponent
+                  title="Appointment Type"
+                  titleStyle={styles.dropDownTextName}
+                  prompt='Select'
+                  data={this.state.appTypeList}
+                  onSelectedItem={this.onDropDownSelected()}
+                  itemToDisplay="appointmentSubType"
+                  itemToIterate="appointmentSubTypeId"
+                />
+            </View>
+
+              {/* <Text style={styles.label}>Appointment Type </Text>
               <View style={styles.picker}>
                 <Picker
                   selectedValue={this.state.appType}
@@ -664,7 +688,7 @@ export default class Appointment extends Component {
                     />
                   ))}
                 </Picker>
-              </View>
+              </View> */}
               <View>
                 <Modal
                   isVisible={this.state.visibleModal === 1}
@@ -791,9 +815,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 5
   },
+  dropDownTextName: {
+    color: StyledConstants.colors.primaryColor,
+    fontSize: scaledHeight(16),
+    fontWeight: 'normal',
+    marginLeft: '0%',
+    marginRight: '0%',
+    marginTop: scaledHeight(30),
+    paddingLeft: '0%',
+    paddingRight: '0%',
+  },
   container: {
     flex: 1,
-    backgroundColor: "#FFF"
+    backgroundColor: StyledConstants.colors.BACKGROUND_GRAY
   },
   autocompleteContainer: {
     left: 0,

@@ -32,6 +32,7 @@ import {
       LBL_FIELD_COLOR: '#49494A', // label field font colo
 
       LIGHT_TRANSPARENT_GRAY: 'rgba(0,0,0,0.1)',
+      COMP_BORDER_COLOR: "#D2D2D2",
     },
 
     fontSize: {

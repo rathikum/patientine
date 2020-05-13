@@ -35,6 +35,9 @@ let curDate = moment().format("YYYY-MM-DD");
 
 import { Dropdown } from "react-native-material-dropdown";
 import FontAwesome, { Icons, signOutAlt } from "react-native-fontawesome";
+import { scaledHeight, scaledWidth } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
+
 export default class Notification extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
@@ -42,12 +45,12 @@ export default class Notification extends Component {
       headerTintColor: "#fff",
       title: "Notifications",
       headerStyle: {
-        height: 50,
-        backgroundColor: "#1E90FF"
+        height: scaledHeight(50),
+        backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
-        fontSize: 20,
-        marginLeft: 60,
+        fontSize: scaledHeight(20),
+        marginLeft: 10,
         alignSelf: "center"
       }
     };
@@ -106,11 +109,12 @@ export default class Notification extends Component {
   renderModalContent = () => {};
   render() {
     return (
-      <KeyboardAwareScrollView style={{ backgroundColor: "#FFF" }}>
+      <KeyboardAwareScrollView style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY }}>
         <View
           style={{
-            paddingTop: 5,
-            backgroundColor: "#FFF"
+            marginHorizontal:'4%',
+            marginVertical:scaledHeight(20),
+            backgroundColor: StyledConstants.colors.BACKGROUND_GRAY
           }}
         >
           {this.state.notifications.length > 0 && (
@@ -129,36 +133,38 @@ export default class Notification extends Component {
                           this.setState({ collapsed });
                         }}
                         style={{
-                          marginTop: 10,
-                          marginLeft: 4,
-                          marginRight: 4,
-                          width: "98%",
-                          paddingBottom: 0,
-                          paddingLeft: 5,
-                          borderColor: "#DCDCDC",
+                          marginTop: scaledHeight(30),
+                        //  marginLeft: 4,
+                        //  marginRight: 4,
+                        //  width: "98%",
+                         // paddingBottom: 0,
+                        //  paddingLeft: 5,
+                          borderColor: StyledConstants.colors.primaryColor,
                           borderRadius: 6,
-                          borderWidth: 1
+                          borderWidth: 1,
                         }}
                       >
                         <CollapseHeader
                           style={{
-                            paddingTop: 10
+                            paddingTop: scaledHeight(20),
+                            paddingBottom: scaledHeight(20),
+                            paddingLeft:scaledHeight(10)
                           }}
                         >
                           <View>
                             <View
                               style={{
                                 flexDirection: "row",
-                                marginLeft: 3,
+                                marginHorizontal:"4%",
                                 width: "50%"
                               }}
                             >
                               <View>
                                 <FontAwesome
                                   style={{
-                                    fontSize: 18,
-                                    color: "green",
-                                    paddingTop: 5
+                                    fontSize: scaledHeight(20),
+                                    color:StyledConstants.colors.GREEN,
+                                  //  paddingTop: 5
                                     //  backgroundColor: "red"
                                   }}
                                 >
@@ -168,22 +174,22 @@ export default class Notification extends Component {
                               <View
                                 style={{
                                   flexDirection: "row",
-                                  marginLeft: 15
+                                  marginLeft: "6%"
                                 }}
                               >
                                 <Text
                                   style={{
                                     alignSelf: "flex-start",
-                                    fontSize: 18,
-                                    color: "#0066ff"
+                                    fontSize: scaledHeight(18),
+                                    color: StyledConstants.colors.primaryColor,
                                   }}
                                 >
                                   Dr.{n.doctorName}
                                 </Text>
                                 <Text
                                   style={{
-                                    color: "#0066ff",
-                                    marginLeft: 85,
+                                    color: StyledConstants.colors.primaryColor,
+                                    marginLeft: "45%",
                                     alignSelf: "flex-end"
                                   }}
                                 >
@@ -203,13 +209,15 @@ export default class Notification extends Component {
                             >
                               <Text
                                 style={{
-                                  fontSize: 14,
+                                  fontSize: scaledHeight(14),
                                   padding: 1,
-                                  marginLeft: 35,
-                                  marginBottom: 10
+                                  marginLeft: "4%",
+                                  marginTop: scaledHeight(20),
+                                  color:StyledConstants.colors.FONT_COLOR
+
                                 }}
                               >
-                                {n.notificationText.substring(0, 35) + "...."}
+                                {n.notificationText.substring(0, 45) + "...."}
                               </Text>
                             </View>
                           </View>
@@ -218,11 +226,12 @@ export default class Notification extends Component {
                           <View>
                             <Text
                               style={{
-                                fontSize: 18,
+                                fontSize: scaledHeight(18),
                                 justifyContent: "center",
                                 textAlign: "center",
-                                color: "#0066ff",
-                                marginTop: 10
+                                color: StyledConstants.colors.primaryColor,
+                                marginTop: scaledHeight(10),
+                                marginHorizontal: "4%",
                               }}
                             >
                               {n.notificationText}
@@ -334,19 +343,23 @@ export default class Notification extends Component {
 }
 const styles = StyleSheet.create({
   secTextRegister: {
-    fontSize: 20,
-    color: "#FFF",
-    paddingTop: 5,
-    paddingBottom: 5,
-    textAlign: "center"
+    fontSize: scaledHeight(18),
+    color: StyledConstants.colors.WHITE_COLOR,
+    paddingTop: scaledHeight(5),
+    paddingBottom: scaledHeight(5),
+    textAlign: "center",
+    justifyContent:'center'
   },
   secButtonSkip: {
-    height: 40,
+    height: scaledHeight(40),
     width: "50%",
-    marginTop: 15,
-    marginBottom: 10,
-    marginLeft: 100,
-    backgroundColor: "#0066ff",
+    marginVertical: scaledHeight(15),
+    // marginLeft: "40%",
+    alignContent:'center',
+    alignSelf:'center',
+    alignItems:'center',
+    justifyContent:'center',
+    backgroundColor: StyledConstants.colors.primaryColor,
     borderRadius: 5
   }
 });
