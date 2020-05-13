@@ -134,7 +134,7 @@ export default class VisitNote extends Component {
         listOfDetails.push(
           <View key={data}>
             <Card
-              containerStyle={{ marginTop: 6, padding: 6, borderRadius: 6 }}
+              containerStyle={{ marginTop: 6, padding: 6, marginBottom : 10,borderRadius: 6 , borderWidth:2 ,borderColor:"#8BC105"}}
             >
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flexDirection: "row" }}>
