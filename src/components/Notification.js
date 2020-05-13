@@ -13,6 +13,7 @@ import {
   Button
 } from "react-native";
 import { CustomTabs } from "react-native-custom-tabs";
+import { WebView } from 'react-native-webview';
 import {
   Collapse,
   CollapseHeader,
@@ -65,7 +66,10 @@ export default class Notification extends Component {
       filterVisibility: false,
       docData: [],
       flag: 0,
-      offSet: 0
+      offSet: 0,
+      webviewState : false,
+      doctorName : '',
+      doctorId : ''
     };
   }
 
@@ -107,9 +111,30 @@ export default class Notification extends Component {
     this.setState({ visibleModal: null });
   };
   renderModalContent = () => {};
+
+  handleResponse = data => {
+    if (data.title === "success") {
+        this.setState({ showModal: false, status: "Complete" });
+    } else if (data.title === "cancel") {
+        this.setState({ showModal: false, status: "Cancelled" });
+    } else {
+        return;
+    }
+};
+
   render() {
+    const url =  this.getVideoURL(this.state.doctorName, this.state.doctorId);
     return (
       <KeyboardAwareScrollView style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY }}>
+
+{this.state.webviewState ? 
+  <WebView
+  style= {{marginTop: 50,width:'100%',height:700}}
+  source={{uri : url}}
+  javaScriptEnabled
+                   
+                />
+  :      
         <View
           style={{
             marginHorizontal:'4%',
@@ -238,10 +263,14 @@ export default class Notification extends Component {
                             </Text>
                             <TouchableOpacity
                               style={styles.secButtonSkip}
-                              onPress={() =>
-                                Linking.openURL(
-                                  this.getVideoURL(n.doctorName, n.doctorId)
-                                )
+                              onPress={() => this.setState({
+                                doctorName : n.doctorName,
+                                doctorId : n.doctorId,
+                                webviewState : true
+                              })
+                               // Linking.openURL(
+                               //   this.getVideoURL(n.doctorName, n.doctorId)
+                               // )
                               }
                               underlayColor="#fff"
                             >
@@ -302,9 +331,11 @@ export default class Notification extends Component {
                             <TouchableOpacity
                               style={styles.secButtonSkip}
                               onPress={() =>
-                                Linking.openURL(
-                                  this.getVideoURL(n.doctorName, n.doctorId)
-                                )
+                               this.setState({
+                                doctorName : n.doctorName,
+                                doctorId : n.doctorId,
+                                webviewState : true
+                              })
                               }
                               underlayColor="#fff"
                             >
@@ -337,6 +368,7 @@ export default class Notification extends Component {
             </View>
           )}
         </View>
+  }
       </KeyboardAwareScrollView>
     );
   }
