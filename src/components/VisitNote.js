@@ -134,7 +134,7 @@ export default class VisitNote extends Component {
         listOfDetails.push(
           <View key={data}>
             <Card
-              containerStyle={{ marginTop: 6, padding: 6, borderRadius: 6 }}
+              containerStyle={{ marginTop: 6, padding: 6, marginBottom : 10,borderRadius: 6 , borderWidth:2 ,borderColor:"#8BC105"}}
             >
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flexDirection: "row" }}>
@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
   visitDate: {
     alignSelf: "flex-start",
     fontSize: 18,
-    color: "#486D90",
-    fontWeight: "900",
+    color: "#058BC1",
+    fontWeight: "700",
     marginLeft: 15,
     marginTop: 7.5,
     marginBottom : 10

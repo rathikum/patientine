@@ -345,9 +345,10 @@ export default class Billing extends Component {
                   marginTop: 10,
                   marginBottom: 10,
                   marginRight: 5,
-                  height: 100,
+                  height: 120,
                   margin: 0,
-                  borderRadius: 5
+                  borderRadius: 5,
+                  borderWidth:2 ,borderColor:"#8BC105" 
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
@@ -362,9 +363,10 @@ export default class Billing extends Component {
                   marginTop: 10,
                   marginBottom: 10,
                   marginRight: 5,
-                  height: 100,
+                  height: 120,
                   margin: 0,
-                  borderRadius: 5
+                  borderRadius: 5,
+                  borderWidth:2 ,borderColor:"#8BC105" 
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
