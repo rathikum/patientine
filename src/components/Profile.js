@@ -782,18 +782,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fbfbfb"
   },
   headingLiner: {
-    backgroundColor:  StyledConstants.colors.GREEN,
+    backgroundColor:  StyledConstants.colors.BLACK,
     height: scaledHeight(1.5),
     marginTop: scaledHeight(10),
     marginBottom: scaledHeight(20),
     marginHorizontal:'4%'
   },
   cardContainerStyle:{
-      marginHorizontal:'4%',
+      marginHorizontal:'3%',
       height: scaledHeight(120),
       borderRadius: 5,
-      borderWidth:1,
-      borderColor:StyledConstants.colors.primaryColor
+      borderWidth:2 ,borderColor:"#8BC105" 
   },
   contentContainer:{
     backgroundColor:StyledConstants.colors.BACKGROUND_GRAY,
