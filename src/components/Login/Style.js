@@ -130,7 +130,7 @@ module.exports = StyleSheet.create({
   buttonContainer: { marginLeft: 55, marginRight: 34, marginTop: -5 },
   submitButtonContainer: {
     height: scaledHeight(50),
-    width: scaledWidth(250),
+    width: "50%",
     marginTop: scaledHeight(30),
     borderRadius: 8,
     backgroundColor: "#486D90",

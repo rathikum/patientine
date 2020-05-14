@@ -18,17 +18,20 @@ import moment from "moment";
 import HTMLView from "react-native-htmlview";
 const pDetails = {};
 import { baseURL } from "../Utils/properties";
+import { scaledHeight } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
+
 export default class VisitNoteDetails extends Component {
   static navigationOptions = {
     headerTintColor: "#fff",
     title: "Diagnosis",
     headerStyle: {
-      height: 50,
-      backgroundColor: "#1E90FF"
+      height: scaledHeight(50),
+      backgroundColor:StyledConstants.colors.primaryColor
     },
     headerTitleStyle: {
-      fontSize: 20,
-      marginLeft: 80,
+      fontSize: scaledHeight(20),
+      marginLeft:  scaledHeight(50),
       alignSelf: "center"
     }
   };
@@ -75,7 +78,7 @@ export default class VisitNoteDetails extends Component {
     return (
       <View
         style={{
-          backgroundColor: "#FFF",
+          backgroundColor: StyledConstants.colors.BACKGROUND_GRAY,
           flex: 1
         }}
       >
@@ -84,12 +87,11 @@ export default class VisitNoteDetails extends Component {
             <Text
               style={{
                 alignSelf: "flex-start",
-                fontSize: 18,
-                color: "#9E9E9E",
-                fontWeight: "500",
-                marginLeft: 15,
-                marginTop: 7.5,
-                marginBottom: 7.5
+                fontSize: scaledHeight(18),
+                color: StyledConstants.colors.primaryColor,
+                fontWeight: "800",
+                marginLeft:scaledHeight(15),
+                marginTop: scaledHeight(20),
               }}
             >
               {Object.keys(this.state.diagnosisData).length > 0 &&
@@ -102,8 +104,11 @@ export default class VisitNoteDetails extends Component {
             <Card
               title="Diagnosis Attributes"
               titleStyle={{
-                fontSize: 18
+                fontSize: scaledHeight(18),
+                color:StyledConstants.colors.primaryColor
               }}
+              containerStyle={{ borderRadius: 6 , borderWidth:2 ,borderColor:StyledConstants.colors.GREEN}}
+              
             >
               <View>
                 {Object.keys(this.state.diagnosisData).length > 0 &&
@@ -116,10 +121,10 @@ export default class VisitNoteDetails extends Component {
                           <Badge
                             containerStyle={{
                               backgroundColor: "#DCDCDC",
-                              marginTop: 5
+                              marginTop: scaledHeight(5)
                             }}
                           >
-                            <Text style={{ fontSize: 18, margin: 3 }}>
+                            <Text style={{ fontSize: scaledHeight(18), margin: scaledHeight(4),color:StyledConstants.colors.ORANGE }}>
                               {data}
                             </Text>
                           </Badge>
@@ -128,33 +133,35 @@ export default class VisitNoteDetails extends Component {
                     }
                   )
                 ) : (
-                  <Text>No diagnosisData</Text>
+                  <Text style={{ fontSize: scaledHeight(18),color:StyledConstants.colors.FONT_COLOR }}>No diagnosisData</Text>
                 )}
               </View>
             </Card>
             <Card
               title="Diagnosis Notes"
               titleStyle={{
-                fontSize: 18
+                fontSize: scaledHeight(18),
+                color:StyledConstants.colors.primaryColor
               }}
+              containerStyle={{ borderRadius: 6 , borderWidth:2 ,borderColor:StyledConstants.colors.GREEN}}
             >
               <View>
                 {Object.keys(this.state.diagnosisData).length > 0 &&
                 this.state.diagnosisData.diagnosisNotes !== "" &&
                 this.state.diagnosisData.diagnosisNotes !== undefined ? (
-                  <View style={{ marginTop: 20 }}>
+                  <View style={{ marginTop: scaledHeight(20) }}>
                     <Badge
                       containerStyle={{
                         backgroundColor: "#DCDCDC"
                       }}
                     >
-                      <Text style={{ fontSize: 18, margin: 3 }}>
+                      <Text style={{ fontSize: scaledHeight(18), margin: scaledHeight(4),color:StyledConstants.colors.FONT_COLOR }}>
                         {this.state.diagnosisData.diagnosisNotes}
                       </Text>
                     </Badge>
                   </View>
                 ) : (
-                  <Text>No diagnosisData</Text>
+                  <Text style={{ fontSize: scaledHeight(18),color:StyledConstants.colors.FONT_COLOR }}>No diagnosisData</Text>
                 )}
               </View>
             </Card>
@@ -188,7 +195,7 @@ const styles = StyleSheet.create({
     color: "#125EAA"
   },
   p: {
-    fontSize: 18,
+    fontSize: scaledHeight(18),
     color: "#000",
     fontWeight: "400"
   },
@@ -196,26 +203,26 @@ const styles = StyleSheet.create({
     flex: 1
   },
   submit: {
-    height: 50,
-    paddingTop: 5,
-    paddingBottom: 20,
+    height:scaledHeight(50),
+    paddingTop: scaledHeight(5),
+    paddingBottom: scaledHeight(20),
     backgroundColor: "#71B2F4",
     borderRadius: 20,
     borderWidth: 1
   },
   submitText: {
-    fontSize: 18,
-    color: "#fff",
+    fontSize: scaledHeight(18),
+    color:StyledConstants.colors.WHITE_COLOR,
     // fontFamily: "raleway",
     fontWeight: "500",
     textAlign: "center"
   },
   title: {
-    fontSize: 18,
+    fontSize: scaledHeight(18),
     backgroundColor: "transparent"
   },
   text: {
-    fontSize: 18,
+    fontSize: scaledHeight(18),
     fontWeight: "500",
     alignSelf: "center"
   }

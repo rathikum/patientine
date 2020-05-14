@@ -28,18 +28,18 @@ export default class VisitNote extends Component {
         backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
-        fontSize: 20,
-        marginLeft: 70,
+        fontSize: scaledHeight(20),
+        marginLeft:  scaledHeight(50),
         alignSelf: "center"
       },
       headerLeft: (
         <TouchableOpacity onPress={() => navigation.navigate("Appointment")}>
           <FontAwesome
             style={{
-              fontSize: 20,
-              color: "white",
-              marginRight: 14,
-              marginLeft: 15
+              fontSize:  scaledHeight(20),
+              color: StyledConstants.colors.WHITE_COLOR,
+              marginRight: scaledHeight(14),
+              marginLeft: scaledHeight(14),
             }}
           >
             {Icons.arrowLeft}
@@ -134,16 +134,16 @@ export default class VisitNote extends Component {
         listOfDetails.push(
           <View key={data}>
             <Card
-              containerStyle={{ marginTop: 6, padding: 6, marginBottom : 10,borderRadius: 6 , borderWidth:2 ,borderColor:"#8BC105"}}
+              containerStyle={{ marginTop: scaledHeight(10), padding: scaledHeight(10), marginBottom : scaledHeight(10), borderRadius: 6 , borderWidth:2 ,borderColor:StyledConstants.colors.GREEN}}
             >
-              <View style={{ flexDirection: "row" }}>
-                <View style={{ flexDirection: "row" }}>
+              <View style={{ flex:1,flexDirection: "row" }}>
+                <View style={{ flexDirection: "row",flex:0.80 }}>
                   <Text style={styles.doctorName}>
                     {" "}
                     Dr.{data.staff.firstName || data.staff.lastName}
                   </Text>
                 </View>
-                <View style={{ flexDirection: "row", paddingLeft: 130 }}>
+                <View style={{ flexDirection: "row",flex:0.20 }}>
                   <Text style={styles.visitInfoStyle}>
                     {moment(data.checkIn).format("MMM DD")}
                   </Text>
@@ -198,12 +198,12 @@ const styles = StyleSheet.create({
   scrollViewStyle: { backgroundColor: "#FFF" },
   visitDate: {
     alignSelf: "flex-start",
-    fontSize: 18,
-    color: "#058BC1",
+    fontSize:scaledHeight(18),
+    color: StyledConstants.colors.primaryColor,
     fontWeight: "700",
-    marginLeft: 15,
-    marginTop: 7.5,
-    marginBottom : 10
+    marginLeft: '4%',
+   marginTop:scaledHeight(20),
+   marginBottom:scaledHeight(10)
   },
   cardContentMainView: {
     flexDirection: "row",
@@ -213,39 +213,39 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignSelf: "flex-end",
     marginLeft: "auto",
-    marginRight: 4
+    marginRight: '4%'
   },
   contentMain: {
-    marginTop: 5
+    marginTop: scaledHeight(5)
   },
   doctorName: {
-    color: "#486D90",
-    fontSize: 17,
-    marginTop: 5,
-    marginLeft: 3
+    color: StyledConstants.colors.primaryColor,
+    fontSize: scaledHeight(18),
+    // marginTop: 5,
+    // marginLeft: 3
   },
   checkInDate: {
-    fontSize: 18,
+    fontSize: scaledHeight(1),
     fontWeight: "400",
     color: "#efa41b",
     textAlign: "left",
-    paddingTop: 5
+    paddingTop: scaledHeight(5)
   },
   label: {
-    color: "#486D90",
-    fontSize: 18,
+    color: StyledConstants.colors.primaryColor,
+    fontSize: scaledHeight(18),
     fontWeight: "400",
     textAlign: "left",
-    paddingTop: 5,
-    marginLeft: 4
+    paddingTop: scaledHeight(10),
+    // marginLeft: 4
   },
   value: {
-    fontSize: 18,
+    color: StyledConstants.colors.primaryColor,
+    fontSize: scaledHeight(18),
     fontWeight: "400",
-    color: "#486D90",
     textAlign: "left",
-    paddingTop: 5,
-    marginLeft: 3
+    paddingTop: scaledHeight(10),
+    // marginLeft: 3
   },
   siderIconMain: {
     marginTop: 25,
@@ -253,10 +253,11 @@ const styles = StyleSheet.create({
     paddingRight: 5
   },
   visitInfoStyle: {
-    fontSize: 14,
-    marginTop: 5,
-    marginLeft: 3,
-    color: "#486D90"
+    fontSize:scaledHeight(14),
+    // marginTop: 5,
+    // marginLeft: 3,
+    // paddingTop: scaledHeight(10),
+    color: StyledConstants.colors.primaryColor
   },
   siderIcon: {
     fontSize: 30,
