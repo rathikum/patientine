@@ -24,6 +24,7 @@ import Notification from "./src/components/Notification";
 import BillingScreen from "./src/components/Billing";
 import OnlinePayment from "./src/components/OnlinePayment";
 import UpComingScreen from "./src/components/UpcomingEvents";
+import HomePage from "./src/components/HomePage";
 
 const App = StackNavigator({
   Login: { screen: LoginScreen },
@@ -49,7 +50,8 @@ const App = StackNavigator({
   Notification: { screen: Notification },
   Billing: { screen: BillingScreen },
   Online : { screen : OnlinePayment },
-  UpComing : { screen : UpComingScreen}
+  UpComing : { screen : UpComingScreen},
+  Home : { screen : HomePage}
 });
 
 export default App;
