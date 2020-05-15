@@ -617,11 +617,11 @@ export default class Profile extends Component {
                   height: scaledHeight(70)
                 }}
               >
-                <View style={{ flexDirection: "row", marginLeft:'3%' }}>
+                <TouchableOpacity style={{ flexDirection: "row", marginLeft:'3%' }} onPress={() => this.props.navigation.navigate('UpComing')}>
                   <Text style={{ color:StyledConstants.colors.primaryColor, fontSize: scaledHeight(18) }}>
-                    No Appointment Scheduled
+                    Click to View Scheduled Appointements
                   </Text>
-                </View>
+                </TouchableOpacity>
               </Card>
             )}
 
