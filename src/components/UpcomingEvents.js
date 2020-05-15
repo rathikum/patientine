@@ -309,7 +309,7 @@ export default class UpcomingEvents extends Component {
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => navigation.navigate("Medications")}>
+                <TouchableOpacity >
           <FontAwesome
             style={{
               fontSize: 60,
@@ -396,7 +396,7 @@ export default class UpcomingEvents extends Component {
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                <TouchableOpacity onPress={() => navigation.navigate("Medications")}>
+                <TouchableOpacity >
           <FontAwesome
             style={{
               fontSize: 60,
