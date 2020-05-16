@@ -66,21 +66,24 @@ export default class HomePage extends Component {
 
            
               <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback  onPress={() => navigate('Profile')}>
+
+              <TouchableWithoutFeedback onPress={() => navigate('Profile')}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
-                            size={50}
-                            name="developer-board"
+                            size={60}
+                            name="dashboard"
                             color={StyledConstants.colors.primaryColor}   
                         />
-                        <Text style={styles.menuItemText}>Onboarding</Text>
+                        <Text style={styles.menuItemText}>Dashboard</Text>
                     </View>
                     </TouchableWithoutFeedback>
+
+               
 
                 <TouchableWithoutFeedback  onPress={() => navigate('Appointment')}>
                     <View style={styles.menuItems}>
                         <FontAwesome
-                            size={50}
+                            size={60}
                             name="calendar"
                             color={StyledConstants.colors.primaryColor}    
                         />
@@ -90,69 +93,70 @@ export default class HomePage extends Component {
               </View>
 
               <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback  onPress={() => navigate('Profile')}>
+                <TouchableWithoutFeedback  onPress={() => navigate('VisitNote')}>
                     <View style={styles.menuItems}>
                         <FontAwesome
-                            size={50}
+                            size={60}
                             name="file-text-o"
                             color={StyledConstants.colors.primaryColor}   
                         />
-                        <Text style={styles.menuItemText}>Patient Records</Text>
+                        <Text style={styles.menuItemText}>Visit Notes</Text>
                     </View>
                     </TouchableWithoutFeedback>
-
-                <TouchableWithoutFeedback  onPress={() => navigate('Appointment')}>
-                    <View style={styles.menuItems}>
-                        <MaterialIcon
-                            size={50}
-                            name="call"
-                            color={StyledConstants.colors.primaryColor}    
-                        />
-                    <Text style={styles.menuItemText}>Call Back</Text>
-                    </View>
+                <TouchableWithoutFeedback onPress={() => navigate('Billing')}>
+                <View style={styles.menuItems}>
+                    <MaterialCommunityIcons
+                        size={60}
+                        name="folder-upload"
+                        color={StyledConstants.colors.primaryColor}   
+                    />
+                    <Text style={styles.menuItemText}>Image and Doc</Text>
+                </View>
                 </TouchableWithoutFeedback>
+                
               </View>
 
               <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={()=>{navigate('UpComing')}}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
-                            size={50}
-                            name="message"
+                            size={60}
+                            name="event"
                             color={StyledConstants.colors.primaryColor}   
                         />
-                        <Text style={styles.menuItemText}>Messaging</Text>
+                        <Text style={styles.menuItemText}>Upcoming Events</Text>
                     </View>
                     </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigate('VisitNoteDetails',{visitId : 3})}>
                     <View style={styles.menuItems}>
                         <MaterialCommunityIcons
-                            size={50}
+                            size={60}
                             name="google-classroom"
                             color={StyledConstants.colors.primaryColor}    
                         />
-                    <Text style={styles.menuItemText}>Waiting Room</Text>
+                    <Text style={styles.menuItemText}>Diagnosis</Text>
                     </View>
                 </TouchableWithoutFeedback>
               </View>
 
               <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback>
-                    <View style={styles.menuItems}>
-                        <MaterialCommunityIcons
-                            size={50}
-                            name="folder-upload"
-                            color={StyledConstants.colors.primaryColor}   
-                        />
-                        <Text style={styles.menuItemText}>Image and Doc</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback>
+              <TouchableWithoutFeedback  onPress={() => navigate('Notification')}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
-                            size={50}
+                            size={60}
+                            name="notifications"
+                            color={StyledConstants.colors.primaryColor}    
+                        />
+                    <Text style={styles.menuItemText}>Notification</Text>
+                    </View>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => navigate('Online')}>
+
+                    <View style={styles.menuItems}>
+                        <MaterialIcon
+                            size={60}
                             name="payment"
                             color={StyledConstants.colors.primaryColor}    
                         />
@@ -162,14 +166,15 @@ export default class HomePage extends Component {
               </View>
 
               <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback>
+                
+              {/*<TouchableWithoutFeedback  onPress={() => navigate('Profile')}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
                             size={50}
-                            name="dashboard"
+                            name="developer-board"
                             color={StyledConstants.colors.primaryColor}   
                         />
-                        <Text style={styles.menuItemText}>Dashboard</Text>
+                        <Text style={styles.menuItemText}>Onboarding</Text>
                     </View>
                     </TouchableWithoutFeedback>
 
@@ -182,7 +187,7 @@ export default class HomePage extends Component {
                         />
                     <Text style={styles.menuItemText}>E-Consultation</Text>
                     </View>
-                </TouchableWithoutFeedback>
+    </TouchableWithoutFeedback>*/}
               </View>
 
 
@@ -228,7 +233,7 @@ const styles = StyleSheet.create({
   menuContainer:{
       flex:1,
       flexDirection:'row' ,
-      marginTop:scaledHeight(40)  
+      marginTop:scaledHeight(60)  
  },
 menuItems:{
     flex:0.5,

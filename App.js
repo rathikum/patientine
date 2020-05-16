@@ -2,6 +2,7 @@ import { StackNavigator } from "react-navigation";
 import FireBaseScreen from "./src/components/FireBase";
 import LoginScreen from "./src/components/Login/Login";
 import DashBoardScreen from "./src/components/DashBoard";
+import ProfileScreen from "./src/components/Profile";
 import PrimaryInsuranceScreen from "./src/components/PrimaryInsurance";
 import SecondaryInsuranceScreen from "./src/components/SecondaryInsurance";
 import RegistrationScreen from "./src/components/Registration";
@@ -51,7 +52,8 @@ const App = StackNavigator({
   Billing: { screen: BillingScreen },
   Online : { screen : OnlinePayment },
   UpComing : { screen : UpComingScreen},
-  Home : { screen : HomePage}
+  Home : { screen : HomePage},
+  Profile : { screen : ProfileScreen}
 });
 
 export default App;

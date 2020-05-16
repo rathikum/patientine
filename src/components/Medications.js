@@ -29,11 +29,11 @@ export default class VisitNote extends Component {
       },
       headerTitleStyle: {
         fontSize: 20,
-        marginLeft: 70,
+        // marginLeft: 70,
         alignSelf: "center"
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Appointment")}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             style={{
               fontSize: 20,

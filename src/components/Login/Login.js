@@ -70,7 +70,7 @@ export default class Login extends Component {
                   },
                   () => {
                     patId.getPatientId(this.state.patientId)
-                    navigate('DashBoard')
+                    navigate('Home')
                   }
                 )
               }

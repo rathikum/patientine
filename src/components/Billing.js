@@ -47,11 +47,11 @@ export default class Billing extends Component {
       },
       headerTitleStyle: {
         fontSize: 20,
-        marginLeft: 90,
+       // marginLeft: 90,
         alignSelf: "center"
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Medications")}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             style={{
               fontSize: 20,

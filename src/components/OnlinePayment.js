@@ -31,7 +31,7 @@ export default class VisitNote extends Component {
       },
       headerTitleStyle: {
         fontSize: 20,
-        marginLeft: 70,
+        // marginLeft: 70,
         alignSelf: 'center'
       },
       headerLeft: (

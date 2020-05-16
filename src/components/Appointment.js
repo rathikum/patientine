@@ -59,11 +59,11 @@ export default class Appointment extends Component {
       },
       headerTitleStyle: {
         fontSize: 20,
-        marginLeft: 60,
+       // marginLeft: 60,
         alignSelf: "center"
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             style={{
               fontSize: 20,

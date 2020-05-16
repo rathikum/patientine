@@ -50,7 +50,7 @@ export default class Profile extends Component {
       },
       headerLeft: (
         <View>
-          <TouchableOpacity onPress={() => navigation.navigate("Notification")}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <View
               style={{
                 flexDirection: "row",
@@ -71,7 +71,7 @@ export default class Profile extends Component {
                       marginTop: 5
                     }}
                   >
-                    {Icons.bell}
+                    {Icons.arrowLeft}
                   </FontAwesome>
                 }
                 BadgeElement={
@@ -594,13 +594,13 @@ export default class Profile extends Component {
             {this.renderDocAvailability()}
           </Card>
 
-          <View style={styles.availabilityContainer}>
+         {/*} <View style={styles.availabilityContainer}>
             <Text style={styles.availabilityText}>
               UpComing Appointment
             </Text>
-          </View>
-          <View style={styles.headingLiner} />
-          {this.state.basicAppointmentDetails != null &&
+    </View> 
+    <View style={styles.headingLiner} /> */}
+          {/*this.state.basicAppointmentDetails != null &&
             Object.keys(this.state.basicAppointmentDetails).length == 0 && (
               <Card
                 containerStyle={{
@@ -690,7 +690,7 @@ export default class Profile extends Component {
                   </View>
                 </View>
               </Card>
-            )}
+                    )*/}
           <View>
 
           {this.units != null && (
