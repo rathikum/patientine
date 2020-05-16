@@ -21,7 +21,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: 'kailasam@yaalsys.com',
+     // email: 'kailasam@yaalsys.com',
+     email : 'debbieg@gmail.com',
       patientId: '',
       password: 'HIS@2k19',
       error: '',
@@ -52,6 +53,7 @@ export default class Login extends Component {
     })
       .then(Response => Response.json())
       .then(Response => {
+        console.log("------>",Response);
         if (Response.id) {
           const url =
             baseURL +
