@@ -511,7 +511,7 @@ export default class Profile extends Component {
             style={{
               width: scaledHeight(45),
               height: scaledHeight(45),
-              borderRadius: 100,
+            //  borderRadius: 100,
               marginHorizontal:'4%',
               alignItems:'center',
               alignSelf:'center',
@@ -528,7 +528,7 @@ export default class Profile extends Component {
             style={{
               width: scaledHeight(45),
               height: scaledHeight(45),
-              borderRadius: 100,
+             // borderRadius: 100,
               backgroundColor: StyledConstants.colors.primaryColor,
               marginHorizontal:'4%',
               alignItems:'center',
