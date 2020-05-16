@@ -380,7 +380,7 @@ export default class VisitNote extends Component {
             >
               {Icons.arrowLeft}
             </FontAwesome>
-            <Text style={{fontSize:scaledHeight(20),color:StyledConstants.colors.primaryColor }}>Cancel</Text>
+            <Text style={{fontSize:scaledHeight(20),color:StyledConstants.colors.primaryColor }}>Back</Text>
           </TouchableOpacity>
            
 
