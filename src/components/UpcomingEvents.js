@@ -54,10 +54,10 @@ export default class UpcomingEvents extends Component {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             style={{
-              fontSize: 20,
-              color: "white",
-              marginRight: 14,
-              marginLeft: 15
+              fontSize: scaledHeight(20),
+              color:StyledConstants.colors.WHITE_COLOR,
+              marginRight: scaledHeight(15),
+              marginLeft:scaledHeight(15)
             }}
           >
             {Icons.arrowLeft}
@@ -167,7 +167,7 @@ export default class UpcomingEvents extends Component {
         <TouchableOpacity onPress={() => this.navigate(item)}>
           <Card
             containerStyle={{
-              padding: 6,
+              padding: scaledHeight(6),
               borderRadius: 6
             }}
           >
@@ -176,8 +176,8 @@ export default class UpcomingEvents extends Component {
                 <View>
                   <Text
                     style={{
-                      fontSize: 18,
-                      color: "#efa41b",
+                      fontSize: scaledHeight(18),
+                      color: StyledConstants.colors.FONT_COLOR,
                       marginTop: 5
                     }}
                   >
@@ -187,12 +187,12 @@ export default class UpcomingEvents extends Component {
                 </View>
                 <View>
                   <Text
-                    style={{ marginTop: 5, marginLeft: 100, marginTop: 25 }}
+                    style={{ marginTop: scaledHeight(5), marginLeft: 100, marginTop: scaledHeight(25) }}
                   >
-                    <Text style={{ fontSize: 25, marginLeft: 55 }}>
+                    <Text style={{ fontSize: scaledHeight(25), marginLeft: scaledHeight(50) }}>
                       {"\u20B9" + integer + "."}
                     </Text>
-                    <Text style={{ fontSize: 20 }}>
+                    <Text style={{ fontSize: scaledHeight(20) }}>
                       {rem == 0 ? "00" : rem}
                     </Text>
                   </Text>
@@ -202,13 +202,13 @@ export default class UpcomingEvents extends Component {
                 <Badge
                   containerStyle={{
                     backgroundColor: "#aedd13",
-                    height: 30,
-                    width: 100,
+                    height: scaledHeight(30),
+                    width:scaledHeight(100),
                     paddingLeft: 0,
-                    marginBottom: 5
+                    marginBottom:scaledHeight(5)
                   }}
                 >
-                  <Text style={{ fontSize: 18, marginTop: 3, color: "#FFFF" }}>
+                  <Text style={{ fontSize: scaledHeight(18), marginTop: scaledHeight(3), color: StyledConstants.colors.WHITE_COLOR }}>
                     {" Paid"}
                   </Text>
                 </Badge>
@@ -238,9 +238,9 @@ export default class UpcomingEvents extends Component {
                 <View>
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: scaledHeight(18),
                       color: "#efa41b",
-                      marginTop: 5
+                      marginTop: scaledHeight(18)
                     }}
                   >
                     {moment(item.visitDate).format("ll")}
@@ -248,9 +248,9 @@ export default class UpcomingEvents extends Component {
                   </Text>
                 </View>
                 <View>
-                  <Text style={{ marginTop: 5, marginLeft: 100 }}>
-                    <Text style={{ fontSize: 20 }}>{"\u20B9" + integer}</Text>
-                    <Text style={{ fontSize: 18 }}>
+                  <Text style={{ marginTop:scaledHeight(5), marginLeft: 100 }}>
+                    <Text style={{ fontSize: scaledHeight(20) }}>{"\u20B9" + integer}</Text>
+                    <Text style={{ fontSize: scaledHeight(18) }}>
                       {rem == 0 ? "00" : rem}
                     </Text>
                   </Text>
@@ -260,13 +260,13 @@ export default class UpcomingEvents extends Component {
                 <Badge
                   containerStyle={{
                     backgroundColor: "#aedd13",
-                    height: 30,
-                    width: 100,
+                    height:scaledHeight(30),
+                    width: scaledHeight(100),
                     paddingLeft: 0,
-                    marginBottom: 5
+                    marginBottom: scaledHeight(5)
                   }}
                 >
-                  <Text style={{ fontSize: 18 }}>{"Pending"}</Text>
+                  <Text style={{ fontSize: scaledHeight(18) }}>{"Pending"}</Text>
                 </Badge>
               </View>
             </View>
@@ -292,15 +292,15 @@ export default class UpcomingEvents extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={{ backgroundColor: "#FFF", height: "100%" }}>
+      <View style={{ backgroundColor: StyledConstants.colors.WHITE_COLOR, height: "100%" }}>
         <ScrollView>
           <View>
             
               <Card
                 containerStyle={{
                   marginLeft: "3%",
-                  marginTop: 30,
-                  marginBottom: 10,
+                  marginTop: scaledHeight(30),
+                  marginBottom: scaledHeight(10),
                   marginRight: "3%",
                   height: 100,
                   margin: 0,
@@ -312,16 +312,16 @@ export default class UpcomingEvents extends Component {
                 <TouchableOpacity >
           <FontAwesome
             style={{
-              fontSize: 60,
-              color: "#33ACFF",
-              marginRight: 14,
-              marginLeft: 15
+              fontSize: scaledHeight(60),
+              color: StyledConstants.colors.primaryColor,
+              marginRight: scaledHeight(15),
+              marginLeft: scaledHeight(15),
             }}
           >
             {Icons.phone}
           </FontAwesome>
         </TouchableOpacity>
-                 <Text style={{marginTop:'4%',marginLeft:'2%', flexShrink: 1}}>{"Call scheduled with Dr.Mohan at 8.00 PM on 22/05/2020"}</Text>
+                 <Text style={{marginTop:'4%',marginLeft:'2%', flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Call scheduled with Dr.Mohan at 8.00 PM on 22/05/2020"}</Text>
                 </View>
               </Card>
               
@@ -399,16 +399,16 @@ export default class UpcomingEvents extends Component {
                 <TouchableOpacity >
           <FontAwesome
             style={{
-              fontSize: 60,
-              color: "#33ACFF",
-              marginRight: 14,
-              marginLeft: 15
+              fontSize: scaledHeight(60),
+              color: StyledConstants.colors.primaryColor,
+              marginRight: scaledHeight(15),
+              marginLeft: scaledHeight(15),
             }}
           >
             {Icons.videoCamera}
           </FontAwesome>
         </TouchableOpacity>
-                 <Text style={{marginTop:'4%',marginLeft:'2%',flexShrink: 1}}>{"Video call scheduled with Dr.Ravi on 27/04/2020"}</Text>
+                 <Text style={{marginTop:'4%',marginLeft:'2%',flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Video call scheduled with Dr.Ravi on 27/04/2020"}</Text>
                 </View>
               </Card>
           </View>

@@ -74,7 +74,7 @@ export default class VisitNote extends Component {
           let visitInfo = resultData.patientSummary.visitInfo
           for (let c = 0; c < visitInfo.length; c++) {
             let monthIdx = moment(visitInfo[c].checkIn)
-              .format('MMMMYYYY')
+              .format('MMMM YYYY')
               .toString()
             if (monthVitalInfo[monthIdx] == null) {
               monthVitalInfo[monthIdx] = []
