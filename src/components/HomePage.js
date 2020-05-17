@@ -159,12 +159,13 @@ export default class HomePage extends Component {
                     </TouchableOpacity>
                 }
                 BadgeElement={
-                  <Text style={{ left: 10,color: "#FFF" }}>
+                  <Text style={{ color: "#FFF" }}>
                     {count <= 9 ? count : "9+"}
                   </Text>
                 }
                 IconBadgeStyle={{
                   width: 8,
+                  left:8,
                   height: 17,
                   backgroundColor: "#aedd13"
                 }}
