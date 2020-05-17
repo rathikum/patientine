@@ -16,6 +16,8 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { Icons } from "react-native-fontawesome";
 import StyledConstants from "../constants/styleConstants";
 import { scaledHeight } from "../Utils/Resolution";
+var count = 1;
+
 
 export default class HomePage extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -128,14 +130,15 @@ export default class HomePage extends Component {
                     </View>
                     </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={() => navigate('VisitNoteDetails',{visitId : 3})}>
+                <TouchableWithoutFeedback onPress={() => {}}>
                     <View style={styles.menuItems}>
-                        <MaterialCommunityIcons
+                        <MaterialIcon
                             size={60}
-                            name="google-classroom"
+                            // name="google-classroom"
+                            name="business"
                             color={StyledConstants.colors.primaryColor}    
                         />
-                    <Text style={styles.menuItemText}>Diagnosis</Text>
+                    <Text style={styles.menuItemText}>Offline Messages</Text>
                     </View>
                 </TouchableWithoutFeedback>
               </View>
@@ -144,12 +147,31 @@ export default class HomePage extends Component {
 
               <TouchableWithoutFeedback  onPress={() => navigate('Notification')}>
                     <View style={styles.menuItems}>
-                        <MaterialIcon
+                    <IconBadge
+                MainElement={
+                  <TouchableOpacity >
+                 <MaterialIcon
                             size={60}
                             name="notifications"
                             color={StyledConstants.colors.primaryColor}    
                         />
                     <Text style={styles.menuItemText}>Notification</Text>
+                    </TouchableOpacity>
+                }
+                BadgeElement={
+                  <Text style={{ left: 10,color: "#FFF" }}>
+                    {count <= 9 ? count : "9+"}
+                  </Text>
+                }
+                IconBadgeStyle={{
+                  width: 8,
+                  height: 17,
+                  backgroundColor: "#aedd13"
+                }}
+                Hidden={count == 0}
+              />
+
+                        
                     </View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => navigate('Online')}>
