@@ -15,6 +15,8 @@ import { baseURL } from '../../Utils/properties'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import PatientId from '../PatientId'
 import DropdownAlert from 'react-native-dropdownalert'
+import StyleConstants from '../../constants/styleConstants'
+import { scaledHeight } from '../../Utils/Resolution'
 
 var patId = new PatientId()
 export default class Login extends Component {
@@ -117,9 +119,9 @@ export default class Login extends Component {
                 <View style={styles.textin}>
                   <MaterialIcon
                     style={styles.textIcon}
-                    size={22}
+                    size={scaledHeight(22)}
                     name='email'
-                    color='#194C7D'
+                    color={StyleConstants.colors.primaryColor}
                   />
                   <TextInput
                     style={styles.inputTextStyle}
@@ -135,9 +137,9 @@ export default class Login extends Component {
                 <View style={styles.textin}>
                   <MaterialIcon
                     style={styles.textIcon}
-                    size={22}
+                    size={scaledHeight(22)}
                     name='lock'
-                    color='#194C7D'
+                    color={StyleConstants.colors.primaryColor}
                   />
                   <TextInput
                     style={styles.inputTextStyle}

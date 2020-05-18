@@ -13,6 +13,9 @@ import DropdownAlert from "react-native-dropdownalert";
 import { TextField } from "react-native-material-textfield";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { Card } from "react-native-elements";
+import StyledConstants from "../constants/styleConstants";
+import { scaledHeight } from "../Utils/Resolution";
+
 var { DevMenu } = NativeModules;
 export default class ForgetPassword extends Component {
   constructor(props) {
@@ -23,16 +26,16 @@ export default class ForgetPassword extends Component {
     };
   }
   static navigationOptions = {
-    headerTintColor: "#fff",
-    title: "Forget Password",
+    headerTintColor: StyledConstants.colors.WHITE_COLOR,
+    title: "Forgot Password",
     headerStyle: {
-      height: 50,
-      backgroundColor: "#1B81E5"
+      height: scaledHeight(50),
+      backgroundColor: StyledConstants.colors.primaryColor
     },
     headerTitleStyle: {
       fontWeight: "500",
-      fontSize: 18,
-      marginRight: 50,
+      fontSize: scaledHeight(18),
+      // marginRight: 50,
       alignSelf: "center"
     }
   };
@@ -50,32 +53,47 @@ export default class ForgetPassword extends Component {
   }
 
   password = () => {
-    return <MaterialIcon size={24} name="lock" color="#00000099" />;
+    return <MaterialIcon size={24} name="lock" color={StyledConstants.colors.primaryColor} />;
   };
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View
         style={{
-          backgroundColor: "#F5F5F5",
+          backgroundColor: StyledConstants.colors.BACKGROUND_GRAY,
           flex: 1
         }}
       >
-        <Card>
+        <Card
+        containerStyle={{
+          marginTop: scaledHeight(30),
+          padding: scaledHeight(20),
+          marginBottom: scaledHeight(10),
+          borderRadius: 6,
+          borderWidth: 2,
+          borderColor: StyledConstants.colors.GREEN
+        }}
+        >
           <View
             style={{
-              backgroundColor: "#2089DC",
-              padding: 10,
-              borderRadius: 3,
-              alignItems: "center"
+             // backgroundColor: StyledConstants.colors.primaryColor,
+             // padding: scaledHeight(10),
+             // borderRadius: 3,
+              alignItems: "center",
+            //  marginBottom:scaledHeight(15)
             }}
           >
-            <Text style={{ color: "white", fontSize: 18 }}>
-              Forget Password
+            <Text style={{ color: StyledConstants.colors.primaryColor, fontSize: scaledHeight(18)}}>
+              Forgot Password
             </Text>
           </View>
+
+          <View style={styles.headingLiner} />
           <View>
             <TextField
+              tintColor = {StyledConstants.colors.primaryColor}
+              textColor = {StyledConstants.colors.FONT_COLOR}
+              baseColor = {StyledConstants.colors.BORDER_GRAY}
               style={styles.input}
               label="Username or Email"
               keyboardType="email-address"

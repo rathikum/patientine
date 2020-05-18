@@ -39,14 +39,14 @@ export default class Billing extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
     return {
-      headerTintColor: "#fff",
+      headerTintColor: StyledConstants.colors.WHITE_COLOR,
       title: "Documents",
       headerStyle: {
         height: scaledHeight(50),
         backgroundColor:StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
-        fontSize: 20,
+        fontSize: scaledHeight(20),
        // marginLeft: 90,
         alignSelf: "center"
       },
@@ -54,10 +54,10 @@ export default class Billing extends Component {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesome
             style={{
-              fontSize: 20,
-              color: "white",
-              marginRight: 14,
-              marginLeft: 15
+              fontSize: scaledHeight(20),
+              color: StyledConstants.colors.WHITE_COLOR,
+              marginRight:scaledHeight(15),
+              marginLeft: scaledHeight(15),
             }}
           >
             {Icons.arrowLeft}
@@ -292,13 +292,13 @@ export default class Billing extends Component {
     try {
         // IOS File formats
         if (Platform.OS === 'ios') {
-            results = await DocumentPicker.pickMultiple({
+            results = await DocumentPicker.pick({
                 type: [
-                    'org.openxmlformats.wordprocessingml.document',
-                    'com.adobe.pdf',
-                    'public.image',
-                    'org.openxmlformats.spreadsheetml.sheet',
-                    DocumentPicker.types.images,
+                    // 'org.openxmlformats.wordprocessingml.document',
+                    // 'com.adobe.pdf',
+                    // 'public.image',
+                    // 'org.openxmlformats.spreadsheetml.sheet',
+                    // DocumentPicker.types.images,
                     DocumentPicker.types.pdf
                 ]
             });
@@ -315,6 +315,7 @@ export default class Billing extends Component {
            // this.setState({ showFileError: true, erFileMessage: `You can attach only ${maxFileLimit} file` });
            // this.setState({ showFileError: true, erFileMessage: `You have exceeded the maximum attachment limit` });
         } else {
+         
             // const { onSelectedFiles } = this.props;
             // onSelectedFiles(results);
            
@@ -335,63 +336,101 @@ export default class Billing extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={{ backgroundColor: "#FFF", height: "100%" }}>
+      <View style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY, height: "100%" }}>
         <ScrollView>
-          <View>
+          <View style={{ marginTop:scaledHeight(20)} }>
             
               <Card
                 containerStyle={{
-                  marginLeft: 5,
-                  marginTop: 10,
-                  marginBottom: 10,
-                  marginRight: 5,
-                  height: 120,
+                  marginLeft: scaledHeight(15),
+                  marginTop: scaledHeight(20),
+                  marginBottom: scaledHeight(10),
+                  marginRight: scaledHeight(15),
+                  height: scaledHeight(120),
                   margin: 0,
                   borderRadius: 5,
-                  borderWidth:2 ,borderColor:"#8BC105" 
+                  borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
                 }}
               >
-                <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                 <Image source={require('../images/sample.png')} style={{width:"20%",height:"40%"}}/>
-                 <Text style={{marginTop:'10%',marginLeft:'2%'}}>{"Document Uploaded on 02/04/2020"}</Text>
+
+                <View style={{height:scaledHeight(200),width:"100%", flexDirection:'row'}}>
+
+              <View style={{ flexDirection:'column'}}>      
+                <FontAwesome
+                  style={{
+                    fontSize: scaledHeight(60),
+                    color: StyledConstants.colors.primaryColor,
+                    marginRight:scaledHeight(10),
+                    marginLeft: scaledHeight(10),
+                  }}
+                >
+                  {Icons.filePdfO}
+                </FontAwesome>
+
+                <Text style={{ marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
+                  Sample.pdf
+                </Text>
+
                 </View>
+               
+                 <Text style={{marginTop:scaledHeight(30),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>{"Document Uploaded on 02/04/2020"}</Text>
+                </View>
+               
               </Card>
               
               <Card
                 containerStyle={{
-                  marginLeft: 5,
-                  marginTop: 10,
-                  marginBottom: 10,
-                  marginRight: 5,
-                  height: 120,
+                  marginLeft: scaledHeight(15),
+                  marginTop: scaledHeight(20),
+                  marginBottom: scaledHeight(10),
+                  marginRight: scaledHeight(15),
+                  height: scaledHeight(120),
                   margin: 0,
                   borderRadius: 5,
-                  borderWidth:2 ,borderColor:"#8BC105" 
+                  borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                 <Image source={require('../images/test.png')} style={{width:"20%",height:"40%"}}/>
-                 <Text style={{marginTop:'10%',marginLeft:'2%'}}>{"Document Uploaded on 27/02/2020"}</Text>
+                <View style={{ flexDirection:'column'}}>      
+                <FontAwesome
+                  style={{
+                    fontSize: scaledHeight(60),
+                    color: StyledConstants.colors.primaryColor,
+                    marginRight:scaledHeight(10),
+                    marginLeft: scaledHeight(10),
+                  }}
+                >
+                  {Icons.filePdfO}
+                </FontAwesome>
+
+                <Text style={{ marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
+                  test.pdf
+                </Text>
+
+                </View>
+               
+                 <Text style={{marginTop:scaledHeight(30),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>{"Document Uploaded on 02/04/2020"}</Text>
                 </View>
               </Card>
             
-
-<TouchableOpacity style={{height: 40,
-    width: "50%",
-    marginTop: 45,
-    borderRadius: 30,
-    marginLeft: 75,
-    backgroundColor: "#486D90"}} onPress={this.uploadDocument}>
-            <Text style={{
-              fontSize: 20,
-              color: "#FFF",
-              paddingTop: 5,
-              width: "100%",
-              // fontFamily: "raleway",
-              fontWeight: "500",
-              textAlign: "center"
-            }}>Upload Document</Text>
-          </TouchableOpacity>
+            <View style={{alignContent:'center',alignItems:'center'}}>
+            <TouchableOpacity style={{height: scaledHeight(40),
+                width: "50%",
+                marginTop: scaledHeight(45),
+                borderRadius: 10,
+                // marginLeft: 75,
+                backgroundColor: StyledConstants.colors.primaryColor}} onPress={this.uploadDocument}>
+                  <Text style={{
+                    fontSize: scaledHeight(20),
+                    color: StyledConstants.colors.WHITE_COLOR,
+                    paddingTop: scaledHeight(5),
+                    width: "100%",
+                    // fontFamily: "raleway",
+                    fontWeight: "500",
+                    textAlign: "center"
+                  }}>Upload Document</Text>
+              </TouchableOpacity>
+              </View>
           </View>
           
         </ScrollView>

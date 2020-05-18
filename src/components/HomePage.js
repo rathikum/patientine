@@ -165,7 +165,7 @@ export default class HomePage extends Component {
                 }
                 IconBadgeStyle={{
                   width: scaledHeight(8),
-                  left:scaledHeight(25),
+                  left:scaledHeight(28),
                   height:scaledHeight(17),
                   backgroundColor: "#aedd13"
                 }}

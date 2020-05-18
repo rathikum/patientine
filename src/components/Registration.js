@@ -16,23 +16,26 @@ import styles from './Style'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome, { Icons } from 'react-native-fontawesome'
 import RadioForm from 'react-native-simple-radio-button'
+import { scaledHeight } from '../Utils/Resolution'
+import StyledConstants from "../constants/styleConstants";
+
 var radio_props = [
   { label: 'Male', value: 1 },
   { label: 'Female', value: 2 }
 ]
 export default class Registration extends Component {
   static navigationOptions = {
-    headerTintColor: '#fff',
-    title: 'Registration',
+    headerTintColor: StyledConstants.colors.WHITE_COLOR,
+    title: "Registration",
     headerStyle: {
-      height: 50,
-      backgroundColor: '#1B81E5'
+      height: scaledHeight(50),
+      backgroundColor: StyledConstants.colors.primaryColor
     },
     headerTitleStyle: {
-      fontWeight: '500',
-      fontSize: 20,
-      marginRight: 50,
-      alignSelf: 'center'
+      fontWeight: "500",
+      fontSize: scaledHeight(18),
+      // marginRight: 50,
+      alignSelf: "center"
     }
   }
   constructor (props) {
@@ -118,16 +121,16 @@ export default class Registration extends Component {
     )
   }
   mobileNumber = () => {
-    return <MaterialIcon size={24} name='smartphone' color='#0066ff' />
+    return <MaterialIcon size={scaledHeight(24)} name='smartphone' color={StyledConstants.colors.primaryColor} />
   }
   eMail = () => {
-    return <MaterialIcon size={24} name='mail' color='#0066ff' />
+    return <MaterialIcon size={scaledHeight(24)} name='mail' color={StyledConstants.colors.primaryColor} />
   }
   sSn = () => {
-    return <MaterialIcon size={24} name='local-library' color='#0066ff' />
+    return <MaterialIcon size={scaledHeight(24)} name='local-library' color={StyledConstants.colors.primaryColor} />
   }
   proName = () => {
-    return <MaterialIcon size={24} name='person' color='#0066ff' />
+    return <MaterialIcon size={scaledHeight(24)} name='person' color={StyledConstants.colors.primaryColor} />
   }
 
   bookAppointment = () => {
@@ -203,6 +206,9 @@ export default class Registration extends Component {
       >
         <View style={styles.border}>
           <TextField
+            tintColor = {StyledConstants.colors.primaryColor}
+            textColor = {StyledConstants.colors.FONT_COLOR}
+            baseColor = {StyledConstants.colors.BORDER_GRAY}
             style={styles.input}
             label='First Name'
             value={this.state.name}
@@ -210,6 +216,9 @@ export default class Registration extends Component {
             onChangeText={text => this.setState({ name: text })}
           />
           <TextField
+            tintColor = {StyledConstants.colors.primaryColor}
+            textColor = {StyledConstants.colors.FONT_COLOR}
+            baseColor = {StyledConstants.colors.BORDER_GRAY}
             style={styles.input}
             label='Last Name'
             value={this.state.lName}
@@ -222,8 +231,10 @@ export default class Registration extends Component {
               style={styles.inputrow}
               labelStyle={styles.genderlabel}
               radio_props={radio_props}
+              buttonColor={StyledConstants.colors.primaryColor}
+              selectedButtonColor={StyledConstants.colors.primaryColor}
               initial={0}
-              buttonSize={12}
+              buttonSize={scaledHeight(12)}
               formHorizontal={true}
               onPress={value => {
                 this.setState({ gender: value })
@@ -243,10 +254,10 @@ export default class Registration extends Component {
                   borderWidth: 0
                 },
                 dateIcon: {
-                  width: 25,
-                  paddingLeft: 7,
-                  tintColor: '#0066ff',
-                  height: 25
+                  width: scaledHeight(25),
+                  paddingLeft: scaledHeight(7),
+                  tintColor:StyledConstants.colors.primaryColor,
+                  height:scaledHeight(25),
                 }
               }}
               confirmBtnText='Confirm'
@@ -265,6 +276,9 @@ export default class Registration extends Component {
             onChangeText={text => this.setState({ age: text })}
           /> */}
           <TextField
+            tintColor = {StyledConstants.colors.primaryColor}
+            textColor = {StyledConstants.colors.FONT_COLOR}
+            baseColor = {StyledConstants.colors.BORDER_GRAY}
             label='Mobile number '
             style={styles.input}
             keyboardType={'phone-pad'}
@@ -273,6 +287,9 @@ export default class Registration extends Component {
             onChangeText={text => this.setState({ mobile: text })}
           />
           <TextField
+            tintColor = {StyledConstants.colors.primaryColor}
+            textColor = {StyledConstants.colors.FONT_COLOR}
+            baseColor = {StyledConstants.colors.BORDER_GRAY}
             label='Email '
             style={styles.input}
             keyboardType={'email-address'}
@@ -307,7 +324,7 @@ export default class Registration extends Component {
             value={this.state.idProofValue}
             onChangeText={text => this.setState({ idProofValue: text })}
           /> */}
-          <View>
+          <View  style={{alignContent:'center',alignItems:'center',marginTop:scaledHeight(30)}}>
             <TouchableOpacity
               style={styles.submitButtonContainer}
               onPress={this.bookAppointment.bind(this)}

@@ -1,112 +1,117 @@
 import { StyleSheet } from "react-native";
+import { scaledHeight } from "../Utils/Resolution";
+import StyledConstants from "../constants/styleConstants";
+
 module.exports = StyleSheet.create({
   border: {
-    marginLeft: 25,
-    marginRight: 25
+    marginLeft:  scaledHeight(25),
+    marginRight: scaledHeight(25),
   },
   submitTextStyle: {
-    fontSize: 20,
-    color: "#FFF",
-    paddingTop: 5,
+    fontSize: scaledHeight(20),
+    color: StyledConstants.colors.WHITE_COLOR,
+    paddingTop: scaledHeight(5),
     width: "100%",
     // fontFamily: "raleway",
     fontWeight: "500",
     textAlign: "center"
   },
   input: {
-    marginBottom: 5,
-    color: "#0066ff"
+    // marginTop:scaledHeight(20),
+    marginBottom: scaledHeight(5),
+    color: StyledConstants.colors.FONT_COLOR
   },
   genderlabel: {
-    marginLeft: 5,
-    marginRight: 15
+    marginLeft: scaledHeight(5),
+    marginRight:scaledHeight(15),
   },
   submitButtonContainer: {
-    height: 40,
+    height: scaledHeight(40),
     width: "50%",
-    marginTop: 15,
-    marginLeft: 100,
-    backgroundColor: "#0066ff",
+    marginTop: scaledHeight(15),
+    // alignItems:'center',
+    // marginLeft: 100,
+    backgroundColor: StyledConstants.colors.primaryColor,
     borderRadius: 5
   },
   rowgender: {
-    marginTop: 15,
+    marginTop:scaledHeight(30),
     flexDirection: "row"
   },
   inputstyle: {
-    fontSize: 18,
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.38)"
+    fontSize: scaledHeight(18),
+    marginBottom: scaledHeight(20),
+    color: StyledConstants.colors.FONT_COLOR
   },
   Calendar: {
-    paddingTop: 10,
-    marginLeft: 20,
-    marginRight: 20
+    paddingTop: scaledHeight(10),
+    marginLeft: scaledHeight(20),
+    marginRight:  scaledHeight(20),
   },
   date: {
-    fontSize: 18,
-    paddingTop: 8,
-    borderBottomColor: "rgba(0,0,0,0.38)",
+    fontSize:  scaledHeight(18),
+    // paddingTop:  scaledHeight(8),
+    borderBottomColor: StyledConstants.colors.COMP_BORDER_COLOR,
     borderBottomWidth: 0.5,
-    color: "rgba(0,0,0,0.38)"
+    color: StyledConstants.colors.FONT_COLOR
   },
   submitcontainer: {
-    marginTop: 8,
+    marginTop:scaledHeight(8),
     width: "100%",
     alignSelf: "center"
   },
   submit: {
-    paddingTop: 5,
-    height: 40,
+    paddingTop: scaledHeight(5),
+    height:scaledHeight(40),
     backgroundColor: "#1B81E5",
     borderRadius: 5
   },
   submitText: {
     width: "100%",
-    fontSize: 18,
-    color: "#fff",
+    fontSize:  scaledHeight(18),
+    color: StyledConstants.colors.WHITE_COLOR,
     textAlign: "center"
   },
   row: {
-    marginTop: 10,
+    marginTop:  scaledHeight(20),
     flexDirection: "row"
   },
   datepick: {
-    width: 300,
-    paddingHorizontal: 50
+    width:  scaledHeight(300),
+    paddingHorizontal:  scaledHeight(50),
   },
   inputrow: {
-    marginLeft: 90
+    marginLeft:  scaledHeight(90),
   },
   registercontainer: {
     flexGrow: 1,
-    backgroundColor: "#FFF"
+    backgroundColor:StyledConstants.colors.WHITE_COLOR
   },
   patientcontainer: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#fff"
+    backgroundColor:StyledConstants.colors.WHITE_COLOR
   },
   calendarcontainer: {
     flex: 1
   },
   patientinput: {
-    padding: 20
+    padding: scaledHeight(20),
   },
   patientinputstyle: {
-    marginBottom: 10
+    marginBottom:  scaledHeight(10),
   },
   patienttitlestyle: {
-    fontSize: 35,
+    fontSize:  scaledHeight(35),
     textAlign: "center",
-    margin: 10
+    margin:  scaledHeight(10),
   },
   profilecontainer: {
     flex: 1,
     backgroundColor: "#FFF"
   },
   profilebuttoncontainerstyle: {
-    marginBottom: 20
+    marginBottom:  scaledHeight(20),
   },
   logocontainer: {
     flexGrow: 1,
@@ -114,12 +119,12 @@ module.exports = StyleSheet.create({
     justifyContent: "center"
   },
   profilebuttoncontainer: {
-    marginBottom: 20,
-    paddingHorizontal: 20
+    marginBottom: scaledHeight(20),
+    paddingHorizontal:  scaledHeight(20),
   },
   title: {
-    fontSize: 25,
-    color: "#FFF"
+    fontSize: scaledHeight(25),
+    color:StyledConstants.colors.WHITE_COLOR
   },
   datepickerWidth: {
     width: "100%",
@@ -133,18 +138,19 @@ module.exports = StyleSheet.create({
   },
   secButtonViewSkip: {
     width: "44%",
-    paddingTop: 5,
+    paddingTop: scaledHeight(5),
+    marginTop:scaledHeight(20),
     alignSelf: "center"
   },
   secButtonSkip: {
-    marginTop: 5,
-    height: 40,
-    backgroundColor: "#1B81E5",
+    marginTop: scaledHeight(5),
+    height: scaledHeight(40),
+    backgroundColor: StyledConstants.colors.primaryColor,
     borderRadius: 5
   },
   secureTextSkip: {
-    padding: 5,
-    fontSize: 18,
+    padding: scaledHeight(5),
+    fontSize: scaledHeight(18),
     color: "#fff",
     textAlign: "center"
   },
@@ -154,15 +160,15 @@ module.exports = StyleSheet.create({
     alignSelf: "center"
   },
   secButtonRegister: {
-    height: 40,
+    height:scaledHeight(40),
     backgroundColor: "#1B81E5",
     borderRadius: 5
   },
   secTextRegister: {
-    fontSize: 20,
-    color: "red",
-    paddingTop: 5,
-    paddingBottom: 5,
+    fontSize: scaledHeight(20),
+    color: StyledConstants.colors.WHITE_COLOR,
+    paddingTop: scaledHeight(5),
+    paddingBottom: scaledHeight(5),
     width: "100%",
     // fontFamily: "raleway",
     fontWeight: "500",
@@ -175,8 +181,8 @@ module.exports = StyleSheet.create({
 
   // Primary Insurance //
   PrimaryInsuText: {
-    fontSize: 18,
-    paddingTop: 12,
+    fontSize: scaledHeight(18),
+    paddingTop: scaledHeight(12),
     borderBottomColor: "rgba(0,0,0,0.38)",
     borderBottomWidth: 0.5,
     color: "rgba(0,0,0,0.38)"
@@ -185,6 +191,13 @@ module.exports = StyleSheet.create({
     width: "68%",
     borderBottomColor: "rgba(0,0,0,0.38)",
     borderBottomWidth: 0.5
-  }
+  },
+  headingLiner: {
+    backgroundColor:  StyledConstants.colors.BORDER_GRAY,
+    height: scaledHeight(1),
+    marginTop: scaledHeight(15),
+    // marginLeft: '4%',
+    // marginRight: '4%'
+  },
   // Primary Insurance //
 });
