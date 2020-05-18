@@ -130,12 +130,12 @@ export default class HomePage extends Component {
                     </View>
                     </TouchableWithoutFeedback>
 
-                <TouchableWithoutFeedback onPress={() => {}}>
+                <TouchableWithoutFeedback onPress={() => navigate('OfflineMessage')}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
                             size={60}
                             // name="google-classroom"
-                            name="business"
+                            name="message"
                             color={StyledConstants.colors.primaryColor}    
                         />
                     <Text style={styles.menuItemText}>Offline Messages</Text>

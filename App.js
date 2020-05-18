@@ -26,6 +26,8 @@ import BillingScreen from "./src/components/Billing";
 import OnlinePayment from "./src/components/OnlinePayment";
 import UpComingScreen from "./src/components/UpcomingEvents";
 import HomePage from "./src/components/HomePage";
+import OfflineMessage from "./src/components/offlineMessages";
+import OfflineMessageDetails from "./src/components/offlineMessageDetails";
 
 const App = StackNavigator({
   Login: { screen: LoginScreen },
@@ -53,7 +55,9 @@ const App = StackNavigator({
   Online : { screen : OnlinePayment },
   UpComing : { screen : UpComingScreen},
   Home : { screen : HomePage},
-  Profile : { screen : ProfileScreen}
+  Profile : { screen : ProfileScreen},
+  OfflineMessage : { screen : OfflineMessage},
+  OfflineDetails : { screen : OfflineMessageDetails}
 });
 
 export default App;
