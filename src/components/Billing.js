@@ -72,7 +72,9 @@ export default class Billing extends Component {
       billInfo: [],
       billDetailInfo: [],
       billingDetails: [],
-      color: ["#E53935", "#E53935", "#E53935"]
+      color: ["#E53935", "#E53935", "#E53935"],
+      selectedFileName:'',
+      selectedFile:''
     };
   }
 
@@ -288,7 +290,7 @@ export default class Billing extends Component {
     }
   };
 
-  uploadDocument = async () => {
+  selectDocument = async () => {
     try {
         // IOS File formats
         if (Platform.OS === 'ios') {
@@ -318,8 +320,14 @@ export default class Billing extends Component {
          
             // const { onSelectedFiles } = this.props;
             // onSelectedFiles(results);
+
+            console.log(`res : ${ JSON.stringify(results)}`);
+            console.log(`URI : ${ results.uri}`);
+            console.log(`Type : ${ results.type}`);
+            console.log(`File Name : ${ results.name}`);
+            console.log(`File Size : ${ results.size}`);
            
-           // this.setState({ showFileError: false });
+           this.setState({ selectedFile: results,selectedFileName:results.name });
         }
     } catch (err) {
         // Handling any exception (If any)
@@ -333,6 +341,41 @@ export default class Billing extends Component {
         }
     }
 }
+
+uploadDocument = () => {
+  const { navigate } = this.props.navigation
+  let url = baseURL + '/api/documentContents/createDocumentData'
+  let uploadObj = {
+    patientId: "32",
+    visitId: "1",
+    documentData: this.state.selectedFileName
+  }
+  console.log('uploadObj:', uploadObj)
+  return fetch(url, {
+    method: 'POST',
+    withCredentials:true,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(uploadObj)
+  })
+    .then(response => response.json())
+    .then(response => {
+      console.log('response:', response)
+      if (
+        response != null
+      ) {
+          // TODO
+          console.log('Response:',JSON.stringify(response))
+      } else {
+        // TODO
+        console.log('show exception on the screeon')
+      }
+    })
+    .catch(error => console.log('exception caught:', error))
+}
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -340,14 +383,17 @@ export default class Billing extends Component {
         <ScrollView>
           <View style={{ marginTop:scaledHeight(20)} }>
             
+            {
+              this.state.selectedFileName!='' && (
+             
               <Card
                 containerStyle={{
                   marginLeft: scaledHeight(15),
                   marginTop: scaledHeight(20),
                   marginBottom: scaledHeight(10),
                   marginRight: scaledHeight(15),
-                  height: scaledHeight(120),
-                  margin: 0,
+                  height: scaledHeight(130),
+                  // margin: 0,
                   borderRadius: 5,
                   borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
                 }}
@@ -367,51 +413,36 @@ export default class Billing extends Component {
                   {Icons.filePdfO}
                 </FontAwesome>
 
-                <Text style={{ marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
-                  Sample.pdf
+                <Text style={{ width:scaledHeight(150),marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
+                 {this.state.selectedFileName}
                 </Text>
 
                 </View>
                
-                 <Text style={{marginTop:scaledHeight(30),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>{"Document Uploaded on 02/04/2020"}</Text>
+                <View style={{alignContent:'center',alignItems:'center', marginLeft:scaledHeight(50),marginTop:scaledHeight(20)}}>
+                <TouchableOpacity style={{height: scaledHeight(40),
+                    //width: "70%",
+                   // marginTop: scaledHeight(45),
+                    borderRadius: 10,
+                    // marginLeft: 75,
+                    backgroundColor: StyledConstants.colors.primaryColor}} onPress={this.uploadDocument}>
+                      <Text style={{
+                        fontSize: scaledHeight(16),
+                        color: StyledConstants.colors.WHITE_COLOR,
+                        paddingTop: scaledHeight(10),
+                       marginHorizontal:scaledHeight(15),
+                        // fontFamily: "raleway",
+                        fontWeight: "500",
+                        textAlign: "center"
+                      }}>Upload </Text>
+                  </TouchableOpacity>
+              </View>
                 </View>
                
               </Card>
+               )
+              }
               
-              <Card
-                containerStyle={{
-                  marginLeft: scaledHeight(15),
-                  marginTop: scaledHeight(20),
-                  marginBottom: scaledHeight(10),
-                  marginRight: scaledHeight(15),
-                  height: scaledHeight(120),
-                  margin: 0,
-                  borderRadius: 5,
-                  borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
-                }}
-              >
-                <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                <View style={{ flexDirection:'column'}}>      
-                <FontAwesome
-                  style={{
-                    fontSize: scaledHeight(60),
-                    color: StyledConstants.colors.primaryColor,
-                    marginRight:scaledHeight(10),
-                    marginLeft: scaledHeight(10),
-                  }}
-                >
-                  {Icons.filePdfO}
-                </FontAwesome>
-
-                <Text style={{ marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
-                  test.pdf
-                </Text>
-
-                </View>
-               
-                 <Text style={{marginTop:scaledHeight(30),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>{"Document Uploaded on 02/04/2020"}</Text>
-                </View>
-              </Card>
             
             <View style={{alignContent:'center',alignItems:'center'}}>
             <TouchableOpacity style={{height: scaledHeight(40),
@@ -419,7 +450,7 @@ export default class Billing extends Component {
                 marginTop: scaledHeight(45),
                 borderRadius: 10,
                 // marginLeft: 75,
-                backgroundColor: StyledConstants.colors.primaryColor}} onPress={this.uploadDocument}>
+                backgroundColor: StyledConstants.colors.primaryColor}} onPress={this.selectDocument}>
                   <Text style={{
                     fontSize: scaledHeight(20),
                     color: StyledConstants.colors.WHITE_COLOR,
@@ -428,7 +459,7 @@ export default class Billing extends Component {
                     // fontFamily: "raleway",
                     fontWeight: "500",
                     textAlign: "center"
-                  }}>Upload Document</Text>
+                  }}>Select Document</Text>
               </TouchableOpacity>
               </View>
           </View>
