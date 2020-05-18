@@ -149,13 +149,13 @@ export default class HomePage extends Component {
                     <View style={styles.menuItems}>
                     <IconBadge
                 MainElement={
-                  <TouchableOpacity >
+                  <TouchableOpacity style={{alignContent:'center',alignItems:'center'}} onPress={() => navigate('Notification')}>
                  <MaterialIcon
                             size={60}
                             name="notifications"
                             color={StyledConstants.colors.primaryColor}    
                         />
-                    <Text style={styles.menuItemText}>Notification</Text>
+                    <Text style={styles.menuItemText}>Notifications</Text>
                     </TouchableOpacity>
                 }
                 BadgeElement={
@@ -164,9 +164,9 @@ export default class HomePage extends Component {
                   </Text>
                 }
                 IconBadgeStyle={{
-                  width: 8,
-                  left:8,
-                  height: 17,
+                  width: scaledHeight(8),
+                  left:scaledHeight(25),
+                  height:scaledHeight(17),
                   backgroundColor: "#aedd13"
                 }}
                 Hidden={count == 0}

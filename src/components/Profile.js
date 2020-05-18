@@ -60,7 +60,19 @@ export default class Profile extends Component {
                 marginRight: 10
               }}
             >
-              <IconBadge
+              <FontAwesome
+                    style={{
+                      fontSize: 26,
+                      color: "white",
+                      marginRight: 14,
+                      marginLeft: 11,
+                      marginTop: 5
+                    }}
+                  >
+                    {Icons.arrowLeft}
+                  </FontAwesome>
+
+              {/* <IconBadge
                 MainElement={
                   <FontAwesome
                     style={{
@@ -85,7 +97,7 @@ export default class Profile extends Component {
                   backgroundColor: "#aedd13"
                 }}
                 Hidden={count == 0}
-              />
+              /> */}
             </View>
           </TouchableOpacity>
         </View>
