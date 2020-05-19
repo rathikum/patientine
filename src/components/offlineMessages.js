@@ -425,7 +425,7 @@ export default class Profile extends Component {
                 </View>
                
                  <Text style={{marginTop:scaledHeight(20),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>
-                     {"Send an Offline Messages to Dr.Mohan"}</Text>
+                     {"Send an Offline Messages to Dr.Justin"}</Text>
                 </View>
                
               </Card>
@@ -463,7 +463,7 @@ export default class Profile extends Component {
                 </View>
                
                  <Text style={{marginTop:scaledHeight(20),marginLeft:'2%',marginRight:'2%',color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(14)}}>
-                     {"Send an Offline Messages to Dr.Kumar"}</Text>
+                     {"Send an Offline Messages to Dr.Justin"}</Text>
                 </View>
                
               </Card>

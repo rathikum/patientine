@@ -321,7 +321,7 @@ export default class UpcomingEvents extends Component {
             {Icons.phone}
           </FontAwesome>
         </TouchableOpacity>
-                 <Text style={{marginTop:'4%',marginLeft:'2%', flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Call scheduled with Dr.Mohan at 8.00 PM on 22/05/2020"}</Text>
+                 <Text style={{marginTop:'4%',marginLeft:'2%', flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Call scheduled with Dr.Justin at 8.00 PM on 22/05/2020"}</Text>
                 </View>
               </Card>
               
@@ -408,7 +408,7 @@ export default class UpcomingEvents extends Component {
             {Icons.videoCamera}
           </FontAwesome>
         </TouchableOpacity>
-                 <Text style={{marginTop:'4%',marginLeft:'2%',flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Video call scheduled with Dr.Ravi on 27/04/2020"}</Text>
+                 <Text style={{marginTop:'4%',marginLeft:'2%',flexShrink: 1,color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(18)}}>{"Video call scheduled with Dr.Justin on 27/04/2020"}</Text>
                 </View>
               </Card>
           </View>
