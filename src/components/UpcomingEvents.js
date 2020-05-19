@@ -7,7 +7,8 @@ import {
   View,
   FlatList,
   Dimensions,
-  Platform
+  Platform,
+  Linking
 } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import {
@@ -288,6 +289,20 @@ export default class UpcomingEvents extends Component {
     }
   };
 
+dialCall = () => {
+ 
+    let phoneNumber = '';
+ 
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${1456789023}';
+    }
+    else {
+      phoneNumber = 'telprompt:${1456789023}';
+    }
+ 
+    Linking.openURL(phoneNumber);
+  }
+
 
   render() {
     const { navigate } = this.props.navigation;
@@ -309,7 +324,7 @@ export default class UpcomingEvents extends Component {
                 }}
               >
                 <View style={{height:200,width:"100%", flexDirection:'row'}}>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={this.dialCall}>
           <FontAwesome
             style={{
               fontSize: scaledHeight(60),

@@ -63,7 +63,7 @@ export default class Appointment extends Component {
         alignSelf: "center"
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
           <FontAwesome
             style={{
               fontSize: 20,
@@ -163,6 +163,11 @@ export default class Appointment extends Component {
         }
       });
   };
+
+  proccedToPay = ()=>{
+    const { navigate } = this.props.navigation;
+    navigate('AppointmentPay');
+  }
   bookAppointment = () => {
     appointmentDateTime = "";
     const { navigate } = this.props.navigation;
@@ -561,6 +566,7 @@ export default class Appointment extends Component {
 
   render() {
     const { doctorSearchValue } = this.state;
+    const setParmas = this.props.navigation.getParam('pay');
     const listofDoctor = this.finddoctor(doctorSearchValue);
     const comp = (fetchDoctorName, onchangeDoctorName) =>
       fetchDoctorName.toLowerCase().trim() ===
@@ -719,9 +725,9 @@ export default class Appointment extends Component {
     alignSelf : 'center',
     justifyContent : 'center',
     backgroundColor: "#486D90"}} onPress={() => navigate('Online')}
-    onPress={this.bookAppointment.bind(this)}
+    onPress={this.proccedToPay}
     >
-            <Text style={{
+          {setParmas ? <Text style={{
               fontSize: 20,
               color: "#FFF",
              // paddingTop: 5,
@@ -729,7 +735,15 @@ export default class Appointment extends Component {
               // fontFamily: "raleway",
               fontWeight: "500",
               textAlign: "center"
-            }}>Book</Text>
+            }}>Book</Text> : <Text style={{
+              fontSize: 20,
+              color: "#FFF",
+             // paddingTop: 5,
+              width: "100%",
+              // fontFamily: "raleway",
+              fontWeight: "500",
+              textAlign: "center"
+            }}>Procced to Pay</Text>}  
           </TouchableOpacity>
             </View>
           </View>

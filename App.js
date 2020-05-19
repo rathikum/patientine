@@ -28,6 +28,7 @@ import UpComingScreen from "./src/components/UpcomingEvents";
 import HomePage from "./src/components/HomePage";
 import OfflineMessage from "./src/components/offlineMessages";
 import OfflineMessageDetails from "./src/components/offlineMessageDetails";
+import AppointmentPay from "./src/components/AppoinmentPayment";
 
 const App = StackNavigator({
   Login: { screen: LoginScreen },
@@ -57,7 +58,8 @@ const App = StackNavigator({
   Home : { screen : HomePage},
   Profile : { screen : ProfileScreen},
   OfflineMessage : { screen : OfflineMessage},
-  OfflineDetails : { screen : OfflineMessageDetails}
+  OfflineDetails : { screen : OfflineMessageDetails},
+  AppointmentPay : { screen : AppointmentPay}
 });
 
 export default App;
