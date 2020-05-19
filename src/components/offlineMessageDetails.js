@@ -120,7 +120,24 @@ export default class Profile extends Component {
 
           </View>
 
-          <TouchableWithoutFeedback onPress={() => this.setState({draftText:this.state.messageText,messageText:''})}>
+      <View style={{flex:0.2,flexDirection:'row',height:scaledHeight(40), width:"92%",marginLeft:'4%',marginRight:"4%"}}>
+      
+      <KeyboardAvoidingView style={{borderWidth:2,borderRadius:5,borderColor:'black',width:'94%'}}>
+        
+        <TextInput
+          style={{
+            fontSize: 18,
+            borderRadius: 5
+          }}
+          multiline={true}
+          textAlignVertical={"top"}
+          numberOfLines={5}
+          underlineColorAndroid="transparent"
+          onChangeText={this.messageTextMethod}
+          value={this.state.messageText}
+        />
+      </KeyboardAvoidingView>
+      <TouchableWithoutFeedback onPress={() => this.setState({draftText:this.state.messageText,messageText:''})}>
                     <View style={{flexDirection:'row-reverse',marginRight:'2%'}}>
                         <MaterialIcon
                             size={30}
@@ -130,22 +147,7 @@ export default class Profile extends Component {
                         />
                     </View>
         </TouchableWithoutFeedback>
-
-          <KeyboardAvoidingView style={{flex:0.2,borderWidth:2,borderRadius:5,borderColor:'black',height:scaledHeight(40), width:"92%",marginLeft:'4%',marginRight:"4%"}}>
-        
-                <TextInput
-                  style={{
-                    fontSize: 18,
-                    borderRadius: 5
-                  }}
-                  multiline={true}
-                  textAlignVertical={"top"}
-                  numberOfLines={5}
-                  underlineColorAndroid="transparent"
-                  onChangeText={this.messageTextMethod}
-                  value={this.state.messageText}
-                />
-              </KeyboardAvoidingView>
+      </View>
 
           </View>
      

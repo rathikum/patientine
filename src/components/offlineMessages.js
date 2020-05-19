@@ -101,7 +101,9 @@ export default class Profile extends Component {
   }
 
 
-
+  componentDidMount() {
+    this.docAvailabilityFetch();
+  }
 
   payment = () => {
     this.setState({ visibleModal: null });
@@ -248,42 +250,141 @@ export default class Profile extends Component {
                   <Text style={styles.doctorStyle}>
                     Dr.{this.state.docAvailData[0].doctorName}
                   </Text>
-                  <Text
+                </View>
+              </View>
+            </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "flex-end",
+                marginLeft: "auto"
+              }}
+            >
+              <View
+                style={{
+                  display: this.state.offSet == noOfDoc - 1 ? "none" : "flex"
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.offSet < noOfDoc) {
+                      this.setState({ offSet: state + 1 }, () => {
+                        this.docAvailabilityFetch();
+                      });
+                    }
+                  }}
+                >
+                  <FontAwesome
                     style={{
-                      fontSize: scaledHeight(14),
-                      alignSelf: "center",
-                      color:StyledConstants.colors.FONT_COLOR
+                      fontSize: scaledHeight(40),
+                      color: StyledConstants.colors.primaryColor
                     }}
                   >
-                    {moment(
-                      this.state.docAvailData[0].doctorShiftTimeFrom,
-                      "HH:mm:ss"
-                    ).format("LT") +
-                      " - " +
-                      moment(
-                        this.state.docAvailData[0].doctorShiftTimeTo,
-                        "HH:mm:ss"
-                      ).format("LT")}
+                    {Icons.angleRight}
+                  </FontAwesome>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </View>
+      );
+    } else {
+      return <Text>Nothing to Display</Text>;
+    }
+  };
+  avatarRendering = () => {
+    if (this.state.docAvailData.length !== 0) {
+      if (
+        this.state.docAvailData[0].profilePicture !== "" &&
+        this.state.docAvailData[0].profilePicture !== null
+      ) {
+        return (
+          <Image
+            style={{
+              width: scaledHeight(90),
+              height: scaledHeight(90),
+            //  borderRadius: 100,
+              // marginHorizontal:'2%',
+              alignItems:'center',
+              alignSelf:'center',
+              justifyContent:'center'
+            }}
+            source={{
+              uri: this.state.docAvailData[0].profilePicture
+            }}
+          />
+        );
+      } else {
+        return (
+          <View
+            style={{
+              width: scaledHeight(90),
+              height: scaledHeight(90),
+             // borderRadius: 100,
+              backgroundColor: StyledConstants.colors.primaryColor,
+              marginHorizontal:'4%',
+              alignItems:'center',
+              alignSelf:'center',
+              justifyContent:'center'
+            }}
+          >
+            <Text style={{ color:StyledConstants.colors.WHITE_COLOR, fontSize: scaledHeight(24), textAlign: "center" }}>
+              {this.state.docAvailData[0].doctorName.charAt(0)}
+            </Text>
+          </View>
+        );
+      }
+    }
+  };
+  renderDocAvailability = () => {
+    const state = this.state.offSet;
+    const { navigate } = this.props.navigation;
+    if (this.state.docAvailData.length !== 0 && this.state.flag === 0) {
+      return (
+        <View>
+          <View style={{ flexDirection: "row" }}>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "flex-start",
+                marginRight: "auto"
+              }}
+            >
+              <View
+                style={{
+                  display: this.state.offSet === 0 ? "none" : "flex"
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() => {
+                    if (this.state.offSet > 0) {
+                      this.setState({ offSet: state - 1 }, () => {
+                        this.docAvailabilityFetch();
+                      });
+                    }
+                  }}
+                >
+                  <FontAwesome
+                    style={{
+                      fontSize: scaledHeight(40),
+                      color: StyledConstants.colors.primaryColor
+                    }}
+                  >
+                    {Icons.angleLeft}
+                  </FontAwesome>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={{ flex:1,alignSelf:'stretch' }}>
+              <TouchableOpacity style={{ flexDirection: "row"}} onPress={()=>{navigate('OfflineDetails')}}>
+                {this.avatarRendering()}
+                <View style={{ flexDirection: "column", marginTop:scaledHeight(8) }}>
+                  <Text style={styles.doctorStyle}>
+                    Send a Message to Dr.{this.state.docAvailData[0].doctorName}
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
 
-              <View style={{ flexDirection: "row", marginTop:scaledHeight(20)}}>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.availabilityContentStyle}>
-                    Waiting Time :{" "}
-                    {this.state.docAvailData[0].availableAfterHrs +
-                      ":" +
-                      this.state.docAvailData[0].availableAfterMin}
-                  </Text>
-                </View>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.availabilityContentStyle}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;Patients in Queue :{" "}
-                    {this.state.docAvailData[0].patientInQueue}
-                  </Text>
-                </View>
-              </View>
             </View>
             <View
               style={{
@@ -369,7 +470,6 @@ export default class Profile extends Component {
     }
   };
 
-
   render() {
     const { navigate } = this.props.navigation;
 
@@ -391,8 +491,13 @@ export default class Profile extends Component {
         <View style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY, height: "100%" }}>
         <ScrollView>
           <View style={{ marginTop:scaledHeight(20)} }>
-            
-              <Card
+          <Card
+            containerStyle={styles.cardContainerStyle}
+          >
+            {this.renderDocAvailability()}
+          </Card>
+
+             {/* <Card
                 containerStyle={{
                   marginLeft: scaledHeight(15),
                   marginTop: scaledHeight(20),
@@ -466,7 +571,7 @@ export default class Profile extends Component {
                      {"Send an Offline Messages to Dr.Justin"}</Text>
                 </View>
                
-              </Card>
+              </Card> */}
          
           </View>
           
@@ -503,7 +608,7 @@ const styles = StyleSheet.create({
   },
   cardContainerStyle:{
       marginHorizontal:'3%',
-      height: scaledHeight(120),
+      height: scaledHeight(100),
       borderRadius: 5,
       borderWidth:2 ,borderColor:"#8BC105" 
   },
