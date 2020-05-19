@@ -24,6 +24,7 @@ import moment from "moment";
 import PatientId from "./PatientId";
 import { baseURL } from "../Utils/properties";
 import DocumentPicker from 'react-native-document-picker';
+import * as mime from 'react-native-mime-types';
 import { scaledHeight } from "../Utils/Resolution";
 import StyledConstants from "../constants/styleConstants";
 
@@ -293,7 +294,16 @@ export default class Billing extends Component {
   selectDocument = async () => {
     try {
         // IOS File formats
-        if (Platform.OS === 'ios') {
+        if(Platform.OS === 'android'){          
+          results = await DocumentPicker.pick({
+            type: [
+                 // DocumentPicker.types.allFiles
+                mime.lookup('pdf')
+                ]          
+            // There can me more options as well find above
+          });
+        }
+       if (Platform.OS === 'ios') {
             results = await DocumentPicker.pick({
                 type: [
                     // 'org.openxmlformats.wordprocessingml.document',
@@ -304,7 +314,7 @@ export default class Billing extends Component {
                     DocumentPicker.types.pdf
                 ]
             });
-        }
+       }
         // results.map((item) => {
         //     return (
         //         console.warn(`res : ${JSON.stringify(item)}`),
