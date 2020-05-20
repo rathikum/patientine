@@ -82,7 +82,8 @@ export default class UpcomingEvents extends Component {
       billDetailInfo: [],
       billingDetails: [],
       color: ['#E53935', '#E53935', '#E53935'],
-      scheduledAppointments: []
+      scheduledAppointments: [],
+      selectedAppointmentType: ''
     }
   }
 
@@ -300,6 +301,7 @@ export default class UpcomingEvents extends Component {
   }
 
   renderAppointmentCards = () => {
+    const { navigate } = this.props.navigation
     const { scheduledAppointments } = this.state
     if (scheduledAppointments.length === 0) {
       return (
@@ -352,7 +354,12 @@ export default class UpcomingEvents extends Component {
           }}
         >
           <View style={{ height: 200, width: '100%', flexDirection: 'row' }}>
-            <TouchableOpacity onPress={this.dialCall}>
+            <TouchableOpacity
+              onPress={appointmentType => {
+                // TODO depending on appointment type, it should invoke video/audio or nothing.
+                navigate('VideoCall')
+              }}
+            >
               <FontAwesome
                 style={{
                   fontSize: scaledHeight(60),
