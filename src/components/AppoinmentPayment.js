@@ -26,7 +26,7 @@ export default class VisitNote extends Component {
       headerTintColor: '#fff',
       title: 'Payment Details',
       headerStyle: {
-        height: scaledHeight(50),
+        height: scaledHeight(20),
         backgroundColor: StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
@@ -62,11 +62,11 @@ export default class VisitNote extends Component {
   }
 
   handleResponse = data => {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation
     if (data.title === 'success') {
-        navigate('Appointment',{pay: true});
+      navigate('Appointment', { pay: true })
     } else if (data.title === 'cancel') {
-        navigate('Appointment',{pay : false});
+      navigate('Appointment', { pay: false })
     } else {
       return
     }
@@ -74,8 +74,8 @@ export default class VisitNote extends Component {
 
   setGoBack = () => {
     const { navigate } = this.props.navigation
-  this.setState({ showModal: false });
-  navigate('Appointment');
+    this.setState({ showModal: false })
+    navigate('Appointment')
   }
 
   render () {
@@ -83,29 +83,40 @@ export default class VisitNote extends Component {
     return (
       <ScrollView style={styles.scrollViewStyle}>
         <View style={{ backgroundColor: '#FFF' }}>
-
           <Modal
             visible={this.state.showModal}
             onRequestClose={() => this.setState({ showModal: false })}
           >
-
-            <TouchableOpacity style={{flexDirection:'row',flex:1, marginTop:scaledHeight(50)}} onPress={this.setGoBack}>
-            <FontAwesome
+            <TouchableOpacity
               style={{
-                fontSize: scaledHeight(20),
-                color: StyledConstants.colors.primaryColor,
-                marginRight: scaledHeight(14),
-                marginLeft: scaledHeight(14)
+                flexDirection: 'row',
+                flex: 1,
+                marginTop: scaledHeight(20)
               }}
+              onPress={this.setGoBack}
             >
-              {Icons.arrowLeft}
-            </FontAwesome>
-            <Text style={{fontSize:scaledHeight(20),color:StyledConstants.colors.primaryColor }}>Back</Text>
-          </TouchableOpacity>
-           
+              <FontAwesome
+                style={{
+                  fontSize: scaledHeight(20),
+                  color: StyledConstants.colors.primaryColor,
+                  marginRight: scaledHeight(14),
+                  marginLeft: scaledHeight(14)
+                }}
+              >
+                {Icons.arrowLeft}
+              </FontAwesome>
+              <Text
+                style={{
+                  fontSize: scaledHeight(20),
+                  color: StyledConstants.colors.primaryColor
+                }}
+              >
+                Back
+              </Text>
+            </TouchableOpacity>
 
             <WebView
-              source={{ uri: 'http://localhost:3001' }}
+              source={{ uri: 'http://demoapi.patientine.com/payment' }}
               onNavigationStateChange={data => this.handleResponse(data)}
               injectedJavaScript={`document.f1.submit()`}
             />

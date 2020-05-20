@@ -368,24 +368,36 @@ export default class VisitNote extends Component {
             visible={this.state.showModal}
             onRequestClose={() => this.setState({ showModal: false })}
           >
-
-            <TouchableOpacity style={{flexDirection:'row',flex:1, marginTop:scaledHeight(50)}} onPress={() => this.setState({ showModal: false })}>
-            <FontAwesome
+            <TouchableOpacity
               style={{
-                fontSize: scaledHeight(20),
-                color: StyledConstants.colors.primaryColor,
-                marginRight: scaledHeight(14),
-                marginLeft: scaledHeight(14)
+                flexDirection: 'row',
+                flex: 1,
+                marginTop: scaledHeight(50)
               }}
+              onPress={() => this.setState({ showModal: false })}
             >
-              {Icons.arrowLeft}
-            </FontAwesome>
-            <Text style={{fontSize:scaledHeight(20),color:StyledConstants.colors.primaryColor }}>Back</Text>
-          </TouchableOpacity>
-           
+              <FontAwesome
+                style={{
+                  fontSize: scaledHeight(20),
+                  color: StyledConstants.colors.primaryColor,
+                  marginRight: scaledHeight(14),
+                  marginLeft: scaledHeight(14)
+                }}
+              >
+                {Icons.arrowLeft}
+              </FontAwesome>
+              <Text
+                style={{
+                  fontSize: scaledHeight(20),
+                  color: StyledConstants.colors.primaryColor
+                }}
+              >
+                Back
+              </Text>
+            </TouchableOpacity>
 
             <WebView
-              source={{ uri: 'http://localhost:3001' }}
+              source={{ uri: 'http://demoapi.patientine.com/payment' }}
               onNavigationStateChange={data => this.handleResponse(data)}
               injectedJavaScript={`document.f1.submit()`}
             />
