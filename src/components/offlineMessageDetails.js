@@ -30,7 +30,7 @@ var patId = new PatientId(),
 import FontAwesome, { Icons, signOutAlt } from 'react-native-fontawesome'
 import { scaledHeight } from '../Utils/Resolution'
 
-export default class Profile extends Component {
+export default class OfflineDetails extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
