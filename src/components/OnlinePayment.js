@@ -19,7 +19,7 @@ import { scaledHeight } from '../Utils/Resolution'
 import StyledConstants from '../constants/styleConstants'
 
 var patId = new PatientId()
-export default class VisitNote extends Component {
+export default class OnlinePayment extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
@@ -397,7 +397,7 @@ export default class VisitNote extends Component {
             </TouchableOpacity>
 
             <WebView
-              source={{ uri: 'http://demoapi.patientine.com/payment' }}
+              source={{ uri: 'http://demoapi.patientine.com/payment/paypal' }}
               onNavigationStateChange={data => this.handleResponse(data)}
               injectedJavaScript={`document.f1.submit()`}
             />

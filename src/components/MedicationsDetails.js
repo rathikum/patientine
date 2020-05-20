@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Text, CheckBox } from "react-native";
-import { Divider } from "react-native-elements";
-import { Card, CardContent } from "react-native-card-view";
-export default class ForgetPassword extends Component {
-  static navigationOptions = {};
-  constructor(props) {
-    super(props);
+import React, { Component } from 'react'
+import { StyleSheet, View, Text, CheckBox } from 'react-native'
+import { Divider } from 'react-native-elements'
+import { Card, CardContent } from 'react-native-card-view'
+export default class MedicationsDetails extends Component {
+  static navigationOptions = {}
+  constructor (props) {
+    super(props)
     this.state = {
       checked: true,
       check: true
-    };
+    }
   }
-  render() {
-    const { navigate } = this.props.navigation;
+  render () {
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <Card
@@ -27,14 +27,14 @@ export default class ForgetPassword extends Component {
                   fontSize: 18,
                   width: 150,
                   marginTop: 10,
-                  justifyContent: "center",
-                  alignSelf: "center",
+                  justifyContent: 'center',
+                  alignSelf: 'center',
                   marginBottom: 10
                 }}
               >
                 Medications
               </Text>
-              <Divider style={{ backgroundColor: "blue" }} />
+              <Divider style={{ backgroundColor: 'blue' }} />
             </View>
             <View
               style={{
@@ -53,7 +53,7 @@ export default class ForgetPassword extends Component {
             </View>
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: 'row',
                 marginTop: 15,
                 marginBottom: 10
               }}
@@ -66,7 +66,7 @@ export default class ForgetPassword extends Component {
               >
                 Prescribed By
               </Text>
-              <Text style={{ fontSize: 18, width: 5, fontWeight: "500" }}>
+              <Text style={{ fontSize: 18, width: 5, fontWeight: '500' }}>
                 :
               </Text>
               <Text style={{ fontSize: 18, width: 195, paddingLeft: 50 }}>
@@ -76,7 +76,7 @@ export default class ForgetPassword extends Component {
 
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: 'row',
                 marginTop: 15,
                 marginBottom: 10
               }}
@@ -89,7 +89,7 @@ export default class ForgetPassword extends Component {
               >
                 Prescribed Date
               </Text>
-              <Text style={{ fontSize: 18, width: 5, fontWeight: "500" }}>
+              <Text style={{ fontSize: 18, width: 5, fontWeight: '500' }}>
                 :
               </Text>
               <Text style={{ fontSize: 18, width: 195, paddingLeft: 60 }}>
@@ -111,13 +111,13 @@ export default class ForgetPassword extends Component {
                     fontSize: 18,
                     width: 150,
                     marginTop: 10,
-                    justifyContent: "center",
-                    alignSelf: "center",
+                    justifyContent: 'center',
+                    alignSelf: 'center',
                     marginBottom: 10
                   }}
                 />
 
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: 'row' }}>
                   <CheckBox
                     value={this.state.checked}
                     onValueChange={() =>
@@ -126,8 +126,8 @@ export default class ForgetPassword extends Component {
                   />
                   <Text style={{ marginTop: 5 }}> Morning</Text>
                 </View>
-                <View style={{ flexDirection: "row" }}>
-                  <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: 'row' }}>
+                  <View style={{ flexDirection: 'row' }}>
                     <CheckBox
                       value={this.state.check}
                       onValueChange={() =>
@@ -136,7 +136,7 @@ export default class ForgetPassword extends Component {
                     />
                     <Text style={{ marginTop: 5 }}>Afternoon</Text>
                   </View>
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: 'row' }}>
                     <CheckBox
                       value={this.state.check}
                       onValueChange={() =>
@@ -145,7 +145,7 @@ export default class ForgetPassword extends Component {
                     />
                     <Text style={{ marginTop: 5 }}>Evening</Text>
                   </View>
-                  <View style={{ flexDirection: "row" }}>
+                  <View style={{ flexDirection: 'row' }}>
                     <CheckBox
                       value={this.state.check}
                       onValueChange={() =>
@@ -160,7 +160,7 @@ export default class ForgetPassword extends Component {
           </Card>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -168,6 +168,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 20,
-    position: "absolute"
+    position: 'absolute'
   }
-});
+})

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   Text,
   Image,
@@ -7,46 +7,46 @@ import {
   View,
   Dimensions,
   StyleSheet
-} from "react-native";
-import FontAwesome, { Icons } from "react-native-fontawesome";
-import { Card, CardContent } from "react-native-card-view";
-import moment from "moment";
-import { baseURL } from "../Utils/properties";
-var listOfDetails = [];
-import PatientId from "./PatientId";
-var patId = new PatientId();
-export default class VisitNote extends Component {
+} from 'react-native'
+import FontAwesome, { Icons } from 'react-native-fontawesome'
+import { Card, CardContent } from 'react-native-card-view'
+import moment from 'moment'
+import { baseURL } from '../Utils/properties'
+var listOfDetails = []
+import PatientId from './PatientId'
+var patId = new PatientId()
+export default class VisitNoteAlternative extends Component {
   static navigationOptions = {
-    headerTintColor: "#fff",
-    title: "Visit Note",
+    headerTintColor: '#fff',
+    title: 'Visit Note',
     headerStyle: {
       height: 50,
-      backgroundColor: "#1E90FF"
+      backgroundColor: '#1E90FF'
     },
     headerTitleStyle: {
-      fontWeight: "500",
+      fontWeight: '500',
       fontSize: 20,
       marginRight: 50,
-      alignSelf: "center"
+      alignSelf: 'center'
     }
-  };
-  constructor(props) {
-    super(props);
+  }
+  constructor (props) {
+    super(props)
     this.state = {
-      doctorName: "",
-      date: "",
-      purpose: "",
+      doctorName: '',
+      date: '',
+      purpose: '',
       visitDetailValues: []
-    };
+    }
   }
   componentWillMount = () => {
-    this.patientId = patId.putPatientId();
-    (getMonths = []), (listOfMonthInfo = []);
-    var listOfVisitDetails = [];
+    this.patientId = patId.putPatientId()
+    ;(getMonths = []), (listOfMonthInfo = [])
+    var listOfVisitDetails = []
     var url =
       baseURL +
-      "/api/PatientRegistrationData/getPatientSummary?patientId=" +
-      this.patientId;
+      '/api/PatientRegistrationData/getPatientSummary?patientId=' +
+      this.patientId
     fetch(url)
       .then(response => response.json())
       .then(resultData => {
@@ -54,43 +54,43 @@ export default class VisitNote extends Component {
           resultData.patientSummary != null &&
           resultData.patientSummary.visitInfo.length > 0
         ) {
-          var visitInfo = resultData.patientSummary.visitInfo;
+          var visitInfo = resultData.patientSummary.visitInfo
           for (var c = 0; c < visitInfo.length; c++) {
-            var getMonth = {};
+            var getMonth = {}
             if (
               c != visitInfo.length - 1 &&
               moment(visitInfo[c].checkIn)
-                .format("MMMMYYYY")
+                .format('MMMMYYYY')
                 .toString() ===
                 moment(visitInfo[c + 1].checkIn)
-                  .format("MMMMYYYY")
+                  .format('MMMMYYYY')
                   .toString()
             ) {
-              getMonth = visitInfo[c];
-              getMonths.push(getMonth);
+              getMonth = visitInfo[c]
+              getMonths.push(getMonth)
             } else {
-              var list = {};
-              getMonth = visitInfo[c];
-              getMonths.push(getMonth);
+              var list = {}
+              getMonth = visitInfo[c]
+              getMonths.push(getMonth)
               list[
                 moment(getMonths[0].checkIn)
-                  .format("MMMM YYYY")
+                  .format('MMMM YYYY')
                   .toString()
-              ] = getMonths;
-              listOfMonthInfo.push(list);
-              getMonths = [];
+              ] = getMonths
+              listOfMonthInfo.push(list)
+              getMonths = []
             }
           }
           for (var i = 0; i < listOfMonthInfo.length; i++) {
-            listOfVisitDetails.push(listOfMonthInfo[i]);
+            listOfVisitDetails.push(listOfMonthInfo[i])
           }
-          this.setState({ visitDetailValues: listOfVisitDetails });
+          this.setState({ visitDetailValues: listOfVisitDetails })
         }
-      });
-  };
+      })
+  }
   visitSummary = () => {
     var listOfLabel = [],
-      i;
+      i
     for (i = 0; i < this.state.visitDetailValues.length; i++) {
       listOfLabel.push(
         <View key={this.state.visitDetailValues[i]}>
@@ -103,23 +103,23 @@ export default class VisitNote extends Component {
             {this.visitSummaryDetails(this.state.visitDetailValues[i])}
           </View>
         </View>
-      );
+      )
     }
-    return listOfLabel;
-  };
+    return listOfLabel
+  }
   visitSummaryDetails = values => {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation
     if (this.state.visitDetailValues !== []) {
-      var visitValues = Object.keys(values);
-      listOfDetails = [];
-      values[visitValues].forEach(function(data) {
+      var visitValues = Object.keys(values)
+      listOfDetails = []
+      values[visitValues].forEach(function (data) {
         listOfDetails.push(
           <View key={data}>
             <Card
               styles={{
                 card: {
                   width: 350,
-                  alignSelf: "center",
+                  alignSelf: 'center',
                   height: 150,
                   borderRadius: 8
                 }
@@ -136,13 +136,13 @@ export default class VisitNote extends Component {
                       marginLeft: 10,
                       borderRadius: 100,
                       borderWidth: 1,
-                      display: "none",
-                      borderColor: "#1B81E5",
-                      alignSelf: "center"
+                      display: 'none',
+                      borderColor: '#1B81E5',
+                      alignSelf: 'center'
                     }}
                     source={{
                       uri:
-                        "https://www.millionairedatingsites.com/wp-content/uploads/2018/03/doctor-dating-sites.jpg"
+                        'https://www.millionairedatingsites.com/wp-content/uploads/2018/03/doctor-dating-sites.jpg'
                     }}
                   />
                   <View
@@ -153,17 +153,17 @@ export default class VisitNote extends Component {
                       marginLeft: 10,
                       borderRadius: 100,
                       borderWidth: 2,
-                      display: "flex",
-                      backgroundColor: "#71b2f4",
-                      borderColor: "#fff",
-                      alignSelf: "center"
+                      display: 'flex',
+                      backgroundColor: '#71b2f4',
+                      borderColor: '#fff',
+                      alignSelf: 'center'
                     }}
                   >
                     <Text
                       style={{
-                        color: "white",
+                        color: 'white',
                         fontSize: 59,
-                        textAlign: "center"
+                        textAlign: 'center'
                       }}
                     >
                       {data.doctorName.charAt(0)}
@@ -171,7 +171,7 @@ export default class VisitNote extends Component {
                   </View>
                   <View style={styles.contentMain}>
                     <Text
-                      ellipsizeMode="tail"
+                      ellipsizeMode='tail'
                       numberOfLines={1}
                       style={styles.doctorName}
                       adjustsFontSizeToFit={true}
@@ -179,7 +179,7 @@ export default class VisitNote extends Component {
                       Dr.{data.doctorName}
                     </Text>
                     <Text style={styles.checkInDate}>
-                      {moment(data.checkIn).format("DD - MM - YYYY")}
+                      {moment(data.checkIn).format('DD - MM - YYYY')}
                     </Text>
                     <View style={styles.purposeContainer}>
                       <Text style={styles.purpose} adjustsFontSizeToFit={true}>
@@ -191,7 +191,7 @@ export default class VisitNote extends Component {
                   <View style={styles.siderIconMain}>
                     <TouchableOpacity
                       onPress={() =>
-                        navigate("VisitNoteDetails", { visitId: data.visitId })
+                        navigate('VisitNoteDetails', { visitId: data.visitId })
                       }
                     >
                       <FontAwesome style={styles.siderIcon}>
@@ -203,40 +203,40 @@ export default class VisitNote extends Component {
               </CardContent>
             </Card>
           </View>
-        );
-      });
-      return listOfDetails;
+        )
+      })
+      return listOfDetails
     } else {
-      <View>
+      ;<View>
         <Text>No Data to Display</Text>
-      </View>;
+      </View>
     }
-  };
-  render() {
-    const { navigate } = this.props.navigation;
+  }
+  render () {
+    const { navigate } = this.props.navigation
     return (
       <ScrollView style={styles.scrollViewStyle}>
         <View>{this.visitSummary()}</View>
       </ScrollView>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  scrollViewStyle: { backgroundColor: "#F5F5F5" },
+  scrollViewStyle: { backgroundColor: '#F5F5F5' },
   visitDate: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     fontSize: 18,
-    color: "#32333192",
-    fontWeight: "500",
+    color: '#32333192',
+    fontWeight: '500',
     marginLeft: 30,
     marginTop: 10,
     marginBottom: 10
   },
   cardContentMainView: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-start"
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start'
   },
   contentImage: {
     marginTop: 10,
@@ -246,34 +246,34 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: "#1B81E5",
-    alignSelf: "center"
+    borderColor: '#1B81E5',
+    alignSelf: 'center'
   },
   contentMain: {
     marginTop: 5,
     width: 150
   },
   doctorName: {
-    color: "#2dc1b3",
+    color: '#2dc1b3',
     fontSize: 18
   },
   checkInDate: {
     fontSize: 18,
-    color: "#32333192",
-    fontWeight: "500",
+    color: '#32333192',
+    fontWeight: '500',
     paddingTop: 12
   },
-  purposeContainer: { flexDirection: "row" },
+  purposeContainer: { flexDirection: 'row' },
   purpose: {
     fontSize: 18,
     paddingTop: 12,
-    color: "#00000099"
+    color: '#00000099'
   },
   purposeValues: {
     fontSize: 18,
     paddingTop: 12,
-    color: "#32333192",
-    fontWeight: "500"
+    color: '#32333192',
+    fontWeight: '500'
   },
   siderIconMain: {
     marginTop: 40,
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
   },
   siderIcon: {
     fontSize: 30,
-    color: "#00000099",
-    alignItems: "flex-end"
+    color: '#00000099',
+    alignItems: 'flex-end'
   }
-});
+})

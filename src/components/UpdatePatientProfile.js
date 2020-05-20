@@ -6,7 +6,7 @@ import DatePicker from "react-native-datepicker";
 import { baseURL } from "../Utils/properties";
 import FontAwesome, {Icons} from 'react-native-fontawesome';
 import styles from "./Style";
-export default class Insurance extends Component {
+export default class UpdatePatientProfile extends Component {
   static navigationOptions = {
     headerTintColor: "#fff",
     title: "UPDATE PATIENT PROFILE ",
