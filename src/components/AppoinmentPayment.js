@@ -101,7 +101,6 @@ export default class AppointmentPayment extends Component {
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
-                flex: 1,
                 marginTop: scaledHeight(30)
               }}
               onPress={this.setGoBack}
