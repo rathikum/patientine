@@ -672,7 +672,6 @@ export default class Appointment extends Component {
                   onChangeText={text => this.setState({ min: text })}
                 />
               </View>
-
               <View style={{ marginHorizontal: '4%' }}>
                 <GDropDownComponent
                   title='Appointment Type'
@@ -684,7 +683,6 @@ export default class Appointment extends Component {
                   itemToIterate='appointmentSubTypeId'
                 />
               </View>
-
               {/* <Text style={styles.label}>Appointment Type </Text>
               <View style={styles.picker}>
                 <Picker
@@ -726,23 +724,22 @@ export default class Appointment extends Component {
                   value={this.state.purpose}
                 />
               </KeyboardAvoidingView>
-
-              <TouchableOpacity
-                style={{
-                  flexDirection: 'row',
-                  height: 40,
-                  width: '50%',
-                  marginTop: 20,
-                  borderRadius: 30,
-                  alignItems: 'center',
-                  alignSelf: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#486D90'
-                }}
-                onPress={() => navigate('Online')}
-                onPress={this.proccedToPay}
-              >
-                {setParmas ? (
+              {setParmas ? (
+                <TouchableOpacity
+                  style={{
+                    flexDirection: 'row',
+                    height: 40,
+                    width: '50%',
+                    marginTop: 20,
+                    borderRadius: 30,
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#486D90'
+                  }}
+                  onPress={() => navigate('Online')}
+                  onPress={this.bookAppointment}
+                >
                   <Text
                     style={{
                       fontSize: 20,
@@ -756,7 +753,23 @@ export default class Appointment extends Component {
                   >
                     Book
                   </Text>
-                ) : (
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={{
+                    flexDirection: 'row',
+                    height: 40,
+                    width: '50%',
+                    marginTop: 20,
+                    borderRadius: 30,
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#486D90'
+                  }}
+                  onPress={() => navigate('Online')}
+                  onPress={this.proccedToPay}
+                >
                   <Text
                     style={{
                       fontSize: 20,
@@ -770,8 +783,8 @@ export default class Appointment extends Component {
                   >
                     Procced to Pay
                   </Text>
-                )}
-              </TouchableOpacity>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         </View>
