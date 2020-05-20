@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
@@ -6,38 +6,37 @@ import {
   Image,
   TouchableWithoutFeedback,
   TouchableOpacity,
-  Linking,
-} from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import IconBadge from "react-native-icon-badge";
-import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { Icons } from "react-native-fontawesome";
-import StyledConstants from "../constants/styleConstants";
-import { scaledHeight } from "../Utils/Resolution";
-var count = 1;
-
+  Linking
+} from 'react-native'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import IconBadge from 'react-native-icon-badge'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { Icons } from 'react-native-fontawesome'
+import StyledConstants from '../constants/styleConstants'
+import { scaledHeight } from '../Utils/Resolution'
+var count = 1
 
 export default class HomePage extends Component {
   static navigationOptions = ({ navigation }) => {
-    const params = navigation.state.params || {};
+    const params = navigation.state.params || {}
     return {
-      headerTintColor: "#fff",
-      title: "Home",
+      headerTintColor: '#fff',
+      title: 'Home',
       headerStyle: {
         height: scaledHeight(50),
-        backgroundColor:StyledConstants.colors.primaryColor
+        backgroundColor: StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
-        fontWeight: "500",
+        fontWeight: '500',
         fontSize: scaledHeight(20),
-        alignSelf: "center"
+        alignSelf: 'center'
       },
       headerRight: (
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: 'row' }}>
           <View>
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
               <FontAwesome style={styles.iconPowerOff}>
                 {Icons.powerOff}
               </FontAwesome>
@@ -45,151 +44,148 @@ export default class HomePage extends Component {
           </View>
         </View>
       )
-    };
-  };
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+    }
+  }
+  constructor (props) {
+    super(props)
+    this.state = {}
   }
 
-  componentDidMount() {
-  }
+  componentDidMount () {}
 
-  componentWillUnMount() {
-  }
+  componentWillUnMount () {}
 
-  render() {
+  render () {
     const { navigate } = this.props.navigation
     return (
       <KeyboardAwareScrollView style={styles.container}>
         <View style={styles.contentContainer}>
           <View style={styles.availabilityContainer}>
-
-           
-              <View style={styles.menuContainer}>
-
+            <View style={styles.menuContainer}>
               <TouchableWithoutFeedback onPress={() => navigate('Profile')}>
-                    <View style={styles.menuItems}>
-                        <MaterialIcon
-                            size={60}
-                            name="dashboard"
-                            color={StyledConstants.colors.primaryColor}   
-                        />
-                        <Text style={styles.menuItemText}>Dashboard</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
-
-               
-
-                <TouchableWithoutFeedback  onPress={() => navigate('Appointment')}>
-                    <View style={styles.menuItems}>
-                        <FontAwesome
-                            size={60}
-                            name="calendar"
-                            color={StyledConstants.colors.primaryColor}    
-                        />
-                    <Text style={styles.menuItemText}>Appointments</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-              </View>
-
-              <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback  onPress={() => navigate('VisitNote')}>
-                    <View style={styles.menuItems}>
-                        <FontAwesome
-                            size={60}
-                            name="file-text-o"
-                            color={StyledConstants.colors.primaryColor}   
-                        />
-                        <Text style={styles.menuItemText}>Visit Notes</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigate('Billing')}>
                 <View style={styles.menuItems}>
-                    <MaterialCommunityIcons
-                        size={60}
-                        name="folder-upload"
-                        color={StyledConstants.colors.primaryColor}   
-                    />
-                    <Text style={styles.menuItemText}>Image and Doc</Text>
+                  <MaterialIcon
+                    size={60}
+                    name='dashboard'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Dashboard</Text>
                 </View>
-                </TouchableWithoutFeedback>
-                
-              </View>
+              </TouchableWithoutFeedback>
 
-              <View style={styles.menuContainer}>
-                <TouchableWithoutFeedback onPress={()=>{navigate('UpComing')}}>
-                    <View style={styles.menuItems}>
-                        <MaterialIcon
-                            size={60}
-                            name="event"
-                            color={StyledConstants.colors.primaryColor}   
-                        />
-                        <Text style={styles.menuItemText}>Upcoming Events</Text>
-                    </View>
-                    </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navigate('Appointment')}>
+                <View style={styles.menuItems}>
+                  <FontAwesome
+                    size={60}
+                    name='calendar'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Appointments</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
 
-                <TouchableWithoutFeedback onPress={() => navigate('OfflineMessage')}>
-                    <View style={styles.menuItems}>
-                        <MaterialIcon
-                            size={60}
-                            // name="google-classroom"
-                            name="message"
-                            color={StyledConstants.colors.primaryColor}    
-                        />
-                    <Text style={styles.menuItemText}>Offline Messages</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-              </View>
+            <View style={styles.menuContainer}>
+              <TouchableWithoutFeedback onPress={() => navigate('VisitNote')}>
+                <View style={styles.menuItems}>
+                  <FontAwesome
+                    size={60}
+                    name='file-text-o'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Visit Notes</Text>
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navigate('Billing')}>
+                <View style={styles.menuItems}>
+                  <MaterialCommunityIcons
+                    size={60}
+                    name='folder-upload'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Image and Doc</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
 
-              <View style={styles.menuContainer}>
-
-              <TouchableWithoutFeedback  onPress={() => navigate('Notification')}>
-                    <View style={styles.menuItems}>
-                    <IconBadge
-                MainElement={
-                  <TouchableOpacity style={{alignContent:'center',alignItems:'center'}} onPress={() => navigate('Notification')}>
-                 <MaterialIcon
-                            size={60}
-                            name="notifications"
-                            color={StyledConstants.colors.primaryColor}    
-                        />
-                    <Text style={styles.menuItemText}>Notifications</Text>
-                    </TouchableOpacity>
-                }
-                BadgeElement={
-                  <Text style={{ color: "#FFF" }}>
-                    {count <= 9 ? count : "9+"}
-                  </Text>
-                }
-                IconBadgeStyle={{
-                  width: scaledHeight(8),
-                  left:scaledHeight(28),
-                  height:scaledHeight(17),
-                  backgroundColor: "#aedd13"
+            <View style={styles.menuContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => {
+                  navigate('UpComing')
                 }}
-                Hidden={count == 0}
-              />
+              >
+                <View style={styles.menuItems}>
+                  <MaterialIcon
+                    size={60}
+                    name='event'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Upcoming Events</Text>
+                </View>
+              </TouchableWithoutFeedback>
 
-                        
-                    </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigate('Online')}>
+              <TouchableWithoutFeedback
+                onPress={() => navigate('OfflineMessage')}
+              >
+                <View style={styles.menuItems}>
+                  <MaterialIcon
+                    size={60}
+                    // name="google-classroom"
+                    name='message'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Messages</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
 
-                    <View style={styles.menuItems}>
+            <View style={styles.menuContainer}>
+              <TouchableWithoutFeedback
+                onPress={() => navigate('Notification')}
+              >
+                <View style={styles.menuItems}>
+                  <IconBadge
+                    MainElement={
+                      <TouchableOpacity
+                        style={{ alignContent: 'center', alignItems: 'center' }}
+                        onPress={() => navigate('Notification')}
+                      >
                         <MaterialIcon
-                            size={60}
-                            name="payment"
-                            color={StyledConstants.colors.primaryColor}    
+                          size={60}
+                          name='notifications'
+                          color={StyledConstants.colors.primaryColor}
                         />
-                    <Text style={styles.menuItemText}>Payment</Text>
-                    </View>
-                </TouchableWithoutFeedback>
-              </View>
+                        <Text style={styles.menuItemText}>Notifications</Text>
+                      </TouchableOpacity>
+                    }
+                    BadgeElement={
+                      <Text style={{ color: '#FFF' }}>
+                        {count <= 9 ? count : '9+'}
+                      </Text>
+                    }
+                    IconBadgeStyle={{
+                      width: scaledHeight(8),
+                      left: scaledHeight(28),
+                      height: scaledHeight(17),
+                      backgroundColor: '#aedd13'
+                    }}
+                    Hidden={count == 0}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => navigate('Online')}>
+                <View style={styles.menuItems}>
+                  <MaterialIcon
+                    size={60}
+                    name='payment'
+                    color={StyledConstants.colors.primaryColor}
+                  />
+                  <Text style={styles.menuItemText}>Payment</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            </View>
 
-              <View style={styles.menuContainer}>
-                
+            <View style={styles.menuContainer}>
               {/*<TouchableWithoutFeedback  onPress={() => navigate('Profile')}>
                     <View style={styles.menuItems}>
                         <MaterialIcon
@@ -211,40 +207,33 @@ export default class HomePage extends Component {
                     <Text style={styles.menuItemText}>E-Consultation</Text>
                     </View>
     </TouchableWithoutFeedback>*/}
-              </View>
-
-
-            
+            </View>
           </View>
-        
-          </View>
+        </View>
       </KeyboardAwareScrollView>
-    );
+    )
   }
 }
 
-
 const styles = StyleSheet.create({
- 
   container: {
     flex: 1,
-    backgroundColor: StyledConstants.colors.BACKGROUND_GRAY,
+    backgroundColor: StyledConstants.colors.BACKGROUND_GRAY
   },
   headingLiner: {
-    backgroundColor:  StyledConstants.colors.BLACK,
+    backgroundColor: StyledConstants.colors.BLACK,
     height: scaledHeight(1.5),
     marginTop: scaledHeight(10),
     marginBottom: scaledHeight(20),
-    marginHorizontal:'4%'
+    marginHorizontal: '4%'
   },
-  
-  contentContainer:{
-    backgroundColor:StyledConstants.colors.BACKGROUND_GRAY,
-    paddingHorizontal:"4%",
 
+  contentContainer: {
+    backgroundColor: StyledConstants.colors.BACKGROUND_GRAY,
+    paddingHorizontal: '4%'
   },
-  availabilityContainer:{
-    marginTop:scaledHeight(10)
+  availabilityContainer: {
+    marginTop: scaledHeight(10)
   },
   iconPowerOff: {
     fontSize: scaledHeight(20),
@@ -253,19 +242,19 @@ const styles = StyleSheet.create({
     marginLeft: scaledHeight(20),
     marginRight: scaledHeight(20)
   },
-  menuContainer:{
-      flex:1,
-      flexDirection:'row' ,
-      marginTop:scaledHeight(60)  
- },
-menuItems:{
-    flex:0.5,
-    alignItems:'center'
-},
-menuItemText:{
-    fontSize:scaledHeight(20),
-    fontWeight:'500',
-    marginTop:scaledHeight(10),
-    color:StyledConstants.colors.FONT_COLOR
-}
-});
+  menuContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: scaledHeight(60)
+  },
+  menuItems: {
+    flex: 0.5,
+    alignItems: 'center'
+  },
+  menuItemText: {
+    fontSize: scaledHeight(20),
+    fontWeight: '500',
+    marginTop: scaledHeight(10),
+    color: StyledConstants.colors.FONT_COLOR
+  }
+})
