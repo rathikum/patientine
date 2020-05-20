@@ -371,7 +371,7 @@ export default class OnlinePayment extends Component {
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
-                flex: 1,
+                // flex: 1,
                 marginTop: scaledHeight(50)
               }}
               onPress={() => this.setState({ showModal: false })}
