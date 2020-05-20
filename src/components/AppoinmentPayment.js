@@ -19,14 +19,14 @@ import { scaledHeight } from '../Utils/Resolution'
 import StyledConstants from '../constants/styleConstants'
 
 var patId = new PatientId()
-export default class VisitNote extends Component {
+export default class AppointmentPayment extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {}
     return {
       headerTintColor: '#fff',
       title: 'Payment Details',
       headerStyle: {
-        height: scaledHeight(20),
+        height: scaledHeight(30),
         backgroundColor: StyledConstants.colors.primaryColor
       },
       headerTitleStyle: {
@@ -63,10 +63,17 @@ export default class VisitNote extends Component {
 
   handleResponse = data => {
     const { navigate } = this.props.navigation
+    const sourceProps = this.props.navigation.getParam('sourceProps')
     if (data.title === 'success') {
-      navigate('Appointment', { pay: true })
+      navigate('Appointment', {
+        pay: true,
+        sourceProps: sourceProps
+      })
     } else if (data.title === 'cancel') {
-      navigate('Appointment', { pay: false })
+      navigate('Appointment', {
+        pay: false,
+        sourceProps: sourceProps
+      })
     } else {
       return
     }
@@ -74,8 +81,12 @@ export default class VisitNote extends Component {
 
   setGoBack = () => {
     const { navigate } = this.props.navigation
+    const sourceProps = this.props.navigation.getParam('sourceProps')
     this.setState({ showModal: false })
-    navigate('Appointment')
+    navigate('Appointment', {
+      sourceProps: sourceProps,
+      pay: true
+    })
   }
 
   render () {
@@ -91,7 +102,7 @@ export default class VisitNote extends Component {
               style={{
                 flexDirection: 'row',
                 flex: 1,
-                marginTop: scaledHeight(20)
+                marginTop: scaledHeight(30)
               }}
               onPress={this.setGoBack}
             >
@@ -116,7 +127,7 @@ export default class VisitNote extends Component {
             </TouchableOpacity>
 
             <WebView
-              source={{ uri: 'http://demoapi.patientine.com/payment' }}
+              source={{ uri: 'http://demoapi.patientine.com/payment/paypal' }}
               onNavigationStateChange={data => this.handleResponse(data)}
               injectedJavaScript={`document.f1.submit()`}
             />
