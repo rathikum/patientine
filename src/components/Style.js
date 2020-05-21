@@ -27,12 +27,12 @@ module.exports = StyleSheet.create({
   },
   submitButtonContainer: {
     height: scaledHeight(40),
-    width: "50%",
+    width: "40%",
     marginTop: scaledHeight(15),
     // alignItems:'center',
     // marginLeft: 100,
     backgroundColor: StyledConstants.colors.primaryColor,
-    borderRadius: 5
+    borderRadius: 10
   },
   rowgender: {
     marginTop:scaledHeight(30),

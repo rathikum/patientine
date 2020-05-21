@@ -199,6 +199,7 @@ export default class Registration extends Component {
 
   render () {
     let { secureTextEntry, secureText } = this.state
+    const { navigate } = this.props.navigation;
     return (
       <KeyboardAwareScrollView
         behaviour='padding'
@@ -331,6 +332,14 @@ export default class Registration extends Component {
               underlayColor='#fff'
             >
               <Text style={styles.submitTextStyle}>Register</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.submitButtonContainer}
+              onPress={()=>{navigate('TermsCondition')}}
+              underlayColor='#fff'
+            >
+              <Text style={styles.submitTextStyle}>Consent</Text>
             </TouchableOpacity>
           </View>
           <View>

@@ -408,6 +408,46 @@ uploadDocument = () => {
       <View style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY, height: "100%" }}>
         <ScrollView>
           <View style={{ marginTop:scaledHeight(20)} }>
+
+          <Card
+                containerStyle={{
+                  marginLeft: scaledHeight(15),
+                  marginTop: scaledHeight(20),
+                  marginBottom: scaledHeight(10),
+                  marginRight: scaledHeight(15),
+                  height: scaledHeight(130),
+                  // margin: 0,
+                  borderRadius: 5,
+                  borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
+                }}
+              >
+
+                <View style={{height:scaledHeight(200),width:"100%", flexDirection:'row'}}>
+
+              <View style={{ flexDirection:'column'}}>      
+                <FontAwesome
+                  style={{
+                    fontSize: scaledHeight(60),
+                    color: StyledConstants.colors.primaryColor,
+                    marginRight:scaledHeight(10),
+                    marginLeft: scaledHeight(10),
+                  }}
+                >
+                  {Icons.filePdfO}
+                </FontAwesome>
+
+                <Text style={{ width:scaledHeight(80),marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
+                 {"medi.pdf"}
+                </Text>
+
+                </View>
+
+                <Text style={{marginTop:scaledHeight(30),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(16)}}>
+                 {"Document Uploaded on 04/05/2020"}
+                </Text>
+                </View>
+               
+              </Card>
             
             {
               this.state.selectedFileName!='' && (
