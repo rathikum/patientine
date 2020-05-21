@@ -50,7 +50,7 @@ export default class AppointmentPayment extends Component {
       )
     }
   }
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       doctorName: '',
@@ -65,11 +65,13 @@ export default class AppointmentPayment extends Component {
     const { navigate } = this.props.navigation
     const sourceProps = this.props.navigation.getParam('sourceProps')
     if (data.title === 'success') {
+      this.setState({ 'showModal': false });
       navigate('Appointment', {
         pay: true,
         sourceProps: sourceProps
       })
     } else if (data.title === 'cancel') {
+      this.setState({ 'showModal': false })
       navigate('Appointment', {
         pay: false,
         sourceProps: sourceProps
@@ -89,7 +91,7 @@ export default class AppointmentPayment extends Component {
     })
   }
 
-  render () {
+  render() {
     const { navigate } = this.props.navigation
     return (
       <ScrollView style={styles.scrollViewStyle}>
