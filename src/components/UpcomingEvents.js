@@ -357,7 +357,9 @@ export default class UpcomingEvents extends Component {
             <TouchableOpacity
               onPress={appointmentType => {
                 // TODO depending on appointment type, it should invoke video/audio or nothing.
-                navigate('VideoCall')
+                Linking.openURL("https://demo.patientine.com/client/?id=100001&&Fid=Video-Call-Robert-15"
+                // this.getVideoURL(n.doctorName, n.doctorId)
+              )
               }}
             >
               <FontAwesome

@@ -266,8 +266,8 @@ export default class Notification extends Component {
                             <TouchableOpacity
                               style={styles.secButtonSkip}
                               onPress={() => 
-                               Linking.openURL(
-                                 this.getVideoURL(n.doctorName, n.doctorId)
+                               Linking.openURL("https://demo.patientine.com/client/?id=100001&&Fid=Video-Call-Robert-15"
+                                 // this.getVideoURL(n.doctorName, n.doctorId)
                                )
                               }
                               underlayColor="#fff"
