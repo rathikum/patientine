@@ -24,6 +24,7 @@ import moment from "moment";
 import PatientId from "./PatientId";
 import { baseURL } from "../Utils/properties";
 import DocumentPicker from 'react-native-document-picker';
+import RNFS from 'react-native-fs';
 import * as mime from 'react-native-mime-types';
 import { scaledHeight } from "../Utils/Resolution";
 import StyledConstants from "../constants/styleConstants";
@@ -355,10 +356,24 @@ export default class Billing extends Component {
 uploadDocument = () => {
   const { navigate } = this.props.navigation
   let url = baseURL + '/api/documentContents/createDocumentData'
+
+  RNFS.readFile(this.state.selectedFile.uri, 'base64')
+  .then(uriBase64 =>{
+    console.log("Data---->",uriBase64);
+
+  let documentData = [];
+  documentData["fileName"] = this.state.selectedFile.name;
+  documentData["documentName"] = this.state.selectedFile.name;
+  documentData["category"] = "";
+  documentData["documentNotes"] = "";
+  documentData["documentType"] = "";
+  documentData["documentValue"] = uriBase64;
+  documentData["uid"] = "";
+
   let uploadObj = {
     patientId: "32",
     visitId: "1",
-    documentData: this.state.selectedFileName
+    documentData: documentData
   }
   console.log('uploadObj:', uploadObj)
   return fetch(url, {
@@ -384,6 +399,7 @@ uploadDocument = () => {
       }
     })
     .catch(error => console.log('exception caught:', error))
+  });
 }
 
   render() {
