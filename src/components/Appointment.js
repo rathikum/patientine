@@ -574,7 +574,7 @@ export default class Appointment extends Component {
 
   render () {
     const { doctorSearchValue } = this.state
-    const setParmas = this.props.navigation.getParam('pay')
+    const setParmas = this.props.navigation.getParam('pay');
     const listofDoctor = this.finddoctor(doctorSearchValue)
     const comp = (fetchDoctorName, onchangeDoctorName) =>
       fetchDoctorName.toLowerCase().trim() ===

@@ -124,6 +124,8 @@ export default class Notification extends Component {
 
   render() {
     const url =  this.getVideoURL(this.state.doctorName, this.state.doctorId);
+    console.log("------",url);
+
     return (
       <KeyboardAwareScrollView style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY }}>
 
@@ -263,14 +265,10 @@ export default class Notification extends Component {
                             </Text>
                             <TouchableOpacity
                               style={styles.secButtonSkip}
-                              onPress={() => this.setState({
-                                doctorName : n.doctorName,
-                                doctorId : n.doctorId,
-                                webviewState : true
-                              })
-                               // Linking.openURL(
-                               //   this.getVideoURL(n.doctorName, n.doctorId)
-                               // )
+                              onPress={() => 
+                               Linking.openURL(
+                                 this.getVideoURL(n.doctorName, n.doctorId)
+                               )
                               }
                               underlayColor="#fff"
                             >
@@ -331,11 +329,9 @@ export default class Notification extends Component {
                             <TouchableOpacity
                               style={styles.secButtonSkip}
                               onPress={() =>
-                               this.setState({
-                                doctorName : n.doctorName,
-                                doctorId : n.doctorId,
-                                webviewState : true
-                              })
+                                Linking.openURL(
+                                  this.getVideoURL(n.doctorName, n.doctorId)
+                                )
                               }
                               underlayColor="#fff"
                             >
