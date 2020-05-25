@@ -12,7 +12,6 @@ import {
   Platform,
   Button
 } from "react-native";
-import { CustomTabs } from "react-native-custom-tabs";
 import { WebView } from 'react-native-webview';
 import {
   Collapse,
