@@ -96,7 +96,7 @@ export default class HomePage extends Component {
                   <Text style={styles.menuItemText}>Visit Notes</Text>
                 </View>
               </TouchableWithoutFeedback>
-              <TouchableWithoutFeedback onPress={() => navigate('Billing')}>
+              <TouchableWithoutFeedback onPress={() => navigate('Upload')}>
                 <View style={styles.menuItems}>
                   <MaterialCommunityIcons
                     size={60}

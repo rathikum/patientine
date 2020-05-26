@@ -9,7 +9,7 @@ import VisitNoteScreen from "./src/components/VisitNote";
 import MedicationsScreen from "./src/components/Medications";
 import PaymentScreen from "./src/components/Payment";
 import Notification from "./src/components/Notification";
-import BillingScreen from "./src/components/Billing";
+import UploadScreen from "./src/components/Upload";
 import OnlinePayment from "./src/components/OnlinePayment";
 import UpComingScreen from "./src/components/UpcomingEvents";
 import HomePage from "./src/components/HomePage";
@@ -28,7 +28,7 @@ const App = StackNavigator({
   Registration: { screen: RegistrationScreen },
   ForgetPassword: { screen: ForgetPasswordScreen },
   Notification: { screen: Notification },
-  Billing: { screen: BillingScreen },
+  Upload: { screen: UploadScreen },
   Online : { screen : OnlinePayment },
   UpComing : { screen : UpComingScreen},
   Home : { screen : HomePage},

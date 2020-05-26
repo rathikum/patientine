@@ -7,7 +7,9 @@ import {
   View,
   FlatList,
   Dimensions,
-  Platform
+  Platform,
+  ToastAndroid,
+  AlertIOS
 } from "react-native";
 import FontAwesome, { Icons } from "react-native-fontawesome";
 import {
@@ -29,6 +31,7 @@ import * as mime from 'react-native-mime-types';
 import { scaledHeight } from "../Utils/Resolution";
 import StyledConstants from "../constants/styleConstants";
 
+
 var DetailsOfBilling = [];
 var patId = new PatientId();
 var deviceWidth = Dimensions.get("window").width;
@@ -37,7 +40,7 @@ var color;
 
 const maxFileLimit = 10;
 
-export default class Billing extends Component {
+export default class Upload extends Component {
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
     return {
@@ -76,8 +79,13 @@ export default class Billing extends Component {
       billingDetails: [],
       color: ["#E53935", "#E53935", "#E53935"],
       selectedFileName:'',
-      selectedFile:''
+      selectedFile:'',
+      documentDetails:[]
     };
+  }
+
+  componentDidMount(){
+    this.fetchDocumentDetails();
   }
 
   componentWillMount() {
@@ -161,6 +169,23 @@ export default class Billing extends Component {
     const { navigate } = this.props.navigation;
     navigate("Procedure", { data: itemValues.billId });
   };
+
+  fetchDocumentDetails = () => {
+    var url =
+      baseURL +
+      '/api/documentContents/getDocumentByVisitId?visitId=1&patientId=32'
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log("Data--->",JSON.stringify(response.documentResponse.documents));
+        let responseList = response.documentResponse.documents;
+        if(responseList.length>0){
+          this.setState({
+            documentDetails:response.documentResponse.documents
+          });
+        }
+      })
+  }
 
   renderItem = item => {
     let value = item.totalBilledAmount * 100;
@@ -298,8 +323,8 @@ export default class Billing extends Component {
         if(Platform.OS === 'android'){          
           results = await DocumentPicker.pick({
             type: [
-                 // DocumentPicker.types.allFiles
-                mime.lookup('pdf')
+                 DocumentPicker.types.allFiles
+                // mime.lookup('pdf')
                 ]          
             // There can me more options as well find above
           });
@@ -312,7 +337,7 @@ export default class Billing extends Component {
                     // 'public.image',
                     // 'org.openxmlformats.spreadsheetml.sheet',
                     // DocumentPicker.types.images,
-                    DocumentPicker.types.pdf
+                    DocumentPicker.types.allFiles
                 ]
             });
        }
@@ -363,12 +388,13 @@ uploadDocument = () => {
 
   let documentData = [];
   documentData["fileName"] = this.state.selectedFile.name;
-  documentData["documentName"] = this.state.selectedFile.name;
-  documentData["category"] = "";
+  documentData["documentName"] = "xray";
+  documentData["category"] = "Lab Results";
   documentData["documentNotes"] = "";
-  documentData["documentType"] = "";
+  documentData["documentId"] = 3;
+  documentData["documentType"] = 0;
   documentData["documentValue"] = uriBase64;
-  documentData["uid"] = "";
+  documentData["uid"] = "rc-upload-1589077739747-4";
 
   let uploadObj = {
     patientId: "32",
@@ -393,6 +419,16 @@ uploadDocument = () => {
       ) {
           // TODO
           console.log('Response:',JSON.stringify(response))
+          const msg = "Success";
+          if (Platform.OS === 'android') {
+            ToastAndroid.show(msg, ToastAndroid.SHORT)
+          } else {
+            AlertIOS.alert(msg);
+          }
+          this.setState({
+            selectedFileName:''
+          });
+          this.fetchDocumentDetails();
       } else {
         // TODO
         console.log('show exception on the screeon')
@@ -408,21 +444,21 @@ uploadDocument = () => {
       <View style={{ backgroundColor: StyledConstants.colors.BACKGROUND_GRAY, height: "100%" }}>
         <ScrollView>
           <View style={{ marginTop:scaledHeight(20)} }>
-
-          <Card
-                containerStyle={{
-                  marginLeft: scaledHeight(15),
-                  marginTop: scaledHeight(20),
-                  marginBottom: scaledHeight(10),
-                  marginRight: scaledHeight(15),
-                  height: scaledHeight(130),
-                  // margin: 0,
-                  borderRadius: 5,
-                  borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
-                }}
-              >
-
-                <View style={{height:scaledHeight(200),width:"100%", flexDirection:'row'}}>
+          {
+           this.state.documentDetails.length>0 && this.state.documentDetails.map((i, index) => (
+             <Card
+             containerStyle={{
+               marginLeft: scaledHeight(15),
+               marginTop: scaledHeight(20),
+               marginBottom: scaledHeight(10),
+               marginRight: scaledHeight(15),
+               height: scaledHeight(130),
+               // margin: 0,
+               borderRadius: 5,
+               borderWidth:2 ,borderColor:StyledConstants.colors.GREEN
+             }}
+           >
+               <View style={{height:scaledHeight(200),width:"100%", flexDirection:'row'}}>
 
               <View style={{ flexDirection:'column'}}>      
                 <FontAwesome
@@ -437,17 +473,21 @@ uploadDocument = () => {
                 </FontAwesome>
 
                 <Text style={{ width:scaledHeight(80),marginLeft: scaledHeight(10),marginTop:scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(12)}}>
-                 {"medi.pdf"}
+                {i.documentName}
                 </Text>
 
                 </View>
 
-                <Text style={{marginTop:scaledHeight(30),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(16)}}>
-                 {"Document Uploaded on 04/05/2020"}
+                <Text style={{marginTop:scaledHeight(30),marginLeft: scaledHeight(10),color:StyledConstants.colors.FONT_COLOR,fontSize:scaledHeight(16)}}>
+                Document Uploaded on {i.createdDate}
                 </Text>
                 </View>
-               
+              
               </Card>
+
+            ))
+          }
+
             
             {
               this.state.selectedFileName!='' && (
@@ -528,6 +568,7 @@ uploadDocument = () => {
                   }}>Select Document</Text>
               </TouchableOpacity>
               </View>
+
           </View>
           
         </ScrollView>

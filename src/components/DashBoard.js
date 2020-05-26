@@ -3,7 +3,7 @@ import FontAwesome, { Icons } from "react-native-fontawesome";
 import { TabNavigator } from "react-navigation";
 import ProfileScreen from "./Profile";
 import VisittNoteScreen from "./VisitNote";
-import BillingScreen from "./Billing";
+import UploadScreen from "./Upload";
 import onlinePay from "./OnlinePayment";
 import Medications from "./Pay";
 import { Dimensions } from "react-native";
@@ -58,7 +58,7 @@ export const Tabs = TabNavigator(
       }
     },
     Billing: {
-      screen: BillingScreen,
+      screen: UploadScreen,
       navigationOptions: {
         tabBarLabel: "Documents",
         tabBarIcon: () => (
