@@ -19,7 +19,7 @@
     "react-native-animatable": "^1.2.4",
     "react-native-autocomplete-input": "^4.2.0",
     "react-native-datepicker": "^1.6.0",
-    "react-native-document-picker": "^3.3.3",
+    "react-native-document-picker": "^9.1.1",
     "react-native-dropdown": "0.0.6",
     "react-native-dropdown-menu": "^2.0.0",
     "react-native-dropdownalert": "^3.9.2",
